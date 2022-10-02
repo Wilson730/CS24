@@ -33,7 +33,7 @@ int main ()
     }
     i++;
   }
-  cout << finalString;
+  cout << finalString << "\n";
   return 0;
 }
 
