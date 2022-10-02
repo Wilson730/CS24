@@ -10,27 +10,26 @@ int main ()
   string finalString = "";
   string temp = "";
   
-  cout << "";
+  cout << "Input: ";
   getline(cin, str);
+  
   while (str[i])
   {
-    if (ispunct(str[i]) || isspace(str[i]))
+    temp += str[i];
+    if (ispunct(str[i]) || isspace(str[i]) || i == str.size() -1 )
     {
-        for(int f = temp.size() - 1; f >= 0 ; --f)                      
+        for(int f = temp.size() - 1; f >= 0; f--)                      
         {                                          
-        finalString += temp[f];
-        }                     
-        finalString += str[i];                       
-        temp = "";
-    } else {
-        temp += str[i];
+            if (temp[f] != str[i])
+            {
+            finalString += temp[f];
+            }
+        }    
+        finalString += str[i];
+    temp = "";
     }
-    
     i++;
   }
-  
   cout << finalString;
   return 0;
 }
-
-
