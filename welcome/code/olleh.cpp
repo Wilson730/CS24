@@ -10,7 +10,7 @@ int main ()
   string finalString = "";
   string temp = "";
   
-  cout << "Type something: ";
+  cout << "";
   getline(cin, str);
   while (str[i])
   {
@@ -30,7 +30,6 @@ int main ()
   }
   
   cout << finalString;
-  cout << "make test";
   return 0;
 }
 
