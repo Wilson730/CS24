@@ -1,2 +1,2 @@
-git rm --cached olleh olleh.o a.out 
-git config --global core.excludesfile ~/.gitignore_global
+git rm --cached welcome/code/olleh 
+git rm --cached welcome/code/olleh.o 
