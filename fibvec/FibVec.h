@@ -7,14 +7,14 @@ using namespace std;
 class FibVec{
 private:
     size_t cap;
-    size_t count;
+    size_t nrOfEl;
     int *arr;
     int x, y;
 public: 
 
     FibVec(){
     x = 1, y = 1;
-    count = 0;
+    nrOfEl = 0;
     cap = 10;
     arr = new int[cap];
     }
@@ -27,7 +27,7 @@ public:
         cap = x + y;
         int *temparr = new int[cap];
 
-        for (size_t i = 0; i < count; i++)
+        for (size_t i = 0; i < nrOfEl; i++)
         {
             temparr[i] = arr[i];
         }
@@ -36,7 +36,7 @@ public:
          
         arr = temparr;
 
-        
+
     }
     size_t capacity() const;
     size_t count() const;
