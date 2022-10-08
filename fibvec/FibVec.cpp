@@ -6,11 +6,8 @@ using namespace std;
 
 int main()
 {
-   FibVec v = FibVec::FibVec();
+   FibVec* v;
 
+   v = new FibVec();
 }
 
-FibVec::insert(int value, size_t index){
-
-    
-}

@@ -5,12 +5,19 @@
 using namespace std;
 
 class FibVec{
+   
+public: 
+
     FibVec(){
     int x = 1, y = 1;
     int capacity;
     int* vec = new int[1];
     }
-public:
+
+    ~FibVec(){
+        
+    }
+    
     size_t capacity() const;
     size_t count() const;
     int insert(int value, size_t index);
@@ -20,8 +27,3 @@ public:
     int remove(size_t index);
 };
 
-FibVec::FibVec(){
-    int x = 1, y = 1;
-    int capacity;
-    int* arr;
-}
