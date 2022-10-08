@@ -5,17 +5,22 @@
 using namespace std;
 
 class FibVec{
-   
+private:
+    int cap;
+    int nrOfEl;
+    int *arr;
+
 public: 
 
     FibVec(){
     int x = 1, y = 1;
-    int capacity;
-    int* vec = new int[1];
+    nrOfEl = 0;
+    cap = 10;
+    arr = new int[cap];
     }
 
     ~FibVec(){
-        
+        delete[] arr;
     }
     
     size_t capacity() const;
