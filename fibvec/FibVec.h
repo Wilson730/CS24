@@ -24,8 +24,8 @@ public:
     void insert(int value, size_t index);
     int lookup(size_t index) const;
     int pop();
-    int push(int value);
+    void push(int value);
     int remove(size_t index);
-    int resize(size_t index);
+    int resize();
    
 };
