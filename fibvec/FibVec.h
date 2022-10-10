@@ -27,6 +27,7 @@ public:
     int pop();
     void push(int value);
     int remove(size_t index);
-    void resize();
+    void expand();
+    void shrink();
    
 };

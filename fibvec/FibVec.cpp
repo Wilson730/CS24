@@ -33,7 +33,7 @@ int FibVec::lookup(size_t index) const {
     return arr[index];
 }
 //----------------------------------------------------------------- RESIZE ---------------------------------------------------------------------
-void FibVec::resize(){
+void FibVec::expand(){
 //-------------------------IF INDEX BIGGER THAN CAPACITY (FULL) BY 1, INCREASE TO NEXT FIBONACCI NUMBER. 
         if (nrOfEl >= cap){
             cap = x + y;
@@ -46,23 +46,31 @@ void FibVec::resize(){
             }
         } 
 
-        if (x > y && nrOfEl < cap - x)                    
-        {   
-            cap = y; 
-        } else if (y > x && nrOfEl > cap - y) {
-            cap = x;
-        }
-//-------------------------- COPY VALUES TO NEWER AND BIGGER ARRAY
-        int *temparr = new int[cap];                 // changes capacity of array. operates using x and y. capacity = f(n)
+int *temparr = new int[cap];                 
 
-        for (size_t i = 0; i < nrOfEl; i++)            // cap or f(n) will increase so new cap = previous x + y, and 
-        {
-            temparr[i] = arr[i];
-        }
+for (size_t i = 0; i < nrOfEl; i++)           
+{
+    temparr[i] = arr[i];
+}
+delete[] arr;        
+arr = temparr;     
+}
+//---------------------------------------------------------------- SHRINK ----------------------------------------------------------------------
+void FibVec::shrink(){
+if (x > y && nrOfEl < cap - x)                    
+{   
+    cap = y; 
+} else if (y > x && nrOfEl > cap - y) {
+    cap = x;
+} 
 
-        delete[] arr;
-         
-        arr = temparr;
+int *temparr = new int[cap];                 
+for (size_t i = 0; i < nrOfEl; i++)            
+{
+    temparr[i] = arr[i];
+}
+delete[] arr;     
+arr = temparr;
 }
 //---------------------------------------------------------------- INSERT ----------------------------------------------------------------------
 void FibVec::insert(int value, size_t index){
@@ -73,13 +81,13 @@ void FibVec::insert(int value, size_t index){
     if((index == cap) && (cap == nrOfEl)) // insert at cap (1 after the total size)
     {
         nrOfEl += 1;
-        resize();
+        expand();
         arr[index] = value;
     }
 
     if(index <= nrOfEl){                // insert in the middle
         if (++nrOfEl > cap){            // resize of insert makes a value go out of range
-            resize();
+            expand();
         }
         for(size_t i = index; i < nrOfEl; i++){   
             int temp = arr[index];
@@ -93,10 +101,10 @@ void FibVec::push(int value){
     
     if(nrOfEl == cap){
         nrOfEl++;
-        resize();
-    }   
+        expand();
+    } 
      arr[nrOfEl] = value;
-     nrOfEl++;
+    if (nrOfEl < cap) nrOfEl++; // this should not run if the if statement has already run. 
 }
 //------------------------------------------------------------------ POP -----------------------------------------------------------------------
 int FibVec::pop(){
@@ -106,10 +114,9 @@ int FibVec::pop(){
     } 
 
     if ((x > y && nrOfEl < cap - x) || (y > x && nrOfEl < cap - y)){
-        nrOfEl--;
-        resize();
+        shrink();
     }
-    nrOfEl--;
+    nrOfEl--; // this too. 
     return arr[nrOfEl];
 }
 //------------------------------------------------------------------ REMOVE --------------------------------------------------------------------
