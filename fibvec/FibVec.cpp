@@ -91,12 +91,12 @@ void FibVec::insert(int value, size_t index){
             ++nrOfEl;
         }  else {
 
-        for(size_t i = nrOfEl - 2; i >= index; i--){            // don't worry about the end bc you've already expanded. 
+        for(size_t i = nrOfEl - 2; i > index; i--){            // don't worry about the end bc you've already expanded. 
             arr[i+1] = arr[i];
         }
-        arr[index] = value;
+        
         }
-     
+        arr[index] = value;
     } else { 
         arr[index] = value;
         ++nrOfEl;
