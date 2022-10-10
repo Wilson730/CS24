@@ -76,16 +76,16 @@ void FibVec::insert(int value, size_t index){
     if (index > nrOfEl || index > cap){ // index cannot be negative, skip, or over. 
         throw std::out_of_range("invalid index");
     } else if ((index == cap) && (cap == nrOfEl)) {// insert at cap 1 after the total size 
+        ++nrOfEl;
         expand(); 
-        nrOfEl += 1;
         arr[index] = value;
     } else if(index < nrOfEl){                // insert in the middle
-        if (++nrOfEl > cap){     
+        if (++nrOfEl > cap){                 // expands if adding one element will make it go over capacity 
             --nrOfEl;       
             expand();
             ++nrOfEl;
         }
-        for(size_t i = index; i < nrOfEl; i++){   
+        for(size_t i = index; i < nrOfEl; i++){   // moves values over 
             arr[i + 1] = arr[i];
         }
         arr[index] = value;
