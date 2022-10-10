@@ -50,7 +50,7 @@ void FibVec::expand(){
 
 int *temparr = new int[cap];                 
 
-for (size_t i = 0; i < nrOfEl; i++)           
+for (size_t i = 0; i < nrOfEl - 1; i++)           
 {
     temparr[i] = arr[i];
 }
