@@ -87,10 +87,11 @@ void FibVec::insert(int value, size_t index){
     } else if(index < nrOfEl){                     // today's vector lab notes - don't reallocate when there's space. 
         if (++nrOfEl > cap){                 // only reallocate when nrOfEl == cap, and ++nrOfel < cap
             expand();                              // shift w/o reallocating
-        }  
-                
-        for(size_t i = nrOfEl - 1; i >= index; i--){            // don't worry about the end bc you've already expanded. 
+        }  else {
+
+        for(size_t i = nrOfEl - 2; i >= index; i--){            // don't worry about the end bc you've already expanded. 
             arr[i+1] = arr[i];
+        }
         }
         arr[index] = value;
     } else { 
