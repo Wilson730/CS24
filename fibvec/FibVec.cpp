@@ -114,7 +114,7 @@ int FibVec::pop(){
         throw std::underflow_error("underflow error!");
     } 
     --nrOfEl;
-    if ((x > y || nrOfEl < cap - x) || (y > x || nrOfEl < cap - y)){
+    if ((x > y && nrOfEl < cap - x) || (y > x && nrOfEl < cap - y)){
         shrink();
     }
     return arr[nrOfEl];
