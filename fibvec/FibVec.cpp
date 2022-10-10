@@ -35,7 +35,7 @@ int FibVec::lookup(size_t index) const {
 //----------------------------------------------------------------- RESIZE ---------------------------------------------------------------------
 void FibVec::resize(){
 //-------------------------IF INDEX BIGGER THAN CAPACITY (FULL) BY 1, INCREASE TO NEXT FIBONACCI NUMBER. 
-        if (nrOfEl > cap){
+        if (nrOfEl >= cap){
             cap = x + y;
             if (y == (cap-x)){
                 x = cap;
@@ -66,7 +66,7 @@ void FibVec::insert(int value, size_t index){
     {
         throw std::out_of_range("invalid index");
     }
-    if((index == cap) & (cap == nrOfEl)) // insert at cap (1 after the total size)
+    if((index == cap) && (cap == nrOfEl)) // insert at cap (1 after the total size)
     {
         nrOfEl += 1;
         resize();
@@ -86,11 +86,13 @@ void FibVec::insert(int value, size_t index){
 }
 //----------------------------------------------------------------- PUSH -----------------------------------------------------------------------
 void FibVec::push(int value){
+    
     if(nrOfEl == cap){
-        nrOfEl++;
         resize();
-    }
-    arr[nrOfEl] = value;
+        
+    }   
+     arr[nrOfEl] = value;
+     nrOfEl++;
 }
 //------------------------------------------------------------------ POP -----------------------------------------------------------------------
 int FibVec::pop(){
