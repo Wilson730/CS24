@@ -14,6 +14,7 @@ FibVec::FibVec(){
     cap = 1;
     arr = new int[cap];
     counter = 0;
+
 }
 //------------------------------------------------------------- DECONSTRUCTOR ------------------------------------------------------------------
 FibVec::~FibVec(){ 
@@ -111,7 +112,7 @@ int FibVec::pop(){
         throw std::underflow_error("underflow error!");
     } 
 
-    if ((x > y && nrOfEl < cap - x) || (y > x && nrOfEl < cap - y)){
+    if ((x > y && nrOfEl < cap - x && !(cap - x < 1)) || (y > x && nrOfEl < cap - y && !(cap - y <1))){
         shrink();
     }
     nrOfEl--; 
