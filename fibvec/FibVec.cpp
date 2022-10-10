@@ -32,9 +32,9 @@ int FibVec::lookup(size_t index) const {
     } 
     return arr[index];
 }
-//----------------------------------------------------------------- RESIZE ---------------------------------------------------------------------
+//----------------------------------------------------------------- EXPAND ---------------------------------------------------------------------
 void FibVec::expand(){
-//-------------------------IF INDEX BIGGER THAN CAPACITY (FULL) BY 1, INCREASE TO NEXT FIBONACCI NUMBER. 
+    
         if (nrOfEl >= cap){
             cap = x + y;
             if (counter == 0){       
@@ -100,11 +100,10 @@ void FibVec::insert(int value, size_t index){
 void FibVec::push(int value){
     
     if(nrOfEl == cap){
-        nrOfEl++;
         expand();
     } 
-     arr[nrOfEl] = value;
-    if (nrOfEl < cap) nrOfEl++; // this should not run if the if statement has already run. 
+    arr[nrOfEl] = value;
+    nrOfEl++; 
 }
 //------------------------------------------------------------------ POP -----------------------------------------------------------------------
 int FibVec::pop(){
@@ -116,7 +115,7 @@ int FibVec::pop(){
     if ((x > y && nrOfEl < cap - x) || (y > x && nrOfEl < cap - y)){
         shrink();
     }
-    nrOfEl--; // this too. 
+    nrOfEl--; 
     return arr[nrOfEl];
 }
 //------------------------------------------------------------------ REMOVE --------------------------------------------------------------------
