@@ -99,7 +99,7 @@ void FibVec::push(int value){
 }
 //------------------------------------------------------------------ POP -----------------------------------------------------------------------
 int FibVec::pop(){
-    int re;
+
     if(nrOfEl == 0){
         throw std::underflow_error("underflow error!");
     } 
