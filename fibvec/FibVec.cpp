@@ -37,10 +37,12 @@ void FibVec::resize(){
 //-------------------------IF INDEX BIGGER THAN CAPACITY (FULL) BY 1, INCREASE TO NEXT FIBONACCI NUMBER. 
         if (nrOfEl >= cap){
             cap = x + y;
-            if (y == (cap-x)){
+            if (counter == 0){
                 x = cap;
-            } else if (x == (cap - y)){
+                counter == 1;
+            } else if (counter == 1){
                 y = cap;
+                counter == 0;
             }
         } 
 
@@ -89,7 +91,6 @@ void FibVec::push(int value){
     
     if(nrOfEl == cap){
         resize();
-        
     }   
      arr[nrOfEl] = value;
      nrOfEl++;
