@@ -50,7 +50,7 @@ void FibVec::expand(){
 
 int *temparr = new int[cap];                 
 
-for (size_t i = 0; i < nrOfEl - 1; i++)           
+for (size_t i = 0; i < nrOfEl; i++)           
 {
     temparr[i] = arr[i];
 }
@@ -86,7 +86,9 @@ void FibVec::insert(int value, size_t index){
         arr[index] = value;
     } else if(index < nrOfEl){                     // today's vector lab notes - don't reallocate when there's space. 
         if (++nrOfEl > cap){                 // only reallocate when nrOfEl == cap, and ++nrOfel < cap
+            --nrOfEl;
             expand();                              // shift w/o reallocating
+            ++nrOfEl;
         }  else {
 
         for(size_t i = nrOfEl - 2; i >= index; i--){            // don't worry about the end bc you've already expanded. 
