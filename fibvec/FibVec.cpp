@@ -27,7 +27,7 @@ size_t FibVec::count() const {
 }
 //----------------------------------------------------------------- LOOKUP ---------------------------------------------------------------------
 int FibVec::lookup(size_t index) const {
-    if (index > nrOfEl - 1 || index >= cap)
+    if (index > nrOfEl - 1 || index >= cap || index == 0)
     {    
         throw std::out_of_range("Index out of range.");
     } 
