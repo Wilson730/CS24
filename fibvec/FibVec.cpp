@@ -80,19 +80,19 @@ arr = temparr;
 void FibVec::insert(int value, size_t index){
     if (index > nrOfEl || index > cap){ 
         throw std::out_of_range("invalid index");
-    } else if ((index == cap) && (cap == nrOfEl)) {
+    } else if ((index == cap) && (cap == nrOfEl)) {  // once full, copy values over, then reutrn old arr to heap. then add new value /
         expand();        
         ++nrOfEl;
         arr[index] = value;
-    } else if(index < nrOfEl){                
-        if (++nrOfEl > cap){                 
-            expand();
-        }
-        if (index != 0){
-        for(size_t i = nrOfEl; i > index; --i){  
+    } else if(index < nrOfEl){                     // today's vector lab notes - don't reallocate when there's space. 
+        if (++nrOfEl > cap){                 // only reallocate when nrOfEl == cap, and ++nrOfel < cap
+            expand();                              // shift w/o reallocating
+        }  
+                
+        for(size_t i = nrOfEl - 1; i > index; i--){            // don't worry about the end bc you've already expanded. 
             arr[i+1] = arr[i];
         }
-        }
+        
         arr[index] = value;
     } else { 
         arr[index] = value;
@@ -115,9 +115,9 @@ int FibVec::pop(){
         throw std::underflow_error("underflow error!");
     } 
     --nrOfEl;
-    if ((x > y && nrOfEl < cap - x) || (y > x && nrOfEl < cap - y)){
-        shrink();
-    }
+    if ((x > y && nrOfEl < cap - x) || (y > x && nrOfEl < cap - y)){   // berk mentions subtracting higher of the two values from cap
+        shrink();                                                        // to get the lower value 
+    }          
     return arr[nrOfEl];
 }
 //------------------------------------------------------------------ REMOVE --------------------------------------------------------------------
