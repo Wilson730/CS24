@@ -92,6 +92,7 @@ void FibVec::insert(int value, size_t index){
 void FibVec::push(int value){
     
     if(nrOfEl == cap){
+        nrOfEl++;
         resize();
     }   
      arr[nrOfEl] = value;
@@ -105,6 +106,7 @@ int FibVec::pop(){
     } 
 
     if ((x > y && nrOfEl < cap - x) || (y > x && nrOfEl < cap - y)){
+        nrOfEl--;
         resize();
     }
     nrOfEl--;
