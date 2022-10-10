@@ -12,7 +12,6 @@ class FibVec{
     int *arr;
     size_t x, y;
     int counter;
-    int temp;
 public: 
     FibVec();
     ~FibVec();

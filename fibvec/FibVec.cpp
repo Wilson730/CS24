@@ -14,7 +14,6 @@ FibVec::FibVec(){
     cap = 1;
     arr = new int[cap];
     counter = 0;
-    temp = 0;
 }
 //------------------------------------------------------------- DECONSTRUCTOR ------------------------------------------------------------------
 FibVec::~FibVec(){ 
@@ -90,10 +89,8 @@ void FibVec::insert(int value, size_t index){
             expand();
         }
         
-        for(size_t i = 0; i < nrOfEl - 1; ++i){  
-            temp = arr[i+1];
-            arr[i + 1] = arr[i];
-            arr[i+2]  = temp;
+        for(size_t i = nrOfEl; i > index; --i){  
+            arr[i+1] = arr[i];
         }
         arr[index] = value;
     } else { 
