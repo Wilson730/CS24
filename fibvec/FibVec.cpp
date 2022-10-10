@@ -26,29 +26,24 @@ size_t FibVec::count() const {
 }
 //----------------------------------------------------------------- LOOKUP ---------------------------------------------------------------------
 int FibVec::lookup(size_t index) const {
-    if (index > nrOfEl - 1)
+    if (index > nrOfEl - 1 || index >= cap)
     {    
         throw std::out_of_range("Index out of range.");
     } 
-    if (index >= cap)
-    {
-        throw std::out_of_range("Index out of range.");
-    }
     return arr[index];
 }
 //----------------------------------------------------------------- EXPAND ---------------------------------------------------------------------
 void FibVec::expand(){
 
-        if (nrOfEl >= cap){
-            cap = x + y;
-            if (counter == 0){       
-                x = cap;
-                counter = 1;
-            } else if (counter == 1){    
-                y = cap;
-                counter = 0;
-            }
-        } 
+     cap = x + y;
+        if (counter == 0){       
+            x = cap;
+            counter = 1;
+        } else if (counter == 1){    
+            y = cap;
+            counter = 0;
+        }
+        
 
 int *temparr = new int[cap];                 
 
@@ -78,26 +73,23 @@ arr = temparr;
 }
 //---------------------------------------------------------------- INSERT ----------------------------------------------------------------------
 void FibVec::insert(int value, size_t index){
-    if (index > nrOfEl || index > cap) // index cannot be negative, skip, or over. 
-    {
+    if (index > nrOfEl || index > cap){ // index cannot be negative, skip, or over. 
         throw std::out_of_range("invalid index");
-    }
-    if((index == cap) && (cap == nrOfEl)) // insert at cap (1 after the total size)
-    {
+    } else if ((index == cap) && (cap == nrOfEl)) {// insert at cap 1 after the total size 
+        expand(); 
         nrOfEl += 1;
-        expand();
         arr[index] = value;
-    }
-
-    if(index <= nrOfEl){                // insert in the middle
-        if (++nrOfEl > cap){            // resize of insert makes a value go out of range
+    } else if(index < nrOfEl){                // insert in the middle
+        if (nrOfEl + 1 > cap){            
             expand();
+            nrOfEl +1;
         }
         for(size_t i = index; i < nrOfEl; i++){   
-            int temp = arr[index];
-            arr[index] = temp;
-
+            arr[i + 1] = arr[i];
         }
+        arr[index] = value;
+    } else {
+        arr[index] = value;
     }
 }
 //----------------------------------------------------------------- PUSH -----------------------------------------------------------------------
