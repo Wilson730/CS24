@@ -40,10 +40,10 @@ void FibVec::resize(){
             cap = x + y;
             if (counter == 0){
                 x = cap;
-                counter == 1;
+                counter = 1;
             } else if (counter == 1){
                 y = cap;
-                counter == 0;
+                counter = 0;
             }
         } 
 

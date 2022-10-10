@@ -11,7 +11,7 @@ class FibVec{
     size_t nrOfEl;
     int *arr;
     size_t x, y;
-    int counter = 0;
+    int counter;
 
 public: 
     FibVec();
