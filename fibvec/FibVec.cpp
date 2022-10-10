@@ -29,9 +29,8 @@ int FibVec::lookup(size_t index) const {
     if (index > nrOfEl - 1 || index >= cap)
     {    // nrOfelements = current # of spaces occupied in the array. so if there's 9 occupied, max index should be 8, hence nrOfEl -1. 
             throw std::out_of_range("index is out of range!");
-    } else {
-        return arr[index];
-    }
+    } 
+    return arr[index];
 }
 //----------------------------------------------------------------- RESIZE ---------------------------------------------------------------------
 void FibVec::resize(){
