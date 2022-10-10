@@ -10,7 +10,7 @@ class FibVec{
     size_t cap;
     size_t nrOfEl;
     int *arr;
-    int x, y;
+    size_t x, y;
 
 public: 
     FibVec();
@@ -26,6 +26,6 @@ public:
     int pop();
     void push(int value);
     int remove(size_t index);
-    int resize();
+    void resize();
    
 };

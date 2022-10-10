@@ -33,7 +33,7 @@ int FibVec::lookup(size_t index) const {
     }
 }
 //----------------------------------------------------------------- RESIZE ---------------------------------------------------------------------
-int FibVec::resize(){
+void FibVec::resize(){
 //-------------------------IF INDEX BIGGER THAN CAPACITY (FULL) BY 1, INCREASE TO NEXT FIBONACCI NUMBER. 
         if (nrOfEl > cap){
             cap = x + y;
@@ -44,8 +44,8 @@ int FibVec::resize(){
             }
         } 
 
-        if (nrOfEl < cap - 2)                       // make sure to get the cap right.  or index < capacity - 2. 
-        {                                    // don't worry about insert ruining the sequence. insert will check that for you. 
+        if (nrOfEl < cap - x)                    
+        {                                    
             cap = nrOfEl - 1; 
         }
 //-------------------------- COPY VALUES TO NEWER AND BIGGER ARRAY
@@ -62,19 +62,27 @@ int FibVec::resize(){
 }
 //---------------------------------------------------------------- INSERT ----------------------------------------------------------------------
 void FibVec::insert(int value, size_t index){
-    if (index < 0 || index > nrOfEl || index > cap) 
+    if (index < 0 || index > nrOfEl || index > cap) // index cannot be negative, skip, or over. 
     {
         throw std::out_of_range("invalid index");
     }
     if(index == cap & cap == nrOfEl) // insert at cap (1 after the total size)
     {
-        nrOfEl + 1;
+        nrOfEl += 1;
         resize();
         arr[index] = value;
     }
 
-    if(index < )
-    arr[nrOfEl] = value;
+    if(index <= nrOfEl){                // insert in the middle
+        if (++nrOfEl > cap){            // resize of insert makes a value go out of range
+            resize();
+        }
+        for(size_t i = index; i < nrOfEl; i++){   
+            int temp = arr[index];
+            arr[index] = temp;
+
+        }
+    }
 }
 //----------------------------------------------------------------- PUSH -----------------------------------------------------------------------
 void FibVec::push(int value){
@@ -86,12 +94,19 @@ void FibVec::push(int value){
 }
 //------------------------------------------------------------------ POP -----------------------------------------------------------------------
 int FibVec::pop(){
+    int re;
     if(nrOfEl == 0){
         throw std::underflow_error("underflow error!");
+    } else {
+        re = arr[nrOfEl - 1];
     }
+    if (nrOfEl < cap - x){
+        resize();
+    }
+    return re;
 }
 //------------------------------------------------------------------ REMOVE --------------------------------------------------------------------
 
 int FibVec::remove(size_t index){
-    
+    return arr[index];
 }
