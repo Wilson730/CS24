@@ -66,7 +66,7 @@ void FibVec::insert(int value, size_t index){
     {
         throw std::out_of_range("invalid index");
     }
-    if(index == cap & cap == nrOfEl) // insert at cap (1 after the total size)
+    if((index == cap) & (cap == nrOfEl)) // insert at cap (1 after the total size)
     {
         nrOfEl += 1;
         resize();
