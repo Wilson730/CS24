@@ -25,7 +25,7 @@ size_t FibVec::count() const {
 }
 //----------------------------------------------------------------- LOOKUP ---------------------------------------------------------------------
 int FibVec::lookup(size_t index) const {
-    if (index > nrOfEl - 1 || index >= cap || index < 0)
+    if (index > nrOfEl - 1 || index >= cap)
     {    // nrOfelements = current # of spaces occupied in the array. so if there's 9 occupied, max index should be 8, hence nrOfEl -1. 
             throw std::out_of_range("index is out of range!");
     } else {
@@ -62,7 +62,7 @@ void FibVec::resize(){
 }
 //---------------------------------------------------------------- INSERT ----------------------------------------------------------------------
 void FibVec::insert(int value, size_t index){
-    if (index < 0 || index > nrOfEl || index > cap) // index cannot be negative, skip, or over. 
+    if (index > nrOfEl || index > cap) // index cannot be negative, skip, or over. 
     {
         throw std::out_of_range("invalid index");
     }
