@@ -63,8 +63,10 @@ void FibVec::shrink(){
 if (x > y && nrOfEl < cap - x)                    
 {   
     cap = y; 
+    x = x - cap;
 } else if (y > x && nrOfEl > cap - y) {
     cap = x;
+    y = y - cap;
 } 
 
 int *temparr = new int[cap];                 
