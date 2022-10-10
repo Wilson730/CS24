@@ -37,18 +37,20 @@ void FibVec::resize(){
 //-------------------------IF INDEX BIGGER THAN CAPACITY (FULL) BY 1, INCREASE TO NEXT FIBONACCI NUMBER. 
         if (nrOfEl >= cap){
             cap = x + y;
-            if (counter == 0){
+            if (counter == 0){       
                 x = cap;
                 counter = 1;
-            } else if (counter == 1){
+            } else if (counter == 1){    
                 y = cap;
                 counter = 0;
             }
         } 
 
-        if (nrOfEl < cap - x)                    
-        {                                    
-            cap = nrOfEl - 1; 
+        if (x > y && nrOfEl < cap - x)                    
+        {   
+            cap = y; 
+        } else if (y > x && nrOfEl > cap - y) {
+            cap = x;
         }
 //-------------------------- COPY VALUES TO NEWER AND BIGGER ARRAY
         int *temparr = new int[cap];                 // changes capacity of array. operates using x and y. capacity = f(n)
@@ -100,13 +102,13 @@ int FibVec::pop(){
     int re;
     if(nrOfEl == 0){
         throw std::underflow_error("underflow error!");
-    } else {
-        re = arr[nrOfEl - 1];
-    }
-    if (nrOfEl < cap - x){
+    } 
+
+    if ((x > y && nrOfEl < cap - x) || (y > x && nrOfEl < cap - y)){
         resize();
     }
-    return re;
+    nrOfEl--;
+    return arr[nrOfEl];
 }
 //------------------------------------------------------------------ REMOVE --------------------------------------------------------------------
 
