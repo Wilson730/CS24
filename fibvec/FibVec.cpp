@@ -80,9 +80,10 @@ void FibVec::insert(int value, size_t index){
         nrOfEl += 1;
         arr[index] = value;
     } else if(index < nrOfEl){                // insert in the middle
-        if (nrOfEl + 1 > cap){            
+        if (++nrOfEl > cap){     
+            --nrOfEl;       
             expand();
-            nrOfEl +1;
+            ++nrOfEl;
         }
         for(size_t i = index; i < nrOfEl; i++){   
             arr[i + 1] = arr[i];
