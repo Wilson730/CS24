@@ -88,9 +88,10 @@ void FibVec::insert(int value, size_t index){
         if (++nrOfEl > cap){                 
             expand();
         }
-        
+        if (index != 0){
         for(size_t i = nrOfEl; i > index; --i){  
             arr[i+1] = arr[i];
+        }
         }
         arr[index] = value;
     } else { 
