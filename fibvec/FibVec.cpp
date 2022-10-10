@@ -113,11 +113,10 @@ int FibVec::pop(){
     if(nrOfEl == 0){
         throw std::underflow_error("underflow error!");
     } 
-
+    --nrOfEl;
     if ((x > y && nrOfEl < cap - x && !(cap - x < 1)) || (y > x && nrOfEl < cap - y && !(cap - y <1))){
         shrink();
     }
-    nrOfEl--; 
     return arr[nrOfEl];
 }
 //------------------------------------------------------------------ REMOVE --------------------------------------------------------------------
