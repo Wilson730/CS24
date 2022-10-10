@@ -82,14 +82,14 @@ void FibVec::insert(int value, size_t index){
     if (index > nrOfEl || index > cap){ 
         throw std::out_of_range("invalid index");
     } else if ((index == cap) && (cap == nrOfEl)) {
-        expand(); 
         ++nrOfEl;
+        expand(); 
         arr[index] = value;
     } else if(index < nrOfEl){                
-        if (int(nrOfEl) + 1 > cap){                 
+        if (++nrOfEl > cap){                 
             expand();
         }
-        for(size_t i = index; i < nrOfEl; i++){  
+        for(size_t i = index; i < nrOfEl - 1; i++){  
             arr[i + 1] = arr[i];
         }
         arr[index] = value;
