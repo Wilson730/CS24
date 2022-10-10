@@ -73,7 +73,7 @@ arr = temparr;
 }
 //---------------------------------------------------------------- INSERT ----------------------------------------------------------------------
 void FibVec::insert(int value, size_t index){
-    if (index > nrOfEl || index > cap){ // index cannot be negative, skip, or over. 
+   /* if (index > nrOfEl || index > cap){ // index cannot be negative, skip, or over. 
         throw std::out_of_range("invalid index");
     } else if ((index == cap) && (cap == nrOfEl)) {// insert at cap 1 after the total size 
         ++nrOfEl;
@@ -88,10 +88,10 @@ void FibVec::insert(int value, size_t index){
         for(size_t i = index; i < nrOfEl; i++){   // moves values over 
             arr[i + 1] = arr[i];
         }
+        arr[index] = value; */
+   // } else {
         arr[index] = value;
-    } else {
-        arr[index] = value;
-    }
+ //   }
 }
 //----------------------------------------------------------------- PUSH -----------------------------------------------------------------------
 void FibVec::push(int value){
