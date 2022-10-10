@@ -114,7 +114,7 @@ int FibVec::pop(){
         throw std::underflow_error("underflow error!");
     } 
     --nrOfEl;
-    if ((x > y && nrOfEl < cap - x && !(cap - x < 1)) || (y > x && nrOfEl < cap - y && !(cap - y <1))){
+    if ((x > y || nrOfEl < cap - x) || (y > x || nrOfEl < cap - y)){
         shrink();
     }
     return arr[nrOfEl];
@@ -122,5 +122,9 @@ int FibVec::pop(){
 //------------------------------------------------------------------ REMOVE --------------------------------------------------------------------
 
 int FibVec::remove(size_t index){
+    if (index > nrOfEl || index > cap){
+        throw std::out_of_range("Index out of range.");
+    }
+
     return arr[index];
 }
