@@ -1,4 +1,5 @@
 #include "FibVec.h"
+#include <cstddef>
 #include <iostream>
 #include <stdexcept>
 
@@ -96,7 +97,9 @@ void FibVec::insert(int value, size_t index){
 //----------------------------------------------------------------- PUSH -----------------------------------------------------------------------
 void FibVec::push(int value){
     
-
+    if(nrOfEl == cap){
+        expand();
+    } 
     arr[nrOfEl] = value;
     nrOfEl++; 
 }
