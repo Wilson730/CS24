@@ -131,9 +131,10 @@ int FibVec::remove(size_t index){
     } else {
         int temp = arr[index]; 
          --nrOfEl;
-        arr[index] = NULL;
         for(size_t i = index;  index < nrOfEl - index; i++){            
+            if (nrOfEl > 0){
             arr[i] = arr[i+1];
+            }
         } 
        
         if ((nrOfEl < cap - x) || nrOfEl < cap - y){
