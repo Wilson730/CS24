@@ -126,7 +126,7 @@ int FibVec::pop(){
 //------------------------------------------------------------------ REMOVE --------------------------------------------------------------------
 
 int FibVec::remove(size_t index){
-    if (index > nrOfEl || index > cap){
+    if (index > nrOfEl || index > cap || (cap == 1 && index == 0)){
         throw std::out_of_range("Index out of range.");
     } else {
         --nrOfEl;
