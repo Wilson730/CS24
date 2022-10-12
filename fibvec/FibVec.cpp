@@ -119,9 +119,9 @@ int FibVec::pop(){
     } 
     --nrOfEl;
     int temp = arr[nrOfEl];
-     
-    shrink();                                                        
-           
+    if ((nrOfEl < cap - x) || (nrOfEl < cap - y)){
+        shrink();        
+    }      
     return temp;
 }
 //------------------------------------------------------------------ REMOVE --------------------------------------------------------------------
