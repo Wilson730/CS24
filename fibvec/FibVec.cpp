@@ -59,11 +59,10 @@ arr = temparr;
 }
 //---------------------------------------------------------------- SHRINK ----------------------------------------------------------------------
 void FibVec::shrink(){
-if (x > y && (nrOfEl < cap - x)) {   
+if (x > y) {   
     cap = y; 
     x = x - cap;
-}
-if (y > x && (nrOfEl > cap - y)) {
+} else if (y > x) {
     cap = x;
     y = y - cap;
 } 
