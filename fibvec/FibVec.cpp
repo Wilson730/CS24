@@ -59,11 +59,11 @@ arr = temparr;
 }
 //---------------------------------------------------------------- SHRINK ----------------------------------------------------------------------
 void FibVec::shrink(){
-if (x > y && nrOfEl < cap - x)                    
-{   
+if (x > y && nrOfEl <= cap - x) {   
     cap = y; 
     x = x - cap;
-} else if (y > x && nrOfEl > cap - y) {
+}
+if (y > x && nrOfEl >= cap - y) {
     cap = x;
     y = y - cap;
 } 
@@ -118,8 +118,8 @@ int FibVec::pop(){
         throw std::underflow_error("underflow error!");
     } 
     --nrOfEl;
-    if ((x > y && nrOfEl < cap - x) || (y > x && nrOfEl < cap - y)){   // berk mentions subtracting higher of the two values from cap
-        shrink();                                                        // to get the lower value 
+    if ((x > y && nrOfEl <= cap - x) || (y > x && nrOfEl <= cap - y)){   
+        shrink();                                                        
     }          
     return arr[nrOfEl];
 }
