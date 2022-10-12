@@ -77,7 +77,7 @@ arr = temparr;
 }
 //---------------------------------------------------------------- INSERT ----------------------------------------------------------------------
 void FibVec::insert(int value, size_t index){
-    if (index > nrOfEl || index > cap){ 
+    if (index >= nrOfEl || index > cap){ 
         throw std::out_of_range("invalid index");
     } else if ((index == cap) && (cap == nrOfEl)) {  // once full, copy values over, then reutrn old arr to heap. then add new value /
         expand();        
@@ -142,5 +142,4 @@ int FibVec::remove(size_t index){
 
         return temp;
     }
-    
 }
