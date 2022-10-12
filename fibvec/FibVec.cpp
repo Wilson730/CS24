@@ -88,7 +88,8 @@ void FibVec::insert(int value, size_t index){
             --nrOfEl;
             expand();     
             ++nrOfEl;                         // shift w/o reallocating
-        }
+        }                                        // <--- big mistake i made here was running the i - 1 for loop only 
+                                                // if the if statement above ran. so make sure to put it outside of the if statement next time
 
         for(size_t i = nrOfEl - 1; i > index; --i){            // shift values before to the right once 
             arr[i] = arr[i-1];
@@ -132,8 +133,8 @@ int FibVec::remove(size_t index){
         int temp = arr[index]; 
          --nrOfEl;
         if ((nrOfEl - index) > index){
-        int temp2 = index;
-        for(size_t i = index;  i < nrOfEl - temp2; ++i){        
+        
+        for(size_t i = index;  i < nrOfEl - index; ++i){        
             arr[i] = arr[i+1];
         } 
         }
