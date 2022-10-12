@@ -130,13 +130,15 @@ int FibVec::remove(size_t index){
         throw std::out_of_range("Index out of range.");
     } else {
         --nrOfEl;
-        int temp = arr[index];
+        int temp = arr[index]; 
+        
+        for(size_t i = index;  index < nrOfEl; i++){            
+            arr[i] = arr[i+1];
+        }
         if ((nrOfEl < cap - x) || nrOfEl < cap - y){
         shrink();
         }
-        for(size_t i = index;  index < nrOfEl - 1; i++){            
-            arr[i] = arr[i+1];
-        }
+       
         return temp;
     }
     
