@@ -133,7 +133,10 @@ int FibVec::remove(size_t index){
         int temp = arr[index]; 
         --nrOfEl; 
         for(size_t i = index + 1;  i < nrOfEl; ++i){        
-            arr[i - 1] = arr[i];            //index 21 copies 22?
+            arr[i - 1] = arr[i];           
+            if (i == nrOfEl - 1){
+                arr[i] = arr[i+1];
+            }
         }  
         if ((nrOfEl < cap - x) || nrOfEl < cap - y){
         shrink();
