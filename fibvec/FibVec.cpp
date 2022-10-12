@@ -89,7 +89,7 @@ void FibVec::insert(int value, size_t index){
             expand();                              // shift w/o reallocating
         }  else {
 
-        for(size_t i = nrOfEl - 1; i > index; --i){            // don't worry about the end bc you've already expanded. 
+        for(size_t i = nrOfEl - 1; i > index; --i){            // shift values before to the right once 
             arr[i] = arr[i-1];
         }
         
