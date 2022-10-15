@@ -15,7 +15,7 @@ struct Node {
 
 class List {
   Node* head;
-
+  
 public:
   List();
   List(const List& other);
