@@ -7,8 +7,5 @@ using namespace std;
 int main() {
   List list;
 
-  list.insert("G");
-  list.insert("F");
-  void print();
   return 0;
 }
