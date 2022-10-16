@@ -49,10 +49,20 @@ if(head == NULL){
 }
 
 const std::string& List::lookup(size_t index) const {
-
+    Node* currNode = head;
+    if (index == 0){
+        throw std::out_of_range("head does not contain a value");
+    } else {
+        for (int i = 1; i <= index + 1; i++){
+            currNode = currNode->next;
+            if (currNode->next == NULL){
+                return currNode->data;
+            }
+        }
+    }
 }
 
-void List::print(bool reverse = false) const{
+void List::print(bool reverse = false) const{ 
     Node* currNode = head;
     if (!reverse){
         cout << "[";
@@ -71,8 +81,10 @@ std::string List::remove(size_t index){
 the prev node is pointing to to the node above. 
 so t->next (the prev one) = n + 1 something. idk. 
 */
+return head->data;
 }
 
 size_t List::remove(const std::string& value){
 
+return 0;
 }
