@@ -6,7 +6,6 @@ using namespace std;
 
 List::List(){
     head = NULL;
-    Node* curr = NULL;
 }
 
 List::List(const List& other){
@@ -22,12 +21,29 @@ List::~List(){
 }
 
 size_t List::count() const {
-
+int count = 0;
+Node* nullpt = NULL;
+while (nullpt != NULL){
+    count++;
+    nullpt = nullpt->next;
+}
+    return count;
 }
 
-List insert(const std::string& value){
-Node* n = new Node;
-n->data = value;
+void List::insert(const std::string& value){
+Node* newNode = new Node;
+newNode->data = value;
+newNode->next = NULL; 
+
+if(head == NULL){
+    head = newNode;
+} else {
+    Node* currNode = head;
+    Node* prevNode = NULL;
+    while (currNode->next != NULL && currNode->data < value){
+        currNode = currNode -> next;
+    }
+} 
 
 }
 
@@ -36,7 +52,15 @@ const std::string& List::lookup(size_t index) const {
 }
 
 void List::print(bool reverse = false) const{
+    if (!reverse){
+        cout << "[";
+        while (nullptr!= NULL){
+        cout << /* this.data */  ", " ;
+        }
+        cout << "]" << "\n";
+    } else {
 
+    }
 }
 
 std::string List::remove(size_t index){
