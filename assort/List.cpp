@@ -42,6 +42,7 @@ if(head == NULL){
     head->next = newNode;
     newNode->data = head->data;
     head->data = value;
+    newNode = newNode->next;
 } else {
     Node* currNode = head;
     Node* prevNode;
