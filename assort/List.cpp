@@ -37,11 +37,12 @@ newNode->data = value;
 
 if(head == NULL){
     head = newNode;
-} else if (value < head->data){
-    head->data = value;   
-    newNode->next = head->next;      // head's value is the input since it's smaller
-    head->next = newNode;       // head switches next to newnode
-    newNode->data = head->data; //switch valencia from head to newnode
+} else if (value < head->data){   // if value is smaller than current head's value
+    string temp = head->data;
+    head->data = value;    // change current head's value to smaller value
+    newNode->next = head->next;     // make newnode's next point to where head is pointing to next
+    head->next = newNode;            // make head's next point to the newnode
+    newNode->data = temp;        //make newnode's value current head's value. duplicat here
 } else {
     Node* currNode = head;
     Node* prevNode;
