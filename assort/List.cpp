@@ -47,6 +47,7 @@ if(head == NULL){
         currNode = currNode->next;
     }
     prevNode->next = currNode;
+    currNode = newNode;
     currNode->data = value;    
     currNode->next = NULL;
 } 
