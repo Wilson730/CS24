@@ -32,7 +32,7 @@ while (nullpt != NULL){
 
 void List::insert(const std::string& value){
 Node* newNode = new Node;
-newNode->data = value;
+newNode->data = value;2
 newNode->next = NULL; 
 
 if(head == NULL){
@@ -44,6 +44,9 @@ if(head == NULL){
         prevNode = currNode;
         currNode = currNode->next;
     }
+    prevNode->next = currNode;
+    currNode->data = value;
+
 } 
 
 }
@@ -72,7 +75,7 @@ void List::print(bool reverse = false) const{
         }
         cout << "]" << "\n";
     } else {
-
+        
     }
 }
 
@@ -81,10 +84,9 @@ std::string List::remove(size_t index){
 the prev node is pointing to to the node above. 
 so t->next (the prev one) = n + 1 something. idk. 
 */
-return head->data;
 }
 
 size_t List::remove(const std::string& value){
 
-return 0;
+
 }
