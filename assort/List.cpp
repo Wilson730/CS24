@@ -9,10 +9,7 @@ List::List(){
 }
 
 List::List(const List& other){
-    if(head->next != NULL){
-        head = other.head;
-        head->next = other.head->next;
-    }
+ 
 }
 
 List::List(List&& other){
