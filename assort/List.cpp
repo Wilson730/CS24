@@ -9,7 +9,10 @@ List::List(){
 }
 
 List::List(const List& other){
-// other is the other list 
+    if(head->next != NULL){
+        head = other.head;
+        head->next = other.head->next;
+    }
 }
 
 List::List(List&& other){
@@ -36,7 +39,7 @@ newNode->data = value;
 newNode->next = NULL; 
 
 if(head == NULL){
-    head->next = newNode;
+    head = newNode;
 } else {
     Node* currNode = head;
     Node* prevNode;
@@ -44,11 +47,10 @@ if(head == NULL){
         prevNode = currNode;
         currNode = currNode->next;
     }
+    currNode->next = NULL;
     prevNode->next = currNode;
     currNode->data = value;
-
 } 
-
 }
 
 const std::string& List::lookup(size_t index) const {
