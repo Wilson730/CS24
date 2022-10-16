@@ -32,7 +32,7 @@ while (nullpt != NULL){
 
 void List::insert(const std::string& value){
 Node* newNode = new Node;
-newNode->data = value;2
+newNode->data = value;
 newNode->next = NULL; 
 
 if(head == NULL){
@@ -56,7 +56,7 @@ const std::string& List::lookup(size_t index) const {
     if (index == 0){
         throw std::out_of_range("head does not contain a value");
     } else {
-        for (int i = 1; i <= index + 1; i++){
+        for (int i = 1; i <= index; i++){
             currNode = currNode->next;
             if (currNode->next == NULL){
                 return currNode->data;
