@@ -37,6 +37,11 @@ newNode->data = value;
 
 if(head == NULL){
     head = newNode;
+} else if (value < head->data){
+    head->data = value;   
+    newNode->next = head->next;      // head's value is the input since it's smaller
+    head->next = newNode;       // head switches next to newnode
+    newNode->data = head->data; //switch valencia from head to newnode
 } else {
     Node* currNode = head;
     Node* prevNode;
@@ -68,7 +73,7 @@ void List::print(bool reverse) const{
         while (currNode != NULL){
             cout << currNode->data;
             
-            if (currNode->next != NULL){
+            if (currNode != NULL){
                 cout << ", ";
             }
             currNode = currNode->next;
