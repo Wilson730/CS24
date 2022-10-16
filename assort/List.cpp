@@ -35,10 +35,13 @@ Node* newNode = new Node;
 newNode->next = NULL; 
 newNode->data = value;
 
-
 if(head == NULL){
     head = newNode;
 
+} else if (value < head->data){
+    head->next = newNode;
+    newNode->data = head->data;
+    head->data = value;
 } else {
     Node* currNode = head;
     Node* prevNode;
