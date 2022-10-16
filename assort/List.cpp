@@ -53,16 +53,16 @@ if(head == NULL){
 
 const std::string& List::lookup(size_t index) const {
     Node* currNode = head;
+    string temp = " ";
     if (index == 0){
         throw std::out_of_range("head does not contain a value");
     } else {
         for (size_t i = 1; i <= index + 1; i++){
             currNode = currNode->next;
-            if (currNode->next == NULL){
-                return currNode->data;
-            }
         }
+        temp = currNode->data;
     }
+    return temp;
 }
 
 void List::print(bool reverse) const{ 
@@ -97,7 +97,7 @@ return temp;
 size_t List::remove(const std::string& value){
 int count = 0;
 Node* currNode = head;
-Node* prevNode = NULL;
+Node* prevNode;
 while (currNode->next != NULL){
     prevNode = currNode;
     currNode = currNode->next;
@@ -105,6 +105,7 @@ while (currNode->next != NULL){
         prevNode = currNode->next;
         count++;
     }
-    return count;
+    
 }
+return count;
 }
