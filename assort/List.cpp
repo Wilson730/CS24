@@ -41,7 +41,7 @@ if(head == NULL){
 } else {
     Node* currNode = head;
     Node* prevNode;
-    while (currNode != NULL && currNode->data <= value){
+    while ((currNode != NULL) && (currNode->data <= value) && currNode->next != NULL){
         prevNode = currNode;
         currNode = currNode->next;
     }
