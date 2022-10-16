@@ -37,7 +37,6 @@ newNode->data = value;
 
 if(head == NULL){
     head = newNode;
-
 } else {
     Node* currNode = head;
     Node* prevNode;
@@ -69,7 +68,7 @@ void List::print(bool reverse) const{
         while (currNode != NULL){
             cout << currNode->data;
             
-            if (currNode != NULL){
+            if (currNode->next != NULL){
                 cout << ", ";
             }
             currNode = currNode->next;
