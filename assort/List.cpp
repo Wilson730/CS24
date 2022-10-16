@@ -47,7 +47,6 @@ if(head == NULL){
     }
     prevNode->next = newNode;
     newNode->next = currNode;
-    currNode->next = NULL;
 } 
 }
 
@@ -68,17 +67,14 @@ void List::print(bool reverse) const{
     if (!reverse){
         cout << "[";
         while (currNode != NULL){
-        cout << currNode->data;
-        if (currNode->next != NULL){
-            cout << ", ";
+            cout << currNode->data << ", ";
+            currNode = currNode->next;
         }
-        currNode = currNode->next;
-        }
-
         cout << "]" << "\n";
        
     }   
 }
+
 std::string List::remove(size_t index){
 
 Node* currNode = head;
