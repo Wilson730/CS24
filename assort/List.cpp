@@ -36,12 +36,13 @@ newNode->data = value;
 newNode->next = NULL; 
 
 if(head == NULL){
-    head = newNode;
+    head->next = newNode;
 } else {
     Node* currNode = head;
     Node* prevNode = NULL;
     while (currNode->next != NULL && currNode->data < value){
-        currNode = currNode -> next;
+        prevNode = currNode;
+        currNode = currNode->next;
     }
 } 
 
@@ -52,10 +53,12 @@ const std::string& List::lookup(size_t index) const {
 }
 
 void List::print(bool reverse = false) const{
+    Node* currNode = head;
     if (!reverse){
         cout << "[";
-        while (nullptr!= NULL){
-        cout << /* this.data */  ", " ;
+        while (currNode!= NULL){
+        cout << currNode->data << ", ";
+        currNode = currNode->next;
         }
         cout << "]" << "\n";
     } else {
