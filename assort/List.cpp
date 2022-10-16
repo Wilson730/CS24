@@ -39,7 +39,7 @@ if(head == NULL){
     head->next = newNode;
 } else {
     Node* currNode = head;
-    Node* prevNode = NULL;
+    Node* prevNode;
     while (currNode->next != NULL && currNode->data < value){
         prevNode = currNode;
         currNode = currNode->next;
