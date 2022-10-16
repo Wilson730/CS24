@@ -32,15 +32,16 @@ while (nullpt != NULL){
 
 void List::insert(const std::string& value){
 Node* newNode = new Node;
-newNode->data = value;
 newNode->next = NULL; 
+newNode->data = value;
+
 
 if(head == NULL){
     head = newNode;
 } else {
     Node* currNode = head;
     Node* prevNode;
-    while (currNode != NULL && currNode->data < value){
+    while (currNode->next != NULL && currNode->data < value){
         prevNode = currNode;
         currNode = currNode->next;
     }
@@ -67,7 +68,10 @@ void List::print(bool reverse) const{
     if (!reverse){
         cout << "[";
         while (currNode != NULL){
-        cout << currNode->data << ", ";
+        cout << currNode->data;
+        if (currNode->next != NULL){
+            cout << ", ";
+        }
         currNode = currNode->next;
         }
         cout << "]" << "\n";
