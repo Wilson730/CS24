@@ -38,15 +38,10 @@ newNode->data = value;
 if(head == NULL){
     head = newNode;
 
-} else if (value < head->data){
-    head->next = newNode;
-    newNode->data = head->data;
-    head->data = value;
-    newNode = newNode->next;
 } else {
     Node* currNode = head;
     Node* prevNode;
-    while (currNode != NULL && currNode->data <= value){
+    while (currNode != NULL && value <= currNode->data){
         prevNode = currNode;
         currNode = currNode->next;
     }
