@@ -73,11 +73,10 @@ void List::print(bool reverse) const{
         cout << "[";
         while (currNode != NULL){
             cout << currNode->data;
-            
-            if (currNode != NULL){
-                cout << ", ";
-            }
             currNode = currNode->next;
+            if (currNode != NULL){
+            cout << ", ";
+            }
         }
         cout << "]" << "\n";
        
