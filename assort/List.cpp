@@ -35,14 +35,9 @@ Node* newNode = new Node;
 newNode->next = NULL; 
 newNode->data = value;
 
-
-if(head == NULL){
-    head = newNode;
-    head->next = NULL;
-} else {
     Node* currNode = head;
     Node* prevNode;
-    while (currNode != NULL && currNode->data < value){
+    while ((currNode != NULL) && (currNode->data < value)){
         prevNode = currNode;
         currNode = currNode->next;
     }
@@ -51,7 +46,7 @@ if(head == NULL){
     currNode->data = value;    
     currNode->next = NULL;
 } 
-}
+
 
 const std::string& List::lookup(size_t index) const {
     Node* currNode = head;
