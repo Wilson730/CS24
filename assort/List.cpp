@@ -80,6 +80,7 @@ void List::print(bool reverse) const{
 }
 
 std::string List::remove(size_t index){
+
 Node* currNode = head;
 Node* prevNode = NULL;
 for (size_t i = 1; i <= index; i++){
@@ -89,15 +90,17 @@ for (size_t i = 1; i <= index; i++){
         throw std::out_of_range("out of range!");
     }
 }
+
 string temp = prevNode->data;
 prevNode = currNode->next;
 return temp;
 }
 
+
 size_t List::remove(const std::string& value){
 int count = 0;
 Node* currNode = head;
-Node* prevNode;
+Node* prevNode = currNode;
 while (currNode->next != NULL){
     prevNode = currNode;
     currNode = currNode->next;
