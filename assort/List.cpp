@@ -72,14 +72,12 @@ void List::print(bool reverse) const{
         if (currNode->next != NULL){
             cout << ", ";
         }
-        currNode = currNode->next;
-        }
         cout << "]" << "\n";
-    } else {
-        
+        currNode = currNode->next;
+      
     }
+    }   
 }
-
 std::string List::remove(size_t index){
 
 Node* currNode = head;
