@@ -40,13 +40,13 @@ if(head == NULL){
 } else {
     Node* currNode = head;
     Node* prevNode;
-    while (currNode->next != NULL && currNode->data < value){
+    while (currNode != NULL && currNode->data < value){
         prevNode = currNode;
         currNode = currNode->next;
     }
-    currNode->next = NULL;
     prevNode->next = currNode;
-    currNode->data = value;
+    currNode->data = value;    
+    currNode->next = NULL;
 } 
 }
 
@@ -66,7 +66,7 @@ void List::print(bool reverse) const{
     Node* currNode = head;
     if (!reverse){
         cout << "[";
-        while (currNode->next!= NULL){
+        while (currNode != NULL){
         cout << currNode->data << ", ";
         currNode = currNode->next;
         }
