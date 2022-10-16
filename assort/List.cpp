@@ -66,7 +66,7 @@ void List::print(bool reverse) const{
     Node* currNode = head;
     if (!reverse){
         cout << "[";
-        while (currNode!= NULL){
+        while (currNode->next!= NULL){
         cout << currNode->data << ", ";
         currNode = currNode->next;
         }
