@@ -56,7 +56,7 @@ const std::string& List::lookup(size_t index) const {
     if (index == 0){
         throw std::out_of_range("head does not contain a value");
     } else {
-        for (int i = 1; i <= index; i++){
+        for (size_t i = 1; i <= index + 1; i++){
             currNode = currNode->next;
             if (currNode->next == NULL){
                 return currNode->data;
@@ -65,7 +65,7 @@ const std::string& List::lookup(size_t index) const {
     }
 }
 
-void List::print(bool reverse = false) const{ 
+void List::print(bool reverse) const{ 
     Node* currNode = head;
     if (!reverse){
         cout << "[";
@@ -80,13 +80,31 @@ void List::print(bool reverse = false) const{
 }
 
 std::string List::remove(size_t index){
-/* to remove value from a linked list, change the "next"
-the prev node is pointing to to the node above. 
-so t->next (the prev one) = n + 1 something. idk. 
-*/
+Node* currNode = head;
+Node* prevNode = NULL;
+for (size_t i = 1; i <= index; i++){
+    prevNode = currNode;
+    currNode = currNode->next;
+    if (currNode->next == NULL){
+        throw std::out_of_range("out of range!");
+    }
+}
+string temp = prevNode->data;
+prevNode = currNode->next;
+return temp;
 }
 
 size_t List::remove(const std::string& value){
-
-
+int count = 0;
+Node* currNode = head;
+Node* prevNode = NULL;
+while (currNode->next != NULL){
+    prevNode = currNode;
+    currNode = currNode->next;
+    if (currNode->data == value){
+        prevNode = currNode->next;
+        count++;
+    }
+    return count;
+}
 }
