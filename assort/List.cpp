@@ -22,10 +22,10 @@ List::~List(){
 
 size_t List::count() const {
 int count = 0;
-Node* nullpt = NULL;
-while (nullpt != NULL){
+Node* currNode = head;
+while (currNode != NULL){
     count++;
-    nullpt = nullpt->next;
+    currNode = currNode->next;
 }
     return count;
 }
@@ -41,7 +41,7 @@ if(head == NULL){
 } else {
     Node* currNode = head;
     Node* prevNode;
-    while (currNode->next != NULL && currNode->data < value){
+    while (currNode != NULL && currNode->data < value){
         prevNode = currNode;
         currNode = currNode->next;
     }
