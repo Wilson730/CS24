@@ -107,7 +107,9 @@ if (head == NULL || index >= count()){  //---------------------------------  if 
 
 } else if (index == 0) {
     temp = currNode->data;
-    currNode = currNode->next;
+    prevNode = head;
+    head = head->next;
+    delete(prevNode);
 } else {                                           // problem: how to link prevnode to the node after the deleted node?
     for (size_t i = 0; i < index; i++){
     prevNode = currNode;
