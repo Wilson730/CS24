@@ -107,7 +107,6 @@ for (size_t i = 0; i < index; i++){
     }
 }
 string temp = currNode->data;
-currNode = currNode->next;
 prevNode->next = currNode;
 return temp;
 }
