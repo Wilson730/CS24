@@ -104,6 +104,7 @@ if (head == NULL){
     throw std::out_of_range("list already empty!");
 } else if (head->next == NULL){
     temp = head->data;
+    delete(head);
 } else {
     for (size_t i = 0; i < index; i++){
     prevNode = currNode;
@@ -111,12 +112,14 @@ if (head == NULL){
     if (currNode == NULL){
         throw std::out_of_range("out of range!");
     }
+    }
+    
     if(currNode->next == NULL){
         prevNode->next = NULL;
     } else {
         prevNode->next = currNode->next;
     }
-}
+
 string temp = currNode->data;
 }
 
