@@ -102,9 +102,9 @@ Node* prevNode;
 string temp = " ";
 if (head == NULL || index >= count()){  //---------------------------------  if list empty, exit. 
     throw std::out_of_range("list already empty!");     
-} else if (head->next == NULL){   //-------------------  if list count = 1, delete it.         
-    temp = head->data;
-    delete(head);
+} else if (count() == 1){   //-------------------  if list count = 1, delete it.         
+    temp = currNode->data;
+    delete(currNode);
 } else {
     for (size_t i = 0; i < index; i++){
     prevNode = currNode;
@@ -115,7 +115,7 @@ if (head == NULL || index >= count()){  //---------------------------------  if 
     }
 string temp = currNode->data;
 prevNode->next = currNode->next;
-delete currNode;
+delete(currNode);
 }
 
 return temp;
