@@ -107,7 +107,7 @@ if (head == NULL){  //---------------------------------  if list empty, exit.
 
 } else if (index == 0) {
     temp = currNode->data;
-    currNode = NULL;
+    head = NULL;
 } else {                                           // problem: how to link prevnode to the node after the deleted node?
     for (size_t i = 0; i <= index; i++){
     prevNode = currNode;
