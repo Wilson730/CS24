@@ -13,7 +13,6 @@ List::List(const List& other){
 }
 
 List::List(List&& other){
-    other.head = head;
 
 }
 
