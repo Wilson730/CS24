@@ -100,9 +100,9 @@ std::string List::remove(size_t index){
 Node* currNode = head;
 Node* prevNode;
 string temp = " ";
-if (head == NULL || index >= count()){  //---------------------------------  if list empty, exit. 
-    throw std::out_of_range("list already empty!");     
-} else if (count() == 1){   //-------------------  if list count = 1, delete it.         
+if (head == NULL){  //---------------------------------  if list empty, exit. 
+    throw std::out_of_range("Indeex out of range.");     
+} else if (head->next == NULL){   //-------------------  if list count = 1, delete it.         
     temp = currNode->data;
     delete(currNode);
 } else if (index == 0) {
@@ -118,7 +118,7 @@ if (head == NULL || index >= count()){  //---------------------------------  if 
     }
     }
 string temp = currNode->data;
-prevNode->next = currNode;
+prevNode->next = currNode->next;
 delete(currNode);
 }
 
