@@ -115,8 +115,9 @@ if (head == NULL){  //---------------------------------  if list empty, exit.
     }
 string temp = currNode->data;
 prevNode->next = currNode->next;
-}
 delete currNode;
+}
+
 return temp;
 }
 
