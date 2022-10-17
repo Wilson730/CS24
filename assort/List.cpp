@@ -82,9 +82,11 @@ void List::print(bool reverse) const{
         }
         currNode = head;
         cout << "[";
-        for (int i = 0; i < count; i++){
+
+        while (currNode != NULL){
             cout << currNode->data;
-            if (i < count -1){
+            count--;
+            if (count > 0){
             cout << ", ";
             }
             currNode = currNode->next;
