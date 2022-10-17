@@ -126,14 +126,16 @@ return temp;
 
 size_t List::remove(const std::string& value){
 int count = 0;
+int removed = 0;
 Node* currNode = head;
 while (currNode->data < value){
     currNode = currNode->next;
-    count = count + 1;
+    count++;
 }
 while (currNode && currNode->data == value){
     currNode = currNode->next;
     remove(count);
+    removed++;
 }
-return count;
+return removed;
 }
