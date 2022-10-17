@@ -120,7 +120,7 @@ while (currNode->next != NULL){
     
 } */
 Node* currNode = head;
-Node* prevNode;
+Node* prevNode = currNode;
 while (currNode != NULL){
     if (currNode->data == value)
     {
