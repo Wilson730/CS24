@@ -95,6 +95,8 @@ void List::print(bool reverse) const{
    
 }
 
+//---------------------------------------------------------------------------------------------------
+
 std::string List::remove(size_t index){
 
 Node* currNode = head;
@@ -104,11 +106,10 @@ if (head == NULL){  //---------------------------------  if list empty, exit.
     throw std::out_of_range("Indeex out of range.");     
 } else if (head->next == NULL){   //-------------------  if list count = 1, delete it.         
     temp = currNode->data;
-    delete(currNode);
+    currNode = NULL;
 } else if (index == 0) {
-    head = currNode->next;
     temp = currNode->data;
-    delete(currNode);
+    head = currNode->next;
 } else {
     for (size_t i = 0; i < index; i++){
     prevNode = currNode;
@@ -119,12 +120,11 @@ if (head == NULL){  //---------------------------------  if list empty, exit.
     }
 string temp = currNode->data;
 prevNode->next = currNode->next;
-delete(currNode);
 }
 
 return temp;
 }
-
+//--------------------------------------------------------------------------------------------------
 
 size_t List::remove(const std::string& value){
 int count = 0;
