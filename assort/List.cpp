@@ -18,11 +18,13 @@ List::List(List&& other){
 
 List::~List(){
     Node* currNode = head;
+    Node* prevNode;
     while (currNode != NULL){
-        Node* next = currNode;
+        prevNode = currNode;
         currNode = currNode->next;
-        delete currNode;
+        delete(prevNode);
     }
+    delete (currNode);
 }
 
 size_t List::count() const {
