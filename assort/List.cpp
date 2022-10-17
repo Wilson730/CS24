@@ -111,7 +111,7 @@ if (head == NULL){  //---------------------------------  if list empty, exit.
     temp = currNode->data;
     head = currNode->next;
 } else {
-    for (size_t i = 0; i < index; i++){
+    for (size_t i = 0; i <= index; i++){
     prevNode = currNode;
     currNode = currNode->next;
     if (currNode == NULL){
