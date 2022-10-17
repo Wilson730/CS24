@@ -117,6 +117,7 @@ if (head == NULL || index >= count()){  //---------------------------------  if 
     }
 temp = currNode->data;
 prevNode->next = currNode->next;
+delete(currNode);
 }
 
 return temp;
