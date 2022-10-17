@@ -58,7 +58,7 @@ if(head == NULL){
 
 const std::string& List::lookup(size_t index) const {
     Node* currNode = head;
-    if (index < 0 || index >= count()){
+    if (index >= count()){
         throw std::out_of_range("Index out of range.");
     } else {
         for (size_t i = 0; i <= index; i++){
