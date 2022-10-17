@@ -105,6 +105,10 @@ if (head == NULL || index >= count()){  //---------------------------------  if 
 } else if (count() == 1){   //-------------------  if list count = 1, delete it.         
     temp = currNode->data;
     delete(currNode);
+} else if (index == 0) {
+    head = currNode->next;
+    temp = currNode->data;
+    delete(currNode);
 } else {
     for (size_t i = 0; i < index; i++){
     prevNode = currNode;
