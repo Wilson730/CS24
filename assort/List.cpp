@@ -100,7 +100,7 @@ void List::print(bool reverse) const{
 std::string List::remove(size_t index){
 
 Node* currNode = head;
-Node* prevNode;
+Node* prevNode = NULL;
 string temp = " ";             // test if index is greater than or equal to count after
 if (head == NULL){  //---------------------------------  if list empty, exit. 
     throw std::out_of_range("Index out of range.");     
