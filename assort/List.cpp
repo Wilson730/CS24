@@ -82,7 +82,7 @@ void List::print(bool reverse) const{
         }
 
         cout << "[";
-        for (int i = 0; i < count; i++){
+        for (int i = 0; i < count - 1; i++){
             cout << currNode->data;
 
             cout << ", ";
