@@ -17,7 +17,11 @@ List::List(List&& other){
 }
 
 List::~List(){
-
+    Node* currNode = head;
+    while (currNode != NULL){
+        currNode = currNode->next;
+        delete currNode;
+    }
 }
 
 size_t List::count() const {
@@ -119,6 +123,7 @@ while (currNode->next != NULL){
     }
     
 } */
+/*
 Node* currNode = head;
 Node* prevNode = currNode;
 while (currNode != NULL){
@@ -129,5 +134,6 @@ while (currNode != NULL){
     prevNode = currNode;
     currNode = currNode->next;
 }
+*/
 return count;
 }
