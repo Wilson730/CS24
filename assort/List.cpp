@@ -73,7 +73,7 @@ void List::print(bool reverse) const{
     Node* currNode = head;
     if (!reverse){
          while (currNode != NULL){
-            cout << currNode->data;
+            
 
             count++;
             
