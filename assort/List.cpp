@@ -109,7 +109,7 @@ if (head == NULL){  //---------------------------------  if list empty, exit.
     currNode = NULL;
 } else if (index == 0) {
     temp = currNode->data;
-    head = currNode->next;
+    head = currNode;
 } else {
     for (size_t i = 0; i <= index; i++){
     prevNode = currNode;
