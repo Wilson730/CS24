@@ -78,13 +78,14 @@ void List::print(bool reverse) const{
             
                 cout << currNode->data;     
                 currNode = currNode->next;
-                if(currNode->next!= NULL){
+                if (currNode != NULL){
                 cout << ", "; 
                 }
         }
         cout << "]" << "\n";
        
     } 
+    currNode->next = NULL;
 }
 
 std::string List::remove(size_t index){
@@ -118,5 +119,15 @@ while (currNode->next != NULL){
     }
     
 } */
+Node* currNode = head;
+Node* prevNode;
+while (currNode != NULL){
+    if (currNode->data == value)
+    {
+
+    }
+    prevNode = currNode;
+    currNode = currNode->next;
+}
 return count;
 }
