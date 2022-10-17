@@ -14,7 +14,7 @@ List::List(const List& other){
 
 List::List(List&& other){
     other.head = head;
-    
+
 }
 
 List::~List(){
@@ -104,18 +104,18 @@ Node* currNode = head;
 Node* prevNode;
 string temp = " ";
 if (head == NULL){  //---------------------------------  if list empty, exit. 
-    throw std::out_of_range("Indeex out of range.");     
+    throw std::out_of_range("Index out of range.");     
 } else if (head->next == NULL){   //-------------------  if list count = 1, delete it.         
     temp = currNode->data;
-    currNode = NULL;
+    delete(currNode);
 } else if (index == 0) {
     temp = currNode->data;
     head = currNode;
-} else {
+} else {                                           // problem: how to link prevnode to the node after the deleted node?
     for (size_t i = 0; i <= index; i++){
     prevNode = currNode;
     currNode = currNode->next;
-    if (currNode == NULL){
+    if (currNode == NULL){                           
         throw std::out_of_range("out of range!");
     }
     }
@@ -135,7 +135,7 @@ if (head == NULL){
     throw std::out_of_range("list empty!");
 } else if (head->data == value){
     count++;
-    head = currNode->next;
+    head = currNode->next;                   //check photos
     delete(currNode);
 }
 while (currNode != NULL){
