@@ -100,9 +100,9 @@ std::string List::remove(size_t index){
 Node* currNode = head;
 Node* prevNode;
 string temp = " ";
-if (head == NULL){
-    throw std::out_of_range("list already empty!");
-} else if (head->next == NULL){
+if (head == NULL){  //---------------------------------  if list empty, exit. 
+    throw std::out_of_range("list already empty!");     
+} else if (head->next == NULL){   //-------------------  if list count = 1, delete it.         
     temp = head->data;
     delete(head);
 } else {
@@ -113,16 +113,10 @@ if (head == NULL){
         throw std::out_of_range("out of range!");
     }
     }
-    
-    if(currNode->next == NULL){
-        prevNode->next = NULL;
-    } else {
-        prevNode->next = currNode->next;
-    }
-
 string temp = currNode->data;
+prevNode->next = currNode->next;
 }
-
+delete currNode;
 return temp;
 }
 
