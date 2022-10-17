@@ -105,6 +105,10 @@ string temp = " ";
 if (head == NULL){  //---------------------------------  if list empty, exit. 
     throw std::out_of_range("Index out of range.");     
 
+} else if (index == 0) {
+    temp = currNode->data;
+    currNode->next = NULL;
+    currNode->data = "";
 } else {                                           // problem: how to link prevnode to the node after the deleted node?
     for (size_t i = 0; i <= index; i++){
     prevNode = currNode;
