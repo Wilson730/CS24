@@ -127,22 +127,13 @@ return temp;
 size_t List::remove(const std::string& value){
 int count = 0;
 Node* currNode = head;
-Node* prevNode;
-if (head == NULL){
-    throw std::out_of_range("list empty!");
-} else if (head->data == value){
-    count++;
-    head = currNode->next;                   //check photos
-    delete(currNode);
-}
-while (currNode != NULL){
-    prevNode = currNode;
+while (currNode->data < value){
     currNode = currNode->next;
-    if (currNode->data == value){
-        prevNode->next = currNode->next;
-        delete(currNode);
-        count++;
-    }
+    count++;
+}
+while (currNode && currNode->data == value){
+    currNode = currNode->next;
+    remove(count);
 }
 return count;
 }
