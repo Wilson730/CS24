@@ -19,6 +19,7 @@ List::List(List&& other){
 List::~List(){
     Node* currNode = head;
     while (currNode != NULL){
+        Node* next = currNode;
         currNode = currNode->next;
         delete currNode;
     }
