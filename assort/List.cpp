@@ -128,28 +128,23 @@ return temp;
 
 size_t List::remove(const std::string& value){
 int count = 0;
-/* Node* currNode = head;
-Node* prevNode = currNode;
-while (currNode->next != NULL){
+Node* currNode = head;
+Node* prevNode;
+if (head == NULL){
+    throw std::out_of_range("list empty!");
+} else if (head->data == value){
+    count++;
+    head = currNode->next;
+    delete(currNode);
+}
+while (currNode != NULL){
     prevNode = currNode;
     currNode = currNode->next;
     if (currNode->data == value){
-        prevNode = currNode->next;
+        prevNode->next = currNode->next;
+        delete(currNode);
         count++;
     }
-    
-} */
-/*
-Node* currNode = head;
-Node* prevNode = currNode;
-while (currNode != NULL){
-    if (currNode->data == value)
-    {
-
-    }
-    prevNode = currNode;
-    currNode = currNode->next;
 }
-*/
 return count;
 }
