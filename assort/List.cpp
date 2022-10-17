@@ -69,26 +69,15 @@ const std::string& List::lookup(size_t index) const {
 }
 
 void List::print(bool reverse) const{ 
-    int count = 0;
     Node* currNode = head;
     if (!reverse){
-         while (currNode != NULL){
-            
-
-            count++;
-            
-            currNode = currNode->next;
-
-        }
-        currNode = head;
+         
         cout << "[";
 
         while (currNode != NULL){
             cout << currNode->data;
-            count--;
-            if (count > 0){
             cout << ", ";
-            }
+            
             currNode = currNode->next;
         }
         cout << "]" << "\n";
