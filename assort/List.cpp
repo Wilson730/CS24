@@ -114,7 +114,7 @@ if (head == NULL || index >= count()){  //---------------------------------  if 
     }
     }
 string temp = currNode->data;
-prevNode->next = currNode->next;
+prevNode->next = currNode;
 delete(currNode);
 }
 
