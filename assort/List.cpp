@@ -118,7 +118,7 @@ if (head == NULL){  //---------------------------------  if list empty, exit.
         throw std::out_of_range("out of range!");
     }
     }
-string temp = currNode->data;
+temp = currNode->data;
 prevNode->next = currNode->next;
 }
 
