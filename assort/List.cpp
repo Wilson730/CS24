@@ -61,7 +61,7 @@ const std::string& List::lookup(size_t index) const {
     if (index >= count()){
         throw std::out_of_range("Index out of range.");
     } else {
-        for (size_t i = 0; i <= index; i++){
+        for (size_t i = 0; i < index; i++){
             currNode = currNode->next;
         }
         return currNode->data;
@@ -77,11 +77,10 @@ void List::print(bool reverse) const{
         while (currNode != NULL){
             
                 cout << currNode->data;     
+                
+                cout << ", "; 
                 currNode = currNode->next;
-                if (currNode != NULL)
-                {
-                cout << ", ";
-                }
+                
         }
         cout << "]" << "\n";
        
@@ -92,17 +91,17 @@ std::string List::remove(size_t index){
 
 Node* currNode = head;
 Node* prevNode = NULL;
-for (size_t i = 1; i <= index; i++){
+for (size_t i = 0; i < index; i++){
     prevNode = currNode;
     currNode = currNode->next;
     if (currNode->next == NULL){
         throw std::out_of_range("out of range!");
     }
 }
-prevNode = currNode->next;
-return prevNode->data;
-
-
+string temp = currNode->data;
+prevNode->next = currNode->next;
+currNode->next = NULL;
+return temp;
 }
 
 
