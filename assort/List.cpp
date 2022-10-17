@@ -129,7 +129,7 @@ int count = 0;
 Node* currNode = head;
 while (currNode->data < value){
     currNode = currNode->next;
-    count++;
+    count = count + 1;
 }
 while (currNode && currNode->data == value){
     currNode = currNode->next;
