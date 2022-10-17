@@ -84,14 +84,7 @@ void List::print(bool reverse) const{
         }
         cout << "]" << "\n";
        
-    }  else {
-        cout << "[";
-
-        while (currNode= NULL){
-
-        }
-        cout << "]" << "\n";
-    }
+    } 
 }
 
 std::string List::remove(size_t index){
