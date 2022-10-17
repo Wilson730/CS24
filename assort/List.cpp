@@ -28,7 +28,7 @@ List::~List(){
 }
 
 size_t List::count() const {
-int count = 0;
+size_t count = 0;
 Node* currNode = head;
 while (currNode != NULL){
     count++;
@@ -102,7 +102,7 @@ std::string List::remove(size_t index){
 Node* currNode = head;
 Node* prevNode = NULL;
 string temp = " ";             // test if index is greater than or equal to count after
-if (head == NULL){  //---------------------------------  if list empty, exit. 
+if (head == NULL || index >= count()){  //---------------------------------  if list empty, exit. 
     throw std::out_of_range("Index out of range.");     
 
 } else if (index == 0) {
@@ -110,7 +110,7 @@ if (head == NULL){  //---------------------------------  if list empty, exit.
     head = NULL;
 } else {                                           // problem: how to link prevnode to the node after the deleted node?
     for (size_t i = 0; i < index; i++){
-    prevNode->next = currNode;
+    prevNode = currNode;
     currNode = currNode->next;
     }
 temp = currNode->data;
