@@ -16,7 +16,7 @@ List::List(const List& other){
         this->head->next = currNode;
         currNode = currNode->next;
     }
-    delete(other.head);
+    delete(head);
 }
 
 List::List(List&& other){
