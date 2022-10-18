@@ -11,7 +11,7 @@ List::List(){
 List::List(const List& other){
   
     if (other.head == NULL){
-        this->head == NULL;
+        this->head = NULL;
     } else {
 
     this->head = other.head;
