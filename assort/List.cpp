@@ -94,7 +94,7 @@ void List::print(bool reverse) const{
 
      
     } else {
-        
+        cout << "\n";
         string tempStr = "]";
         while (currNode != NULL){
             
