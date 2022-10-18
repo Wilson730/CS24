@@ -77,7 +77,7 @@ const std::string& List::lookup(size_t index) const {
 
 void List::print(bool reverse) const{ 
     Node* currNode = head;
-    Node* prevNode;
+    Node* prevNode = NULL;
     if (!reverse){
          
         cout << "[";
@@ -94,7 +94,6 @@ void List::print(bool reverse) const{
        
     } else {
         string tempStr = "]";
-        
         while (currNode != NULL){
             prevNode = currNode;
             currNode = currNode->next;
