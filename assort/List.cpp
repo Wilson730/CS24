@@ -9,11 +9,12 @@ List::List(){
 }
 
 List::List(const List& other){
-    
+    head = other.head;
+    delete(other.head);
 }
 
 List::List(List&& other){
-    head = other.head;
+    List list = other;
     delete(other.head);
 }
 
