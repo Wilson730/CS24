@@ -12,7 +12,7 @@ List::List(const List& other){
     List listCopy;
     Node* currNode = other.head;
     while(currNode != NULL){
-        this->head->next = currNode;
+        this->head = currNode;
         currNode = currNode->next;
     }
     delete(other.head);
@@ -20,7 +20,7 @@ List::List(const List& other){
 
 List::List(List&& other){
     this->head = other.head;
-    delete(other.head);
+    other.head = NULL;
 }
 
 List::~List(){
