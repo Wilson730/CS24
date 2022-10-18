@@ -78,8 +78,6 @@ const std::string& List::lookup(size_t index) const {
 void List::print(bool reverse) const{ 
     Node* currNode = head;
     Node* prevNode = NULL;
-    prevNode = head;
-    prevNode = currNode;
     if (!reverse){
          
         cout << "[";
@@ -93,8 +91,8 @@ void List::print(bool reverse) const{
                 }
         }
         cout << "]" << "\n";
-       prevNode = NULL;
-       prevNode->data = "set but not used? what??";
+
+     
     } else {
         string tempStr = "]";
         while (currNode != NULL){
@@ -107,7 +105,6 @@ void List::print(bool reverse) const{
            currNode = currNode->next;
            prevNode->data = "why is it saying set but not used";
         }
-        prevNode = NULL;
         tempStr += "[";
         cout << tempStr;
     }
