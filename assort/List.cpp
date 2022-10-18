@@ -10,24 +10,25 @@ List::List(){
 
 List::List(const List& other){
   
-    
-    Node* currHead = this->head;        // same as head   
-    Node* currNode = currHead;        // same as currNode = head;
-    Node* otherNode = other.head;     // for ref
+    if (other.head == NULL){
+        this->head == NULL;
+    } else {
+
+    this->head = other.head;
+    Node* currNode = this->head;        
+    Node* otherNode = other.head;    
+    otherNode = otherNode->next; // to avoid copying head twice
 
     while (otherNode != NULL){
         Node* newNode = new Node(); 
-       
         newNode->data = otherNode->data;
         newNode->next = NULL;
 
         currNode->next = newNode;
         
-        otherNode = otherNode->next;
-        currNode = currNode->next;
-       
+        otherNode = otherNode->next;       
     }
-
+ }
     delete(other.head);
 }
 
