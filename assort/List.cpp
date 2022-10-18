@@ -17,26 +17,19 @@ List::List(const List& other){
     Node* otherNode = other.head;     // for ref
 
     while (otherNode != NULL){
-        Node* newNode = new Node();
+        Node* newNode = new Node(); 
+        otherNode = otherNode->next;
         newNode->data = otherNode->data;
         currNode->next = newNode;
 
         currNode = currNode->next;
-        otherNode = otherNode->next;
+       
     }
 
     delete(other.head);
 }
 
-List::List(const List& other){
-    List listCopy;
-    Node* otherNode = other.head;
-    while(otherNode != NULL){
-        this->head = otherNode;
-        otherNode = otherNode->next;
-    }
-    delete(other.head);
-} 
+
 
 List::List(List&& other){
     this->head = other.head;
