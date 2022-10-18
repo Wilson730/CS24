@@ -17,16 +17,16 @@ List::List(const List& other){
     this->head = other.head;
     Node* currNode = this->head;        
     Node* otherNode = other.head;    
-    otherNode = otherNode->next; // to avoid copying head twice
 
     while (otherNode != NULL){
-        Node* newNode = new Node(); 
-        newNode->data = otherNode->data;
-        newNode->next = NULL;
+        Node* newNode = new Node(); // creates new block of memory
+        newNode->data = otherNode->data; // sets the block's data to current othernode's data
+        newNode->next = NULL;           // makes newnode's next NULL so it's at the end of currNode, or this->head. 
 
-        currNode->next = newNode;
+        currNode = newNode;           // makes current node point to the new node
         
-        otherNode = otherNode->next;       
+        otherNode = otherNode->next;    // goes to next othernode
+        currNode = currNode->next;     // goes to next currnode
     }
  }
     delete(other.head);
