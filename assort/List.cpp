@@ -18,10 +18,11 @@ List::List(const List& other){
 
     while (otherNode != NULL){
         Node* newNode = new Node(); 
-        otherNode = otherNode->next;
+       
         newNode->data = otherNode->data;
         currNode->next = newNode;
-
+        
+        otherNode = otherNode->next;
         currNode = currNode->next;
        
     }
