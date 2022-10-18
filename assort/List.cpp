@@ -97,7 +97,7 @@ void List::print(bool reverse) const{
         string tempStr = "]";
         while (currNode != NULL){
             
-            tempStr += currNode->data;
+            tempStr = currNode->data + tempStr;
             if (currNode->data >= head->data){
                 tempStr += ", ";
             } 
@@ -105,7 +105,7 @@ void List::print(bool reverse) const{
            currNode = currNode->next;
            prevNode->data = "why is it saying set but not used";
         }
-        tempStr += "[";
+        tempStr = "[" + tempStr;
         cout << tempStr;
     }
     
