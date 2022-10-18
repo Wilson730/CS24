@@ -93,7 +93,7 @@ void List::print(bool reverse) const{
        
     } else {
         string tempStr = "]";
-        Node* prevNode;
+        Node* prevNode = currNode;
         while (currNode != NULL){
            
             tempStr += currNode->data;
