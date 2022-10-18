@@ -11,18 +11,15 @@ List::List(){
 List::List(const List& other){
   
     List listCopy;
-    if (other.head == NULL){
-        this->head = NULL;
-    } else {
-        this->head->data = other.head->data;
-    }
-    Node* currHead = this->head;        // same as head
-    Node* otherNode = other.head;     // for ref
+    
+    Node* currHead = this->head;        // same as head   
     Node* currNode = currHead;        // same as currNode = head;
-    while (otherNode != NULL){
-        currNode = new Node();
-        currNode->data = otherNode->data;
-
+    Node* otherNode = other.head;     // for ref
+    while (otherNode->next != NULL){
+        Node* newNode = new Node();
+        newNode->data = otherNode->data;
+        currNode = newNode;
+        
         currNode = currNode->next;
         otherNode = otherNode->next;
     }
