@@ -9,11 +9,14 @@ List::List(){
 }
 
 List::List(const List& other){
-    List listCopy;
     Node* currNode = other.head;
+    List listCopy;
+    listCopy.head = currNode;
+    Node* listCurrNode;
     while(currNode != NULL){
-        this->head = currNode;
-        currNode = currNode->next;
+         currNode = currNode->next;
+         listCurrNode->data = currNode->data;
+         listCurrNode = listCurrNode->next;
     }
     delete(other.head);
 }
