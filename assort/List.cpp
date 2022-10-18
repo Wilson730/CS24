@@ -99,7 +99,7 @@ void List::print(bool reverse) const{
         while (currNode != NULL){
             
             tempStr = currNode->data + tempStr;
-            if ((currNode->data) < (head->data)){
+            if ((currNode->data) <= (head->data)){
                 tempStr = ", " + tempStr;
             } 
            prevNode = currNode;
