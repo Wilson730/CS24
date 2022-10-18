@@ -11,22 +11,22 @@ List::List(){
 List::List(const List& other){
   
     if (other.head == NULL){
-        this->head = NULL;
+        head = NULL;
     } else {
 
-    this->head = other.head;
-    Node* currNode = this->head;        
-    Node* otherNode = other.head;    
-
+    head = new Node();
+    head->data = other.head->data;
+    Node* currNode = head;        
+    Node* otherHead = other.head;    
+    Node* otherNode = otherHead;
+    
     while (otherNode != NULL){
-        Node* newNode = new Node(); // creates new block of memory
-        newNode->data = otherNode->data; // sets the block's data to current othernode's data
-        newNode->next = NULL;           // makes newnode's next NULL so it's at the end of currNode, or this->head. 
+        Node* newNode = new Node(); 
+        currNode->next = newNode;
+        newNode->data = otherNode->next->data;
 
-        currNode = newNode;           // makes current node point to the new node
-        
-        otherNode = otherNode->next;    // goes to next othernode
-        currNode = currNode->next;     // goes to next currnode
+        otherNode = otherNode->next;
+        currNode = currNode->next;
     }
  }
     delete(other.head);
