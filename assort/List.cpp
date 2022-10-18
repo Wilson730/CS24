@@ -95,14 +95,15 @@ void List::print(bool reverse) const{
     } else {
         string tempStr = "]";
         while (currNode != NULL){
-            prevNode = currNode;
-            currNode = currNode->next;
+            
             tempStr += currNode->data;
             if (currNode->data >= head->data){
                 tempStr += ", ";
             } 
-           
+           prevNode = currNode;
+           currNode = currNode->next;
         }
+        prevNode = NULL;
         tempStr += "[";
         cout << tempStr;
     }
