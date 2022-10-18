@@ -14,19 +14,18 @@ List::List(const List& other){
         head = NULL;
     } else {
 
-    head = new Node();
+    Node* head = this->head;
     head->data = other.head->data;
     Node* currNode = head;        
-    Node* otherHead = other.head;    
-    Node* otherNode = otherHead;
+    Node* otherNode = other.head;    
     
     while (otherNode->next != NULL){
         Node* newNode = new Node(); 
-       
         newNode->data = otherNode->next->data;
         newNode->next = NULL;
+    
         currNode->next = newNode;
-        
+
         otherNode = otherNode->next;
         currNode = currNode->next;
     }
