@@ -20,11 +20,13 @@ List::List(const List& other){
     Node* otherHead = other.head;    
     Node* otherNode = otherHead;
     
-    while (otherNode != NULL){
+    while (otherNode->next != NULL){
         Node* newNode = new Node(); 
-        currNode->next = newNode;
+       
         newNode->data = otherNode->next->data;
-
+        newNode->next = NULL;
+        currNode->next = newNode;
+        
         otherNode = otherNode->next;
         currNode = currNode->next;
     }
