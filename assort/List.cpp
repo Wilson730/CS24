@@ -99,11 +99,12 @@ void List::print(bool reverse) const{
         while (currNode != NULL){
             
             tempStr = currNode->data + tempStr;
+           prevNode = currNode;
+           currNode = currNode->next;
             if ((currNode->data) < (head->data)){
                 tempStr = ", " + tempStr;
             } 
-           prevNode = currNode;
-           currNode = currNode->next;
+           
            prevNode->data = "why is it saying set but not used";
         }
         tempStr = "[" + tempStr;
