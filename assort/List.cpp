@@ -10,8 +10,7 @@ List::List(){
 
 List::List(const List& other){
   
-    List listCopy;
-    
+    this->head->data = other.head->data;
     Node* currHead = this->head;        // same as head   
     Node* currNode = currHead;        // same as currNode = head;
     Node* otherNode = other.head;     // for ref
@@ -20,6 +19,8 @@ List::List(const List& other){
         Node* newNode = new Node(); 
        
         newNode->data = otherNode->data;
+        newNode->next = NULL;
+
         currNode->next = newNode;
         
         otherNode = otherNode->next;
