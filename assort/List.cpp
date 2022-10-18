@@ -11,12 +11,12 @@ List::List(){
 List::List(const List& other){
   
     if (other.head == NULL){
-        head = NULL;
+        this->head = NULL;
     } else {
 
-    Node* head = this->head;
-    head->data = other.head->data;
-    Node* currNode = head;        
+    
+    this->head->data = other.head->data;
+    Node* currNode = this->head;        
     Node* otherNode = other.head;    
     
     while (otherNode->next != NULL){
