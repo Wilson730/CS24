@@ -15,17 +15,28 @@ List::List(const List& other){
     Node* currHead = this->head;        // same as head   
     Node* currNode = currHead;        // same as currNode = head;
     Node* otherNode = other.head;     // for ref
-    while (otherNode->next != NULL){
+
+    while (otherNode != NULL){
         Node* newNode = new Node();
         newNode->data = otherNode->data;
-        currNode = newNode;
-        
+        currNode->next = newNode;
+
         currNode = currNode->next;
         otherNode = otherNode->next;
     }
 
     delete(other.head);
 }
+
+List::List(const List& other){
+    List listCopy;
+    Node* otherNode = other.head;
+    while(otherNode != NULL){
+        this->head = otherNode;
+        otherNode = otherNode->next;
+    }
+    delete(other.head);
+} 
 
 List::List(List&& other){
     this->head = other.head;
