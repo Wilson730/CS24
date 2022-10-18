@@ -93,9 +93,9 @@ void List::print(bool reverse) const{
        
     } else {
         string tempStr = "]";
-        Node* prevNode = NULL;
+        
         while (currNode != NULL){
-           
+           Node* prevNode = NULL;
             tempStr += currNode->data;
             if (currNode->data >= head->data){
                 tempStr += ", ";
