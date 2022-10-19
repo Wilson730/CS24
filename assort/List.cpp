@@ -14,22 +14,22 @@ List::List(const List& other){
         this->head = NULL;
     } else {
 
+    this->head = new Node();
+    this->head->data = other.head->data;   // new head's data copies old head's data
+    Node* currNode = this->head;           // set dummy node on new head
+    Node* otherNode = other.head;          // set dummy node on old head
     
-    this->head->data = other.head->data;
-    Node* currNode = this->head;        
-    Node* otherNode = other.head;    
-    
-    while (otherNode != NULL){
-        Node* newNode = new Node(); 
-        newNode->data = otherNode->next->data;
-    
-        currNode->next = newNode;
+    while (otherNode->next != NULL){             // while old list nodes don't reach the end
+        Node* newNode = new Node();              // create new node
+        newNode->data = otherNode->next->data;   // new node copies current old node's data (starting from head)
+        newNode->next = NULL;                    // set next to NULL
+        currNode->next = newNode;                // current node next points to newnode
 
-        otherNode = otherNode->next;
-        currNode = currNode->next;
+        otherNode = otherNode->next;             // iterate old node
+        currNode = currNode->next;               // iterate new node
     }
  }
-    delete(other.head);
+    delete(other.head);                          // delete old list
 }
 
 
