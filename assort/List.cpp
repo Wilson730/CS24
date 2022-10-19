@@ -9,13 +9,11 @@ List::List(){
 }
 
 List::List(const List& other){
-  
+    head = new Node();
     if (other.head == NULL){
-        this->head = NULL;
+        head = NULL;
     } else {
 
-    this->head = new Node();
-    head = this->head;
     head->data = other.head->data;   // new head's data copies old head's data
     Node* currNode = head;           // set dummy node on new head
     Node* otherNode = other.head->next;          // set dummy node on old head
