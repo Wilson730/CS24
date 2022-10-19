@@ -15,13 +15,15 @@ List::List(const List& other){
     } else {
 
     this->head = new Node();
-    this->head->data = other.head->data;   // new head's data copies old head's data
+    head = this->head;
+    head->data = other.head->data;   // new head's data copies old head's data
     Node* currNode = this->head;           // set dummy node on new head
     Node* otherNode = other.head;          // set dummy node on old head
-    
+    otherNode = otherNode->next;
+
     while (otherNode->next != NULL){             // while old list nodes don't reach the end
         Node* newNode = new Node();              // create new node
-        newNode->data = otherNode->next->data;   // new node copies current old node's data (starting from head)
+        newNode->data = otherNode->data;   // new node copies current old node's data (starting from head)
         newNode->next = NULL;                    // set next to NULL
         currNode->next = newNode;                // current node next points to newnode
 
