@@ -21,7 +21,7 @@ List::List(const List& other){
     Node* otherNode = other.head;          // set dummy node on old head
     otherNode = otherNode->next;
 
-    while (otherNode->next != NULL){             // while old list nodes don't reach the end
+    while (otherNode != NULL){             // while old list nodes don't reach the end
         Node* newNode = new Node();              // create new node
         newNode->data = otherNode->data;   // new node copies current old node's data (starting from head)
         newNode->next = NULL;                    // set next to NULL
