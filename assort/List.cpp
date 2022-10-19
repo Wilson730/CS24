@@ -19,6 +19,7 @@ List::List(const List& other){
     head->data = other.head->data;   // new head's data copies old head's data
     Node* currNode = this->head;           // set dummy node on new head
     Node* otherNode = other.head;          // set dummy node on old head
+    otherNode = otherNode->next;
 
     while (otherNode->next != NULL){             // while old list nodes don't reach the end
         Node* newNode = new Node();              // create new node
@@ -29,6 +30,8 @@ List::List(const List& other){
         otherNode = otherNode->next;             // iterate old node
         currNode = currNode->next;               // iterate new node
     }
+
+    currNode->data = otherNode->data;
  }
     delete(other.head);                          // delete old list
 }
