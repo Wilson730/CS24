@@ -19,10 +19,9 @@ List::List(const List& other){
     Node* currNode = this->head;        
     Node* otherNode = other.head;    
     
-    while (otherNode->next != NULL){
+    while (otherNode != NULL){
         Node* newNode = new Node(); 
         newNode->data = otherNode->next->data;
-        newNode->next = NULL;
     
         currNode->next = newNode;
 
