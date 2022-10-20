@@ -80,12 +80,13 @@ if(head == NULL){
 } else {
     Node* currNode = head;
     Node* prevNode;
-    while (currNode->next != NULL && currNode->data <= value){
+    while (currNode != NULL && currNode->data <= value){
         prevNode = currNode;
         currNode = currNode->next;
     }
     prevNode->next = newNode;
     newNode->next = currNode;
+    currNode->next = NULL;
 } 
 
 }
