@@ -44,6 +44,7 @@ void Set::debug(){
 }
 
 size_t Set::insert(const std::string&value){
+    size_t c = 0;
     Node* newNode = new Node;
     newNode->data = value;
     newNode->left = NULL;       // random node in mem containing value initialized
@@ -51,15 +52,7 @@ size_t Set::insert(const std::string&value){
     Node* currNode = mRoot;
     if (mRoot == NULL){
         mRoot = newNode;
-        mRoot->left = NULL;    // empty list? initialize set with a new head.
-        mRoot->right = NULL;
-    } else if (mRoot != NULL && (mRoot->left == NULL || mRoot->right == NULL)) {
-        if (value < mRoot->data){
-            currNode = currNode->left;
-        } 
-        if (value > mRoot->data){
-            currNode = currNode->right;
-        }
+        c++;
     } else {
         while (currNode != NULL){
             while (currNode->left != NULL && value < currNode->left->data){
@@ -69,12 +62,9 @@ size_t Set::insert(const std::string&value){
             currNode = currNode->right; 
             }
         }
-
-        
-
     }
     currNode = newNode;
-    return 0;         
+    return c;         
 }
 
 const std::string& Set::lookup(size_t n) const {

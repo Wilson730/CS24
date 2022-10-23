@@ -6,8 +6,9 @@
 // Implement Node member functions and helper functions in Node.cpp.
 struct Node{
     std::string data;
-    struct Node* left; 
-    struct Node* right;
+    Node* left; 
+    Node* right;
+    size_t count;
 };
 
 
