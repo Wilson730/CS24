@@ -40,17 +40,26 @@ size_t Set::count() const {
 }
 
 void Set::debug(){
-
+    
 }
 
 size_t Set::insert(const std::string&value){
-    size_t amountAdded = 0;
+    Node* newNode = new Node;
+    newNode->data = value;
+    newNode->left = NULL;       // random node in mem containing value initialized
+    newNode->right = NULL;
+    Node* currNode = mRoot;
+    Node* prevNode = NULL;
+    if (mRoot = NULL){
+        mRoot = newNode;
+    }
+    while (currNode->data < value){
 
-    return amountAdded;
+    }
 }
 
 const std::string& Set::lookup(size_t n) const {
-    string val = " ";
+    string val = "Ascii";
 
     return val;
 }
@@ -59,8 +68,12 @@ void Set::print() const {
 
 }
 
-size_t remove (const std::string& value){
+size_t Set::remove (const std::string& value){
     size_t amountRemoved = 0;
+    Node* currNode = mRoot;
+    Node* prevNode = NULL;
+    while (currNode->data < value){
 
+    }
     return amountRemoved;
 }
