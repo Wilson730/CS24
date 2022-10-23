@@ -55,15 +55,22 @@ size_t Set::insert(const std::string&value){
         c++;
     } else {
         while (currNode != NULL){
-            while (currNode->left != NULL && value < currNode->left->data){
+            if (value < currNode->data){
             currNode = currNode->left;
+                if (currNode->left == NULL){
+                    currNode->left = newNode;
+                }
             } 
-            while (currNode->right != NULL && value < currNode->right->data ){
+            if (value < currNode->data ){
             currNode = currNode->right; 
+                if (currNode->right == NULL){
+                    currNode->right = newNode;
+                }
             }
         }
+
     }
-    currNode = newNode;
+    
     return c;         
 }
 
