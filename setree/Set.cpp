@@ -53,7 +53,6 @@ size_t Set::insert(const std::string&value){
         mRoot = newNode;
         mRoot->left = NULL;    // empty list? initialize set with a new head.
         mRoot->right = NULL;
-        currNode = mRoot;
     } else if (mRoot != NULL && (mRoot->left == NULL || mRoot->right == NULL)) {
         if (value < mRoot->data){
             currNode = currNode->left;
@@ -71,9 +70,10 @@ size_t Set::insert(const std::string&value){
             }
         }
 
-        currNode = newNode;
+        
 
     }
+    currNode = newNode;
     return 0;         
 }
 
