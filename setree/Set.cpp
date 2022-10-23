@@ -55,20 +55,22 @@ size_t Set::insert(const std::string&value){
         mRoot = newNode;
     } else {
         while (currNode != NULL){
-        if (currNode->left != NULL && value < currNode->left->data){
+            if (currNode->left != NULL && value < currNode->left->data){
             currNode = currNode->left;
-        } else if (currNode->right != NULL && value < currNode->right->data ){
+            } else if (currNode->right != NULL && value < currNode->right->data ){
             currNode = currNode->right; 
+            }
         }
-        currNode = newNode;
-        
-    }
 
+        currNode = newNode;
+
+    }
+    return 0;         
 }
 
 const std::string& Set::lookup(size_t n) const {
-    string val = " ";
-    return val;
+  return 0;
+    
 }
 
 void Set::print() const {
