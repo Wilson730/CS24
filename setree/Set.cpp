@@ -71,14 +71,14 @@ size_t Set::insert(const std::string&value){
                 }
                 currNode = currNode->right; 
                 total += currNode->count;
-
+            }
         }
 
     }
     
     return 0;         
 }
-}
+
 
 const std::string& Set::lookup(size_t n) const {
   return NULL;
