@@ -76,7 +76,7 @@ size_t Set::insert(const std::string&value){
 
     }
     
-    return 0;         
+    return total;         
 }
 
 
