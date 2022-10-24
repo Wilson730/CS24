@@ -34,12 +34,30 @@ bool Set::contains(const std::string&value) const {
 }
 
 size_t countre(Node* currNode){
+    int currNodeCount = 0;
+    if (currNode == NULL){
+        return 0;
+    } else if (currNode->left != NULL || currNode->right != NULL){
+        
+        currNode = currNode->left;
+        countre(currNode);
+        currNodeCount += currNode->count;
+        currNode = currNode->right;
+        countre(currNode);
+    } else if (currNode->left == NULL && currNode->right == NULL ){
+        currNodeCount += currNode->count;
+    }
 
+
+
+    return currNodeCount;
 }
-size_t Set::count() const {
-    size_t totalinSet = 0;
 
-    return totalinSet;
+size_t Set::count() const {
+
+    Node* currNode = mRoot;
+    return countre(currNode);
+   
 }
 
 void Set::debug(){
@@ -62,7 +80,7 @@ size_t Set::insert(const std::string&value){
             if (value < currNode->data){   // case 2 - smaller than current
                 if (currNode->left == NULL){
                     currNode->left = newNode;
-                    newNode->count++;
+                    newNode->count+= 1;
                 }         
                 currNode = currNode->left;
                 total += currNode->count;
@@ -70,7 +88,7 @@ size_t Set::insert(const std::string&value){
             
                 if (currNode->right == NULL){
                     currNode->right = newNode;
-                    newNode->count++;             
+                    newNode->count += 1;             
                 }
                 currNode = currNode->right; 
                 total += currNode->count;
