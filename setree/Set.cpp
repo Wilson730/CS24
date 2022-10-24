@@ -85,29 +85,27 @@ const std::string& Set::lookup(size_t n) const {
     
 }
 
+void printre(const Node* currNode){ // starts from the root. 
+     cout << "(";
+    if (currNode->left != NULL || currNode->right != NULL){ // nonleaf node contains 1+ v
+      
+        printre(currNode->left);  // check for more parents ^ 
+        cout << " " << currNode->data << " ";  // parent in the middle
+        printre(currNode->right); 
+        
+    } else  if (currNode->left == NULL && currNode->right == NULL){ // single leaf node
+        cout << currNode->data;  
+    } else if (currNode == NULL){ // non existent node
+        cout << "-";
+    }
+    cout << ")";
+}
+
 void Set::print() const {
     Node* currNode = mRoot;
-    if (currNode == NULL){
-        cout << "-";
-    } else {
-        cout << "(";
-        while (currNode->left != NULL){
-            if (currNode->left == NULL && currNode->right == NULL){
-                cout << currNode->data;
-                cout << " ";
-            }
-        }
-        cout << mRoot << " ";
-        while (currNode->right != NULL){
-            if (currNode->left == NULL && currNode->right == NULL){
-                cout << currNode->data;
-                cout << " ";
-            }
-        }
-        cout << ")";
-    }
-    return;
+    printre(currNode);
 
+    return;
 }
 
 size_t Set::remove (const std::string& value){
