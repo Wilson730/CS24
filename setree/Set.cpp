@@ -39,16 +39,11 @@ size_t countre(Node* currNode){
         return 0;
     } else if (currNode->left != NULL || currNode->right != NULL){
         
-        currNode = currNode->left;
-        countre(currNode);
-        currNodeCount += currNode->count;
-        currNode = currNode->right;
-        countre(currNode);
+        currNodeCount = countre(currNode->left) + countre(currNode->right);
+
     } else if (currNode->left == NULL && currNode->right == NULL ){
-        currNodeCount += currNode->count;
+        currNodeCount += currNode->count; // should be 1 if it's a leaf node
     }
-
-
 
     return currNodeCount;
 }
