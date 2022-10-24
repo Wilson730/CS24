@@ -3,7 +3,7 @@
 
 using namespace std;
 
-Node::Node(){
+Node(){
     data = "";
     left = NULL;
     right = NULL;
