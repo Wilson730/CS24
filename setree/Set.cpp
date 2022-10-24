@@ -33,6 +33,9 @@ bool Set::contains(const std::string&value) const {
     return false;
 }
 
+size_t countre(Node* currNode){
+
+}
 size_t Set::count() const {
     size_t totalinSet = 0;
 
@@ -100,6 +103,7 @@ void printre(const Node* currNode){ // starts from the root.
     } else if (currNode == NULL){ // non existent node
         cout << "-";
     }
+    cout << "\n";
 }
 
 void Set::print() const {
