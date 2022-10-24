@@ -89,7 +89,24 @@ void Set::print() const {
     Node* currNode = mRoot;
     if (currNode == NULL){
         cout << "-";
+    } else {
+        cout << "(";
+        while (currNode->left != NULL){
+            if (currNode->left == NULL && currNode->right == NULL){
+                cout << currNode->data;
+                cout << " ";
+            }
+        }
+        cout << mRoot << " ";
+        while (currNode->right != NULL){
+            if (currNode->left == NULL && currNode->right == NULL){
+                cout << currNode->data;
+                cout << " ";
+            }
+        }
+        cout << ")";
     }
+    return;
 
 }
 
