@@ -3,9 +3,3 @@
 
 using namespace std;
 
-Node(){
-    data = "";
-    left = NULL;
-    right = NULL;
-    count = 0;
-}

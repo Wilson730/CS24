@@ -29,6 +29,20 @@ size_t Set::clear(){
 }
 
 bool Set::contains(const std::string&value) const {
+    Node* currNode = mRoot;
+    if (currNode == NULL){
+        return NULL;
+    }
+
+    while (currNode != NULL){
+        if (value < currNode->data){
+        currNode = currNode->left;
+        } else if (value > currNode->data){
+        currNode = currNode->right;
+        } else if (value == currNode->data){
+        return true;
+        }
+    }
 
     return false;
 }
