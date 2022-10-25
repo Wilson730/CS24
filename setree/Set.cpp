@@ -72,12 +72,7 @@ void Set::debug(){
 
 size_t insertre(const std::string&value, Node* currNode){
     if (currNode == NULL){
-        Node* newNode = new Node;
-        newNode->data = value;
-        newNode->left = NULL;
-        newNode->right = NULL;
-        currNode = newNode;
-        return 1;
+        return 0;
     }
     if (value < currNode->data){
         if (currNode->left == NULL){
@@ -107,6 +102,14 @@ size_t insertre(const std::string&value, Node* currNode){
     return 0;
 }
 size_t Set::insert(const std::string&value){
+    if (mRoot == NULL){
+        Node* newNode = new Node;
+        newNode->data = value;
+        newNode->left = NULL;
+        newNode->right = NULL;
+        mRoot = newNode;
+        return 1;
+    }
         if (insertre(value, mRoot) == 1){
             return 1;
         } else {
