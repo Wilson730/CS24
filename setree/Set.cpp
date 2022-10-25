@@ -72,7 +72,12 @@ void Set::debug(){
 
 size_t insertre(const std::string&value, Node* currNode){
     if (currNode == NULL){
-        return 0;
+        Node* newNode = newNode;
+        newNode->data = value;
+        newNode->left = NULL;
+        newNode->right = NULL;
+        currNode = newNode;
+        return 1;
     }
     if (value < currNode->data){
         if (currNode->left == NULL){
@@ -133,6 +138,7 @@ void printre(const Node* currNode){ // starts from the root.
 void Set::print() const {
     Node* currNode = mRoot;
     printre(currNode);
+    cout << "\n";
     return;
 }
 
