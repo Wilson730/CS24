@@ -31,7 +31,7 @@ size_t Set::clear(){
 bool Set::contains(const std::string&value) const {
     Node* currNode = mRoot;
     if (currNode == NULL){
-        return NULL;
+        return false;
     }
 
     while (currNode != NULL){
@@ -80,7 +80,7 @@ size_t insertre(const std::string&value, Node* currNode){
             newNode->data = value;
             newNode->left = NULL;
             newNode->right = NULL;
-            currNode->left = newNode;
+            currNode = newNode;
             return 1;
         } else {
             insertre(value, currNode->left);
@@ -93,7 +93,7 @@ size_t insertre(const std::string&value, Node* currNode){
             newNode->data = value;
             newNode->left = NULL;
             newNode->right = NULL;
-            currNode->right = newNode;
+            currNode = newNode;
             return 1;
         } else {
             insertre(value, currNode->right);
