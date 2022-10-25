@@ -37,8 +37,14 @@ bool Set::contains(const std::string&value) const {
     while (currNode != NULL){
         if (value < currNode->data){
         currNode = currNode->left;
+        if (currNode == NULL){
+            return false;
+        }
         } else if (value > currNode->data){
         currNode = currNode->right;
+        if (currNode == NULL){
+            return false;
+        }
         } else if (value == currNode->data){
         return true;
         }
