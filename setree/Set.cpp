@@ -80,20 +80,18 @@ size_t insertre(const std::string&value, Node* currNode){
             newNode->data = value;
             newNode->left = NULL;
             newNode->right = NULL;
-            currNode = newNode;
+            currNode->left = newNode;
             return 1;
         } else {
             insertre(value, currNode->left);
         }
-    }
-
-    if (value > currNode->data){
+    } else if (value > currNode->data){
         if (currNode->right == NULL){
             Node* newNode = new Node;
             newNode->data = value;
             newNode->left = NULL;
             newNode->right = NULL;
-            currNode = newNode;
+            currNode->right = newNode;
             return 1;
         } else {
             insertre(value, currNode->right);
