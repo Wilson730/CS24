@@ -55,16 +55,7 @@ bool Set::contains(const std::string&value) const {
 
 size_t countre(Node* currNode){
     int currNodeCount = 0;
-    if (currNode == NULL){
-        return 0;
-    } else if (currNode->left != NULL || currNode->right != NULL){
-        
-        currNodeCount = countre(currNode->left) + countre(currNode->right);
-
-    } else if (currNode->left == NULL && currNode->right == NULL ){
-        currNodeCount += currNode->count; // should be 1 if it's a leaf node
-    }
-
+ 
     return currNodeCount;
 }
 
@@ -79,40 +70,43 @@ void Set::debug(){
     
 }
 
-size_t Set::insert(const std::string&value){
-    Node* newNode = new Node;
-    newNode->data = value;
-    newNode->left = NULL;       // random node in mem containing value initialized
-    newNode->right = NULL;
-    Node* currNode = mRoot;
-    size_t total = 0;
-    if (mRoot == NULL){         // case 1 - empty list
-        mRoot = newNode;
-        mRoot->count = 1;
-        total++;
-    } else {
-        while (currNode != NULL){     
-            if (value < currNode->data){   // case 2 - smaller than current
-                if (currNode->left == NULL){
-                    currNode->left = newNode;
-                    newNode->count+= 1;
-                }         
-                currNode = currNode->left;
-                total += currNode->count;
-            } else if (value > currNode->data ){   // case 3 - larger than current
-            
-                if (currNode->right == NULL){
-                    currNode->right = newNode;
-                    newNode->count += 1;             
-                }
-                currNode = currNode->right; 
-                total += currNode->count;
-            }
-        }
-
+size_t insertre(const std::string&value, Node* currNode){
+    if (currNode == NULL){
+        return NULL;
     }
-    
-    return total;         
+    if (value < currNode->data){
+        if (currNode->left == NULL){
+            Node* newNode = new Node;
+            newNode->data = value;
+            newNode->left = NULL;
+            newNode->right = NULL;
+            currNode->left = newNode;
+            return 1;
+        } else {
+            insertre(value, currNode->left);
+        }
+    }
+
+    if (value > currNode->data){
+        if (currNode->right == NULL){
+            Node* newNode = new Node;
+            newNode->data = value;
+            newNode->left = NULL;
+            newNode->right = NULL;
+            currNode->right = newNode;
+            return 1;
+        } else {
+            insertre(value, currNode->right);
+        }
+    }
+    return 0;
+}
+size_t Set::insert(const std::string&value){
+        if (insertre(value, mRoot) == 1){
+            return 1;
+        } else {
+            return;
+        }
 }
 
 
