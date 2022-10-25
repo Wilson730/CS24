@@ -71,12 +71,13 @@ void Set::debug(){
 }
 
 size_t insertre(const std::string&value, Node* currNode){
+    Node* newNode = new Node;
     if (currNode == NULL){
         return 0;
     }
     if (value < currNode->data){
         if (currNode->left == NULL){
-            Node* newNode = new Node;
+
             newNode->data = value;
             newNode->left = NULL;
             newNode->right = NULL;
@@ -87,7 +88,7 @@ size_t insertre(const std::string&value, Node* currNode){
         }
     } else if (value > currNode->data){
         if (currNode->right == NULL){
-            Node* newNode = new Node;
+            // duplicate newnode?
             newNode->data = value;
             newNode->left = NULL;
             newNode->right = NULL;
@@ -113,7 +114,7 @@ size_t Set::insert(const std::string&value){
         mRoot = newNode;
         return 1;
     }
-    size_t result = insertre(value, mRoot);
+    size_t result = insertre(value, mRoot);       // mem problem
     return result;
 }
 
