@@ -72,7 +72,7 @@ void Set::debug(){
 
 size_t insertre(const std::string&value, Node* currNode){
     if (currNode == NULL){
-        return NULL;
+        return 0;
     }
     if (value < currNode->data){
         if (currNode->left == NULL){
@@ -105,7 +105,7 @@ size_t Set::insert(const std::string&value){
         if (insertre(value, mRoot) == 1){
             return 1;
         } else {
-            return;
+            return 0;
         }
 }
 
