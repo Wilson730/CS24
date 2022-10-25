@@ -110,11 +110,8 @@ size_t Set::insert(const std::string&value){
         mRoot = newNode;
         return 1;
     }
-        if (insertre(value, mRoot) == 1){
-            return 1;
-        } else {
-            return 0;
-        }
+    size_t result = insertre(value, mRoot);
+    return result;
 }
 
 
