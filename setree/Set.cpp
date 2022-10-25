@@ -72,7 +72,7 @@ void Set::debug(){
 
 size_t insertre(const std::string&value, Node* currNode){
     if (currNode == NULL){
-        Node* newNode = newNode;
+        Node* newNode = new Node;
         newNode->data = value;
         newNode->left = NULL;
         newNode->right = NULL;
