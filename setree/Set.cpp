@@ -100,7 +100,9 @@ size_t insertre(const std::string&value, Node* currNode){
         }
     }
 
-    return 1;
+    if (value == currNode->data){
+        return 0;
+    }
 }
 
 size_t Set::insert(const std::string&value){
