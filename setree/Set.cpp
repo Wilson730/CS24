@@ -73,10 +73,8 @@ void Set::debug(){
     
 }
 
-size_t insertre(const std::string&value, Node* currNode){
-    if (currNode == NULL){
-        return 0;
-    }
+int insertre(const std::string&value, Node* currNode){
+    if (currNode != NULL){
     if (value < currNode->data){
         if (currNode->left == NULL){
             Node* newNode = new Node;
@@ -86,7 +84,8 @@ size_t insertre(const std::string&value, Node* currNode){
             currNode->left = newNode;
             return 1;
         } else {
-            insertre(value, currNode->left);
+            currNode = currNode->left;
+            insertre(value, currNode);
         }
     } else if (value > currNode->data){
         if (currNode->right == NULL){
@@ -97,7 +96,8 @@ size_t insertre(const std::string&value, Node* currNode){
             currNode->right = newNode;
             return 1;
         } else {
-            insertre(value, currNode->right);
+            currNode = currNode->right;
+            insertre(value, currNode);
         }
     }
 
@@ -105,6 +105,7 @@ size_t insertre(const std::string&value, Node* currNode){
         return 0;
     }
     return 0;
+    }
 }
 
 size_t Set::insert(const std::string&value){
@@ -116,7 +117,7 @@ size_t Set::insert(const std::string&value){
         mRoot = newNode;
         return 1;
     }
-    size_t result = insertre(value, mRoot);  // what's the problem? new nodes?
+    int result = insertre(value, mRoot);  // what's the problem? new nodes?
     return result;
 }
 
