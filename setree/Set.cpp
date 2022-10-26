@@ -87,7 +87,7 @@ int insertre(const std::string&value, Node* currNode){
             if (currNode != NULL){
             insertre(value, currNode);  //  returns 1 for sure
             } else {
-                return 0;   // returns 0 meaning doesn't exist
+                return 1;   // returns 0 meaning doesn't exist
             }
         }
     } else if (value > currNode->data){
@@ -103,7 +103,7 @@ int insertre(const std::string&value, Node* currNode){
             if (currNode != NULL){
             insertre(value, currNode);  // returns 1 for sure
             } else {
-                return 0;
+                return 1;
             }
         }
     }
