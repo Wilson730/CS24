@@ -74,7 +74,6 @@ void Set::debug(){
 }
 
 int insertre(const std::string&value, Node* currNode){
-    if (currNode != NULL){
     if (value < currNode->data){
         if (currNode->left == NULL){
             Node* newNode = new Node;
@@ -85,7 +84,11 @@ int insertre(const std::string&value, Node* currNode){
             return 1;
         } else {
             currNode = currNode->left;
-            insertre(value, currNode);
+            if (currNode != NULL){
+            insertre(value, currNode);  //  returns 1 for sure
+            } else {
+                return 0;   // returns 0 meaning doesn't exist
+            }
         }
     } else if (value > currNode->data){
         if (currNode->right == NULL){
@@ -97,7 +100,11 @@ int insertre(const std::string&value, Node* currNode){
             return 1;
         } else {
             currNode = currNode->right;
-            insertre(value, currNode);
+            if (currNode != NULL){
+            insertre(value, currNode);  // returns 1 for sure
+            } else {
+                return 0;
+            }
         }
     }
 
@@ -105,7 +112,7 @@ int insertre(const std::string&value, Node* currNode){
         return 0;
     }
     
-    }
+    
     return 0;
 }
 
