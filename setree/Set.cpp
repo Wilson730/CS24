@@ -73,20 +73,11 @@ void Set::debug(){
     
 }
 
-size_t Set::insert(const std::string&value){
-    Node* currNode = mRoot;
-    
-    if (mRoot == NULL){
-        Node* newNode = new Node;
-        newNode->data = value;
-        newNode->left = NULL;
-        newNode->right = NULL;
-        mRoot = newNode;
-        return 1;
+size_t insertre(const std::string&value, Node* currNode){
+    if (currNode == NULL){
+        return 0;
     }
-   
-   while (currNode != NULL){
-       if (value < currNode->data){
+    if (value < currNode->data){
         if (currNode->left == NULL){
             Node* newNode = new Node;
             newNode->data = value;
@@ -95,7 +86,7 @@ size_t Set::insert(const std::string&value){
             currNode->left = newNode;
             return 1;
         } else {
-            currNode = currNode->left;
+            insertre(value, currNode->left);
         }
     } else if (value > currNode->data){
         if (currNode->right == NULL){
@@ -106,13 +97,29 @@ size_t Set::insert(const std::string&value){
             currNode->right = newNode;
             return 1;
         } else {
-            currNode = currNode->right;
+            insertre(value, currNode->right);
         }
     }
-    
-   }    
-   return 0;
+
+    if (value == currNode->data){
+        return 0;
+    }
+    return 0;
 }
+
+size_t Set::insert(const std::string&value){
+    if (mRoot == NULL){
+        Node* newNode = new Node;
+        newNode->data = value;
+        newNode->left = NULL;
+        newNode->right = NULL;
+        mRoot = newNode;
+        return 1;
+    }
+    size_t result = insertre(value, mRoot);  // what's the problem? new nodes?
+    return result;
+}
+
 
 const std::string& Set::lookup(size_t n) const {
   return NULL;
