@@ -86,8 +86,13 @@ size_t Set::insert(const std::string&value){
     }
 
     while (currNode != NULL){
-    if (value < currNode->data){
-        if (currNode->left == NULL){
+    if (value < currNode->data){ 
+
+        if (value == currNode->data){   // case equal
+        return 0;
+        }
+    
+        if (currNode->left == NULL){     // case smaller
             Node* newNode = new Node;
             newNode->data = value;
             newNode->left = NULL;
@@ -97,7 +102,7 @@ size_t Set::insert(const std::string&value){
         } else {
             currNode = currNode->left;
         }
-    } else if (value > currNode->data){
+    } else if (value > currNode->data){  // case bigger
         if (currNode->right == NULL){
             Node* newNode = new Node;
             newNode->data = value;
@@ -109,11 +114,8 @@ size_t Set::insert(const std::string&value){
             currNode = currNode->right;
         }
     }
-    
-    if (value == currNode->data){
-        return 0;
-    }
-    
+
+   
     }
     return 0;
 }
