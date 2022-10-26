@@ -76,22 +76,21 @@ void Set::debug(){
 
 size_t Set::insert(const std::string&value){
     Node* currNode = mRoot;
-    if (mRoot == NULL){
+    if (currNode == NULL){
         Node* newNode = new Node;
         newNode->data = value;
         newNode->left = NULL;
         newNode->right = NULL;
-        mRoot = newNode;
+        currNode = newNode;
         return 1;
     }
 
     while (currNode != NULL){
-    if (value < currNode->data){ 
-
-        if (value == currNode->data){   // case equal
+    if (value == currNode->data){   // case equal
         return 0;
-        }
-    
+        
+    } else if (value < currNode->data){ 
+
         if (currNode->left == NULL){     // case smaller
             Node* newNode = new Node;
             newNode->data = value;
