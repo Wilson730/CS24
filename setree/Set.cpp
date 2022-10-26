@@ -101,6 +101,7 @@ size_t Set::insert(const std::string&value){
             return 1;
         } else {
             currNode = currNode->left;
+            continue;
         }
     } else if (value > currNode->data){  // case bigger
         if (currNode->right == NULL){
@@ -112,6 +113,7 @@ size_t Set::insert(const std::string&value){
             return 1;
         } else {
             currNode = currNode->right;
+            continue;
         }
     }
 
