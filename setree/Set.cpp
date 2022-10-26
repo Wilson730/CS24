@@ -54,9 +54,12 @@ bool Set::contains(const std::string&value) const {
 }
 
 size_t countre(Node* currNode){
-    int currNodeCount = 0;
- 
-    return currNodeCount;
+    if (currNode == NULL){
+        return 0;
+    } else {
+        return 1 + countre(currNode->left) + countre(currNode->right);
+    }
+
 }
 
 size_t Set::count() const {
@@ -71,13 +74,12 @@ void Set::debug(){
 }
 
 size_t insertre(const std::string&value, Node* currNode){
-    Node* newNode = new Node;
     if (currNode == NULL){
         return 0;
     }
     if (value < currNode->data){
         if (currNode->left == NULL){
-
+            Node* newNode = new Node;
             newNode->data = value;
             newNode->left = NULL;
             newNode->right = NULL;
@@ -88,7 +90,7 @@ size_t insertre(const std::string&value, Node* currNode){
         }
     } else if (value > currNode->data){
         if (currNode->right == NULL){
-            // duplicate newnode?
+            Node* newNode = new Node;
             newNode->data = value;
             newNode->left = NULL;
             newNode->right = NULL;
@@ -114,7 +116,7 @@ size_t Set::insert(const std::string&value){
         mRoot = newNode;
         return 1;
     }
-    size_t result = insertre(value, mRoot);       // mem problem
+    size_t result = insertre(value, mRoot);  // what's the problem? new nodes?
     return result;
 }
 
