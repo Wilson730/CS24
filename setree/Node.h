@@ -10,6 +10,9 @@ struct Node{
     Node* right;
 };
 
-
+Node::~Node(){
+    delete left;
+    delete right;
+}
 
 #endif
