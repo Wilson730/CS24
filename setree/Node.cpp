@@ -3,3 +3,7 @@
 
 using namespace std;
 
+Node::~Node(){
+    delete left;
+    delete right;
+}
