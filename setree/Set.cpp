@@ -198,6 +198,12 @@ void checkLeaf(const std::string& value, Node* currNode, Node* prevNode){
 */
 size_t Set::remove (const std::string& value){
     size_t amountRemoved = 0;
+    if (mRoot == NULL){
+        return 0;
+    } else if (value == mRoot->data){
+        delete mRoot;
+        amountRemoved = 1;
+    }
  /*  Node* currNode = mRoot;
     Node* prevNode = NULL;
     if(!contains(value)){
