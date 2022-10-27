@@ -24,8 +24,11 @@ Set::~Set(){
 //-----------------------------------------------------------------------------------
 
 size_t Set::clear(){
-    size_t amRemoved = 0;
-    return amRemoved;
+    size_t temp = count();
+    if (mRoot == NULL) return 0;
+    else delete mRoot;
+    mRoot = NULL;
+    return temp;
 }
 
 bool Set::contains(const std::string&value) const {
@@ -156,6 +159,7 @@ void Set::print() const {
     return;
 }
 
+/*
 std::__1::string returnBiggest(const std::string& value, Node* currNode){
     while (currNode->data < value){
         if (currNode->left == NULL && currNode->right == NULL){
@@ -191,10 +195,10 @@ void checkLeaf(const std::string& value, Node* currNode, Node* prevNode){
         }
     }                                            
 }
-
+*/
 size_t Set::remove (const std::string& value){
     size_t amountRemoved = 0;
-    Node* currNode = mRoot;
+ /*  Node* currNode = mRoot;
     Node* prevNode = NULL;
     if(!contains(value)){
         return amountRemoved;
@@ -213,7 +217,7 @@ size_t Set::remove (const std::string& value){
             }
         }
     }
-    
+    */
    
     return amountRemoved;
 }
