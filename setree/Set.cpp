@@ -156,12 +156,45 @@ void Set::print() const {
     return;
 }
 
+void checkLeaf(const std::string& value, Node* currNode, Node* prevNode){
+    if (currNode->left == NULL && currNode->right == NULL){     // case 1: leaf node (w/ no children)
+        delete currNode;               
+    } 
+    if (currNode->left != NULL || currNode->right != NULL){     // case 2: non leaf node (w/ 1+ children)
+        if (currNode->left == NULL){                            // subcase 1: 1 children 164-166 checks which child is NULL
+            prevNode->right = currNode->right;
+        } else if (currNode->right == NULL){
+            prevNode->left = currNode->left;
+        } else {                                                // subcase 2: 2 children
+            while (currNode->data < value){
+
+            }
+        }              
+    }                                                 
+}
+
 size_t Set::remove (const std::string& value){
     size_t amountRemoved = 0;
     Node* currNode = mRoot;
-  
-    while (currNode->data < value){
-
+    Node* prevNode = NULL;
+    if(!contains(value)){
+        return amountRemoved;
+    } else {
+        while (currNode!= NULL){
+            if (value < currNode->data)
+            {
+                prevNode = currNode;
+                currNode = currNode->left;                  // so I need a prev node. 
+            } else if (value > currNode->data){
+                prevNode = currNode;
+                currNode = currNode->right;
+            } else if (value == currNode->data){
+                checkLeaf(value, currNode, prevNode);
+                return 1;
+            }
+        }
     }
+    
+   
     return amountRemoved;
 }
