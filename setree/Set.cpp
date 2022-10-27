@@ -156,6 +156,18 @@ void Set::print() const {
     return;
 }
 
+std::__1::string returnBiggest(const std::string& value, Node* currNode){
+    while (currNode->data < value){
+        if (currNode->left == NULL && currNode->right == NULL){
+            return currNode->data;
+        } else if (currNode->left == NULL){
+            return returnBiggest(value, currNode->right);
+        } else if (currNode->right == NULL){
+            return returnBiggest(value, currNode->left);
+        }
+    }
+    return currNode->data;
+}
 void checkLeaf(const std::string& value, Node* currNode, Node* prevNode){
     if (currNode->left == NULL && currNode->right == NULL){     // case 1: leaf node (w/ no children)
         delete currNode;               
@@ -165,12 +177,19 @@ void checkLeaf(const std::string& value, Node* currNode, Node* prevNode){
             prevNode->right = currNode->right;
         } else if (currNode->right == NULL){
             prevNode->left = currNode->left;
-        } else {                                                // subcase 2: 2 children
-            while (currNode->data < value){
-
-            }
-        }              
-    }                                                 
+        }            
+        delete currNode;
+    } else {
+        std::__1::string possibility1 = returnBiggest(value, currNode->left);
+        std::__1::string possibility2 = returnBiggest(value, currNode->right);
+        if (possibility1 < possibility2){
+            currNode->data = possibility2;
+            delete currNode;
+        } else {
+            currNode->data = possibility1;
+            delete currNode;
+        }
+    }                                            
 }
 
 size_t Set::remove (const std::string& value){
