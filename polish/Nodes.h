@@ -6,4 +6,8 @@
 // Declare your AST subclasses here.
 // Implement their member functions in Nodes.cpp.
 
+struct AST{
+    int data;
+};
+
 #endif

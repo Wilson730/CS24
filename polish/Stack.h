@@ -5,3 +5,11 @@
 // Implement its member functions in Stack.cpp.
 
 #endif
+
+class Stack{
+    private:
+    
+
+    public:
+
+};
