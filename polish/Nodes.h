@@ -6,10 +6,6 @@
 // Implement their member functions in Nodes.cpp.
 
 
-struct Node{
-    AST* data;
-    Node* next;
-};
 
 
 class Numbers: public AST{
