@@ -1,13 +1,18 @@
 #include "AST.h"
 #include "Nodes.h"
 #include <iostream>
+#include "Stack.h"
+#include <sstream>
 using namespace std;
 
 AST* AST::parse(const std::string& expression) {
-    for (int i = 0; i < expression.length(); i++){
-        char token = expression[i];
+
+    char token;
+    std::istringstream mystream(expression);
+    while (mystream>>token){
         switch(token){
             case '+':
+
                 break;
             case '-':
                 break;
@@ -19,20 +24,12 @@ AST* AST::parse(const std::string& expression) {
                 break;
             case '~':
                 break;
+            default:
+
         }
     }
+
     return nullptr;
 }
 
 
-std::string AST::prefix() const {
-
-}
-
-std::string AST::postfix() const {
-
-}
-
-double AST::value() const {
-
-}

@@ -7,3 +7,19 @@
 //   std::ostringstream stream;
 //   stream << value;
 //   return stream.str();
+
+std::string AST::prefix() const {
+
+}
+
+std::string AST::postfix() const {
+
+}
+
+double AST::value() const {
+
+}
+
+class addition: public AST{
+
+};  // continue w/ substraciton, multiplication...negate

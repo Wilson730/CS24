@@ -5,27 +5,47 @@
 // Declare your AST subclasses here.
 // Implement their member functions in Nodes.cpp.
 
-struct AST: public AST{
 
+struct Node{
+    AST* data;
+    Node* next;
 };
 
-struct addition: public AST{
 
+class Numbers: public AST{
+    double number;
+    virtual std::string prefix() const = 0;
+    virtual std::string postfix() const = 0;
+    virtual double value() const = 0;
 };
 
-struct multiplication: public AST{
-
+class addition: public AST{
+    virtual std::string prefix() const = 0;
+    virtual std::string postfix() const = 0;
+    virtual double value() const = 0;
 };
 
-struct division: public AST{
-
+class multiplication: public AST{
+    virtual std::string prefix() const = 0;
+    virtual std::string postfix() const = 0;
+    virtual double value() const = 0;
 };
 
-struct modulus: public AST{
-
+class division: public AST{
+    virtual std::string prefix() const = 0;
+    virtual std::string postfix() const = 0;
+    virtual double value() const = 0;
 };
 
-struct negate: public AST{
+class modulus: public AST{
+    virtual std::string prefix() const = 0;
+    virtual std::string postfix() const = 0;
+    virtual double value() const = 0;
+};
 
+class negate: public AST{
+    virtual std::string prefix() const = 0;
+    virtual std::string postfix() const = 0;
+    virtual double value() const = 0;
 };
 #endif
