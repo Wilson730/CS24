@@ -30,7 +30,7 @@ Stack::~Stack(){
 }
 
 
-int Stack::pop(){
+Node* Stack::pop(){
     Node* temp = NULL;
     Node* currNode = head;
     Node* prevNode = NULL;
@@ -45,6 +45,7 @@ int Stack::pop(){
     delete prevNode;
     delete currNode;
     }
+    return temp;
 }
 
 void Stack::push(AST* token){
@@ -53,7 +54,7 @@ void Stack::push(AST* token){
     Node* prevNode = NULL;
     newNode->data = token;
     newNode->next = NULL;
-    
+
     if (head == NULL){
         head = newNode;
     } else {
