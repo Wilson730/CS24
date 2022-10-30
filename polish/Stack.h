@@ -13,12 +13,12 @@ struct Node{
 
 class Stack{
     Node* head;
-    
+
     public:
     Stack();
     ~Stack();
     int pop();
-    void push(int value);
+    void push(AST* token);
 };
 
 #endif

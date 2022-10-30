@@ -47,10 +47,13 @@ int Stack::pop(){
     }
 }
 
-void Stack::push(int value){
+void Stack::push(AST* token){
     Node* newNode = new Node;
     Node* currNode = head;
     Node* prevNode = NULL;
+    newNode->data = token;
+    newNode->next = NULL;
+    
     if (head == NULL){
         head = newNode;
     } else {
