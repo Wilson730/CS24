@@ -1,18 +1,16 @@
 #include <iostream>
 #include "Stack.h"
-/*
 #include "AST.h"
 #include "Nodes.cpp"
 #include "Nodes.h"
 #include <iostream>
-#include "Stack.h"
 #include <sstream>
 #include <cmath>
 #include <cstddef>
-#include <stdexcept>*/
+#include <stdexcept>
 using namespace std;
 
-AST* AST::parse(const std::string& expression) {
+AST* parse(const std::string& expression) {
    
     std::stringstream stream(expression);
     char token;
