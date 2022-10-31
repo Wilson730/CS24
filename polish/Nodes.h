@@ -11,7 +11,7 @@
 
 
 
-
+//----------------------------------------------------------------------------------------------------------------------------------------------
 class Numbers: public AST{
     double number;
     virtual std::string prefix() const = 0;
@@ -23,13 +23,14 @@ class addiNode: public AST{
     AST* left;
     AST* right;
 
-    addiNode();
+    addiNode(AST* token1, AST* token2);
     ~addiNode();
     virtual std::string prefix() const = 0;
     virtual std::string postfix() const = 0;
     virtual double value() const = 0;
 };
 
+///----------------------------------- Focus on these 2 ^ --------------------------------------------------------------------------------------
 class multiNode: public AST{
     multiNode();
     ~multiNode();

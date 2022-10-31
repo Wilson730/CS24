@@ -14,10 +14,7 @@
 struct Node{
     AST* data;
     Node* next;   
-    Node(AST* token){
-        data = token;
-        next = NULL;
-    }        
+     
 };
 
 
@@ -28,7 +25,7 @@ class Stack{
     public:
     Stack();              // initializes linked list.        
     ~Stack();             // deletes linked list and clean up partial ASTs
-    Node* pop();          // pops the last pointer stored in the linked list on stack and returns it. 
+    AST* pop();          // pops the last pointer stored in the linked list on stack and returns it. 
     void push(AST* token);// pushes a pointer argument to the linked list on stack. 
     size_t size();        // returns Stack length
 

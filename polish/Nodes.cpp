@@ -4,6 +4,7 @@
 #include <cmath>
 #include <cstddef>
 #include <stdexcept>
+#include <sstream>
 // Implement your AST subclasses' member functions here.
 
 
@@ -14,15 +15,21 @@
 
 
 
-addiNode::addiNode(){
-
+addiNode::addiNode(AST* token1, AST* token2){
+    left = token1;
+    right = token2;
 }
 
 addiNode::~addiNode(){
     delete left;
     delete right;
 }
- // continue w/ substraciton, multiplication...negate
+
+std::string addiNode::prefix() const {
+    
+}
+
+
 
 
 

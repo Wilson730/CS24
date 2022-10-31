@@ -15,6 +15,14 @@ AST* AST::parse(const std::string& expression) {
     while (stream >> token){
         switch(token){
             case '+':
+                // stack.pop() 2 times
+                // perform the addiNode class operation
+                AST* left = stack.pop();
+                AST* right = stack.pop();
+                if (left == NULL || right == NULL){
+                    delete left, right;
+                    throw std::out_of_range("temp");
+                }
                 break;
             case '-':
                 break;
@@ -27,7 +35,8 @@ AST* AST::parse(const std::string& expression) {
             case '~':
                 break;
             default:
-            return nullptr;
+           
+
         }
     
     }
