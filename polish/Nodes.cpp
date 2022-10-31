@@ -44,21 +44,19 @@ Numbers::Numbers(char token){
     number = token;
 }
 
-Numbers::~Numbers(){
-    
-}
+
 
 
 std::string Numbers::prefix() const {
-    
+    return std::to_string(number);
 }
 
 std::string Numbers::postfix() const {
-
+    return std::to_string(number);
 }
 
 double Numbers::value() const {
-
+    return number;
 }
 
 
