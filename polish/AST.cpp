@@ -11,6 +11,7 @@ AST* AST::parse(const std::string& expression) {
     std::stringstream stream(expression);
     char token;
 
+    Stack stack;
     while (stream >> token){
         switch(token){
             case '+':
@@ -26,7 +27,7 @@ AST* AST::parse(const std::string& expression) {
             case '~':
                 break;
             default:
-            return nullptr;
+           
         }
     
     }
