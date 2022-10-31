@@ -1,7 +1,6 @@
 #include "Nodes.h"
 #include <iostream>
 #include "Stack.h"
-#include <sstream>
 #include <cmath>
 #include <cstddef>
 #include <stdexcept>

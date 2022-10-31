@@ -1,6 +1,5 @@
 #ifndef NODES_H
 #define NODES_H
-#include "AST.h"
 #include <iostream>
 #include "Stack.h"
 #include <sstream>

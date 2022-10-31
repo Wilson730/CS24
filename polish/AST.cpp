@@ -6,7 +6,7 @@
 #include <stdexcept>
 using namespace std;
 
-AST* parse(const std::string& expression) {
+AST* AST::parse(const std::string& expression) {
    
     std::stringstream stream(expression);
     char token;
@@ -26,6 +26,7 @@ AST* parse(const std::string& expression) {
             case '~':
                 break;
             default:
+            return nullptr;
         }
     
     }

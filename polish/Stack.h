@@ -1,9 +1,7 @@
 #ifndef STACK_H
 #define STACK_H
 #include "AST.h"
-#include "AST.cpp"
 #include "Nodes.h"
-#include "Nodes.cpp"
 #include <iostream>
 #include "Stack.h"
 #include <sstream>
