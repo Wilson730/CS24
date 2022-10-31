@@ -27,7 +27,7 @@ AST* AST::parse(const std::string& expression) {
             case '~':
                 break;
             default:
-           
+            return nullptr;
         }
     
     }
