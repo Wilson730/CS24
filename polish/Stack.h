@@ -2,12 +2,24 @@
 #define STACK_H
 #include "AST.h"
 #include "AST.cpp"
+#include "Nodes.h"
+#include "Nodes.cpp"
+#include <iostream>
+#include "Stack.h"
+#include <sstream>
+#include <cmath>
+#include <cstddef>
+#include <stdexcept>
 // Use this file to define your Stack type.
 // Implement its member functions in Stack.cpp.
 
 struct Node{
     AST* data;
-    Node* next;           
+    Node* next;   
+    Node(AST* token){
+        data = token;
+        next = NULL;
+    }        
 };
 
 
@@ -17,9 +29,11 @@ class Stack{
 
     public:
     Stack();              // initializes linked list.        
-    ~Stack();             // deletes linked list. 
+    ~Stack();             // deletes linked list and clean up partial ASTs
     Node* pop();          // pops the last pointer stored in the linked list on stack and returns it. 
     void push(AST* token);// pushes a pointer argument to the linked list on stack. 
+    size_t size();        // returns Stack length
+
 };
 
 #endif

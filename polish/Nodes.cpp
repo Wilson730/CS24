@@ -1,5 +1,11 @@
 #include "Nodes.h"
-
+#include "AST.h"
+#include <iostream>
+#include "Stack.h"
+#include <sstream>
+#include <cmath>
+#include <cstddef>
+#include <stdexcept>
 // Implement your AST subclasses' member functions here.
 
 
@@ -8,18 +14,18 @@
 //   stream << value;
 //   return stream.str();
 
-std::string AST::prefix() const {
+
+
+addiNode::addiNode(){
 
 }
 
-std::string AST::postfix() const {
-
+addiNode::~addiNode(){
+    delete left;
+    delete right;
 }
+ // continue w/ substraciton, multiplication...negate
 
-double AST::value() const {
 
-}
 
-class addition: public AST{
-
-};  // continue w/ substraciton, multiplication...negate
+ 

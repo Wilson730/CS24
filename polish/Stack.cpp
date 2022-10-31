@@ -1,6 +1,14 @@
 #include "Stack.h"
 #include "AST.h"
 #include "AST.cpp"
+#include "Nodes.cpp"
+#include "Nodes.h"
+#include <iostream>
+#include "Stack.h"
+#include <sstream>
+#include <cmath>
+#include <cstddef>
+#include <stdexcept>
 // Implement your Stack member functions here.
 
 // q: what functions should we have in our stack class?
@@ -34,7 +42,7 @@ Node* Stack::pop(){
     Node* temp = NULL;
     Node* currNode = head;
     Node* prevNode = NULL;
-    if (currNode == NULL){
+    if (currNode == NULL){                  // empty stack?
         throw std::out_of_range("empty");
     } else {
     while (currNode != NULL){
@@ -49,7 +57,7 @@ Node* Stack::pop(){
 }
 
 void Stack::push(AST* token){
-    Node* newNode = new Node;
+    Node* newNode = new Node(token);
     Node* currNode = head;
     Node* prevNode = NULL;
     newNode->data = token;
@@ -65,4 +73,14 @@ void Stack::push(AST* token){
         currNode = newNode;
         prevNode->next = currNode;
     }
+}
+
+size_t Stack::size(){
+    size_t count = 0;
+    Node* currNode = head;
+    while (currNode != NULL){
+        currNode = currNode->next;
+        count++;
+    }
+    return count;
 }
