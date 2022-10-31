@@ -10,21 +10,22 @@ AST* AST::parse(const std::string& expression) {
    
     std::stringstream stream(expression);
     char token;
-    AST* left;
-    AST* right;
+    std::string number;
     Stack stack;
     while (stream >> token){
         switch(token){
             case '+':
                 // stack.pop() 2 times
                 // perform the addiNode class operation
-                 left = stack.pop();
-                 right = stack.pop();
+                AST* left = stack.pop();
+                AST* right = stack.pop();
                 if (left == NULL || right == NULL){
                     delete left;
                     delete right;
                     throw std::out_of_range("temp");
                 }
+                add* addiNode = new add(left, right);
+                stack.push(addiNode);
                 break;
             case '-':
                 break;
@@ -37,7 +38,12 @@ AST* AST::parse(const std::string& expression) {
             case '~':
                 break;
             default:
-
+            if (isdigit(token)){
+                number = token;
+            }
+            Numbers* newNum = new Numbers(token);
+            stack.push(newNum);
+            return nullptr;
         }
     
     }

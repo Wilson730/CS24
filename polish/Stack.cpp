@@ -29,8 +29,10 @@ Stack::~Stack(){
     while (currNode != NULL){
         prevNode = currNode;
         currNode = currNode->next;
+        delete prevNode->data;
         delete prevNode;
     }
+    delete currNode->data;
     delete currNode;
 }
 
@@ -47,6 +49,7 @@ AST* Stack::pop(){
         currNode = currNode->next;
     }
     temp = prevNode->data;
+    delete prevNode->data;
     delete prevNode;
     delete currNode;
     }

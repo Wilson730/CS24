@@ -13,24 +13,53 @@
 //   stream << value;
 //   return stream.str();
 
+ 
 
-
-addiNode::addiNode(AST* token1, AST* token2){
+add::add(AST* token1, AST* token2) {
     left = token1;
     right = token2;
+
 }
 
-addiNode::~addiNode(){
+add::~add()  {
     delete left;
     delete right;
 }
 
-std::string addiNode::prefix() const {
+std::string add::prefix() const {
+    return "+ " + left->prefix() + ' ' + right->prefix();
+}
+
+std::string add::postfix() const {
+    return left->prefix() + ' ' + right->prefix() + " +";
+}
+
+double add::value() const{
+    return left->value() + right->value();
+};
+
+//-----------------------------------------------------------
+
+Numbers::Numbers(char token){
+    number = token;
+}
+
+Numbers::~Numbers(){
     
 }
 
 
+std::string Numbers::prefix() const {
+    
+}
 
+std::string Numbers::postfix() const {
+
+}
+
+double Numbers::value() const {
+
+}
 
 
  

@@ -14,52 +14,56 @@
 //----------------------------------------------------------------------------------------------------------------------------------------------
 class Numbers: public AST{
     double number;
-    virtual std::string prefix() const = 0;
-    virtual std::string postfix() const = 0;
-    virtual double value() const = 0;
+
+    public:
+    Numbers(char token);
+    ~Numbers();
+    std::string prefix() const;
+    std::string postfix() const;
+    double value() const;
 };
 
-class addiNode: public AST{
+class add: public AST{
     AST* left;
     AST* right;
-
-    addiNode(AST* token1, AST* token2);
-    ~addiNode();
-    virtual std::string prefix() const = 0;
-    virtual std::string postfix() const = 0;
-    virtual double value() const = 0;
+    public:
+    add(AST* token1, AST* token2);
+    ~add();
+    std::string prefix() const;
+    std::string postfix() const;
+    double value() const;
 };
 
 ///----------------------------------- Focus on these 2 ^ --------------------------------------------------------------------------------------
 class multiNode: public AST{
     multiNode();
     ~multiNode();
-    virtual std::string prefix() const = 0;
-    virtual std::string postfix() const = 0;
-    virtual double value() const = 0;
+    std::string prefix() const;
+    std::string postfix() const;
+    double value() const;
 };
 
 class diviNode: public AST{
     diviNode();
     ~diviNode();
-    virtual std::string prefix() const = 0;
-    virtual std::string postfix() const = 0;
-    virtual double value() const = 0;
+    std::string prefix() const;
+    std::string postfix() const;
+    double value() const;
 };
 
 class moduNode: public AST{
     moduNode();
     ~moduNode();
-    virtual std::string prefix() const = 0;
-    virtual std::string postfix() const = 0;
-    virtual double value() const = 0;
+    std::string prefix() const;
+    std::string postfix() const;
+    double value() const;
 };
 
 class negNode: public AST{
     negNode();
     ~negNode();
-    virtual std::string prefix() const = 0;
-    virtual std::string postfix() const = 0;
-    virtual double value() const = 0;
+    std::string prefix() const;
+    std::string postfix() const;
+    double value() const;
 };
 #endif
