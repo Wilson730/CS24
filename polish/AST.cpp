@@ -1,9 +1,5 @@
 #include <iostream>
 #include "Stack.h"
-#include "AST.h"
-#include "Nodes.cpp"
-#include "Nodes.h"
-#include <iostream>
 #include <sstream>
 #include <cmath>
 #include <cstddef>
