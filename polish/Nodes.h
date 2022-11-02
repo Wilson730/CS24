@@ -17,7 +17,6 @@ class Numbers: public AST{
 
     public:
     Numbers(char token);
-    ~Numbers();
     std::string prefix() const;
     std::string postfix() const;
     double value() const;

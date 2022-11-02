@@ -85,8 +85,8 @@ if(head == NULL){
         currNode = currNode->next;
     }
     prevNode->next = newNode;
-    newNode->next = currNode;
-    currNode->next = NULL;
+    newNode->next = currNode;      // problem is not properly setting last node->next to NULL? and it instead points to garbage value, which is why otherNode != NULL is not working. 
+                                       // otherNode = garbage value instead of NULL here. 
 } 
 
 }
@@ -179,7 +179,7 @@ while (currNode->data < value){
     count++;
 }
 while (currNode && currNode->data == value){
-    currNode = currNode->next;
+    currNode = currNode->next; 
     remove(count);
     removed++;
 }   
