@@ -10,6 +10,20 @@ Person::~Person(){
 
 }
 
+  const std::string& Person::name()  const {
+
+  }
+  Gender             Person::gender() const {
+    
+  }
+  Person*   Person::mother() {
+    return nullptr;
+  }
+  Person*   Person::father() {
+    return nullptr;
+  }
+
+
   std::set<Person*> Person::ancestors(PMod pmod){
     return std::set<Person*>();
   }
