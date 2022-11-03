@@ -11,10 +11,10 @@ Person::~Person(){
 }
 
   const std::string& Person::name()  const {
-
+    return nullptr;
   }
-  Gender             Person::gender() const {
-    
+  Gender Person::gender() const {
+    return;
   }
   Person*   Person::mother() {
     return nullptr;
