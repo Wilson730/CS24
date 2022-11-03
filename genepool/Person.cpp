@@ -14,10 +14,12 @@ Person::~Person(){
     return nullptr;
   }
   Gender Person::gender() const {
-    return;
+    Gender temp;
+    return temp;
   }
   Person*   Person::mother() {
-    return nullptr;
+    Person* temp;
+    return temp;
   }
   Person*   Person::father() {
     return nullptr;
