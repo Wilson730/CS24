@@ -13,12 +13,16 @@
 
 class Person {
   // Member Variables
-  
+  std::string name;
+  std::string gender;
+  Person* mother;
+  Person* father;
+  std::set<Person*> children;
   // Helper Functions
 
 public:
   // Constructor
-  Person();
+  Person(std::string name, std::string gender, Person* mother, Person* father, std::set<Person*> children);
   // Destructor?
   ~Person();
   // Required Getter Functions

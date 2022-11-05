@@ -1,7 +1,12 @@
 #include "Person.h"
 
 // Person Member Functions
-Person::Person(){
+Person::Person(std::string name, std::string gender, Person* mother, Person* father, std::set<Person*> children){
+    name = name;
+    gender = gender;
+    mother = mother;
+    father = father;
+    children = children;
 
 }
 
@@ -11,7 +16,7 @@ Person::~Person(){
 }
 
   const std::string& Person::name()  const {
-    return nullptr;
+    
   }
   Gender Person::gender() const {
     Gender temp;
@@ -26,7 +31,7 @@ Person::~Person(){
   }
 
 
-  std::set<Person*> Person::ancestors(PMod pmod){
+  std::set<Person*> Person::ancestors(PMod pmod){                        // mostly copy and paste
     return std::set<Person*>();
   }
   std::set<Person*> Person::aunts(PMod pmod, SMod smod){
