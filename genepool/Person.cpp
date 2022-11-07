@@ -70,7 +70,12 @@ Person::Person(string n, Gender g, Person* m, Person* f){
     return std::set<Person*>();
   }
   std::set<Person*> Person::brothers(PMod pmod, SMod smod){
-    return std::set<Person*>();
+    std::set<Person*> sibs = siblings(PMod::ANY, SMod::ANY);
+    std::set<Person*> bros;
+    for (auto itr = sibs.begin(); itr != sibs.end(); ++itr){
+        if ((*itr)->gender() == Gender::MALE) bros.insert({*itr});
+    }
+    return bros;
   }
   
   std::set<Person*> Person::cousins(PMod pmod, SMod smod){
@@ -106,15 +111,36 @@ Person::Person(string n, Gender g, Person* m, Person* f){
   }
  
   std::set<Person*> Person::siblings(PMod pmod, SMod smod){
-    std::set<Person*> parnts = parents(pmod);
-    std::set<Person*> sibs;
-    for (auto itr = parnts.begin(); itr != parnts.end(); ++itr){
-        sibs.merge((*itr)->children());
+    std::set<Person*> parnts = parents(pmod); // mum, pop, or both
+    std::set<Person*> prntchilds;
+    for (auto itr1 = parnts.begin(); itr1 != parnts.end(); ++itr1){
+        prntchilds.merge((*itr1)->children());   // stores children of parent set
+    }
+
+    std::set<Person*> sibs;                // ^ access their children
+    for (auto itr = prntchilds.begin(); itr != prntchilds.end(); ++itr){
+        switch (smod){
+            case SMod::FULL:
+            if (((*itr)->moth->name() == this->moth->name() ) && ((*itr)->fath->name() == this->fath->name())) sibs.insert(*itr);
+            break;
+
+            case SMod::HALF:
+            if (((*itr)->moth->name() == this->moth->name() ) || ((*itr)->fath->name() == this->fath->name())) sibs.insert(*itr);
+            break;
+            default:
+            sibs.insert(*itr);
+        }
     }
     return sibs;
   }
+
   std::set<Person*> Person::sisters(PMod pmod, SMod smod){
-    return std::set<Person*>();
+    std::set<Person*> sibs = siblings(PMod::ANY, SMod::ANY);
+    std::set<Person*> siss;
+    for (auto itr = sibs.begin(); itr != sibs.end(); ++itr){
+        if ((*itr)->gender() == Gender::FEMALE) siss.insert({*itr});
+    }
+    return siss;
   }
 
   std::set<Person*> Person::uncles(PMod pmod, SMod smod){
