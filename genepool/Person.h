@@ -8,7 +8,7 @@
 // It has many member functions that perform relationship queries.
 // Add any member variables you need to support this.
 // Implement the member functions in Person.cpp.
-
+using namespace std;
 class Person {
   // Member Variables
   string nam;
