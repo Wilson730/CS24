@@ -8,6 +8,8 @@ Person::Person(string n, Gender g, Person* m, Person* f){
     gend = g;
     moth = m;
     fath = f;
+    if (moth != nullptr) moth->childs.insert({this});
+    if (fath != nullptr) fath->childs.insert({this});
 }
 
   const std::string& Person::name() const {
@@ -24,8 +26,19 @@ Person::Person(string n, Gender g, Person* m, Person* f){
   }
 
 
- 
+  std::set<Person*> Person::parents(PMod pmod){
+    std::set<Person*> parents;
+    if (pmod == PMod::MATERNAL && moth != nullptr)parents.insert({moth});
+    if (pmod == PMod::PATERNAL && fath != nullptr) parents.insert({fath});
+    if (pmod == PMod::ANY){
+        if (moth!= nullptr) parents.insert({moth});
+        if (fath!= nullptr) parents.insert({fath});
+    }
+    
+    return parents;
+  }
 
+//-------------------------------------------------------unfinished----------------------------------------------------------------------------------
 
   std::set<Person*> Person::ancestors(PMod pmod){                        // mostly copy and paste
     std::set<Person*> ancestors;
@@ -74,17 +87,7 @@ Person::Person(string n, Gender g, Person* m, Person* f){
   std::set<Person*> Person::nieces(PMod pmod, SMod smod){
     return std::set<Person*>();
   }
-  std::set<Person*> Person::parents(PMod pmod){
-    std::set<Person*> parents;
-    if (pmod == PMod::MATERNAL && moth != nullptr)parents.insert({moth});
-    if (pmod == PMod::PATERNAL && fath != nullptr) parents.insert({fath});
-    if (pmod == PMod::ANY){
-        if (moth!= nullptr) parents.insert({moth});
-        if (fath!= nullptr) parents.insert({fath});
-    }
-    
-    return parents;
-  }
+ 
   std::set<Person*> Person::siblings(PMod pmod, SMod smod){
     return std::set<Person*>();
   }
