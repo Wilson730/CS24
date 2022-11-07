@@ -115,11 +115,21 @@ Person::Person(string n, Gender g, Person* m, Person* f){
     return childrenchildren;
   }
   std::set<Person*> Person::granddaughters(){
-    return std::set<Person*>();
+    auto grndchldrn = grandchildren();
+    std::set<Person*> female1;
+    for (auto itr = grndchldrn.begin(); itr != grndchldrn.end(); ++itr){
+        if ((*itr)->gender() == Gender::FEMALE) female1.insert(*itr);
+    }
+    return female1;
   }
  
   std::set<Person*> Person::grandsons(){
-    return std::set<Person*>();
+    auto grndchldrn = grandchildren();
+    std::set<Person*> male1;
+    for (auto itr = grndchldrn.begin(); itr != grndchldrn.end(); ++itr){
+        if ((*itr)->gender() == Gender::MALE) male1.insert(*itr);
+    }
+    return male1;
   }
   std::set<Person*> Person::nephews(PMod pmod, SMod smod){
     return std::set<Person*>();
