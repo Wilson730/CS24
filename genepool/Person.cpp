@@ -84,28 +84,8 @@ Person::Person(string n, Gender g, Person* m, Person* f){
         if ((*itr)->fath != nullptr) grndparnts.insert((*itr)->fath);
     }
     return grndparnts;
-  }
-//-------------------------------------------------------unfinished----------------------------------------------------------------------------------
-
-  std::set<Person*> Person::ancestors(PMod pmod){                        // mostly copy and paste
-    std::set<Person*> ancestors;
-   
-    return std::set<Person*>();
-  }
-  std::set<Person*> Person::aunts(PMod pmod, SMod smod){
-   // std::set<Person*> auntsisters = this->moth->sisters(pmod, smod);
-
-    return std::set<Person*>();
-  }
+  } 
   
-  
-  std::set<Person*> Person::cousins(PMod pmod, SMod smod){
-    return std::set<Person*>();
-  }
- 
-  std::set<Person*> Person::descendants(){
-    return std::set<Person*>();
-  }
   std::set<Person*> Person::grandchildren(){
     std::set<Person*> childrenchildren;
     auto tempchildren = children();
@@ -131,6 +111,28 @@ Person::Person(string n, Gender g, Person* m, Person* f){
     }
     return male1;
   }
+//-------------------------------------------------------unfinished----------------------------------------------------------------------------------
+
+  std::set<Person*> Person::ancestors(PMod pmod){                        // mostly copy and paste
+    std::set<Person*> ancestors;
+   
+    return std::set<Person*>();
+  }
+  std::set<Person*> Person::aunts(PMod pmod, SMod smod){
+   // std::set<Person*> auntsisters = this->moth->sisters(pmod, smod);
+
+    return std::set<Person*>();
+  }
+  
+  
+  std::set<Person*> Person::cousins(PMod pmod, SMod smod){
+    return std::set<Person*>();
+  }
+ 
+  std::set<Person*> Person::descendants(){
+    return std::set<Person*>();
+  }
+ 
   std::set<Person*> Person::nephews(PMod pmod, SMod smod){
     return std::set<Person*>();
   }
@@ -151,7 +153,7 @@ Person::Person(string n, Gender g, Person* m, Person* f){
         switch (smod){
             
             case SMod::FULL:
-            if (((*itr)->moth->name() == this->moth->name()) & ((*itr)->fath->name() == this->fath->name())) sibs.insert(*itr);
+            if (((*itr)->moth->name() == this->moth->name()) && ((*itr)->fath->name() == this->fath->name())) sibs.insert(*itr);
                            // ^ checks whether both of our parents have same names
             break;          
             
