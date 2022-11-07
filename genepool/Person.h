@@ -2,7 +2,6 @@
 #define PERSON_H
 
 #include "Enums.h"
-#include "Genepool.h"
 #include <set>
 #include <string>
 // This is the Person class you need to implement.
