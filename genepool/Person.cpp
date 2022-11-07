@@ -161,9 +161,12 @@ Person::Person(string n, Gender g, Person* m, Person* f){
             if ((((*itr)->moth->name() == this->moth->name()) && ((*itr)->fath->name() != this->fath->name())) || (((*itr)->fath->name() == this->fath->name()) && ((*itr)->moth->name() != this->moth->name()))) sibs.insert(*itr);
             break;         // ^ checks if same mom but diff dad, or same dad but diff mom
             
-            default:
+            case SMod::ANY:
             sibs.insert(*itr);
-            
+            break;
+
+            default:
+            break;
         }
         }
     }
