@@ -67,6 +67,8 @@ Person::Person(string n, Gender g, Person* m, Person* f){
     return std::set<Person*>();
   }
   std::set<Person*> Person::aunts(PMod pmod, SMod smod){
+   // std::set<Person*> auntsisters = this->moth->sisters(pmod, smod);
+
     return std::set<Person*>();
   }
   std::set<Person*> Person::brothers(PMod pmod, SMod smod){
@@ -120,22 +122,20 @@ Person::Person(string n, Gender g, Person* m, Person* f){
     std::set<Person*> sibs;                // ^ access their children
     for (auto itr = prntchilds.begin(); itr != prntchilds.end(); ++itr){
         if ((*itr)->name() != this->name()){
-        switch (smod){
+            if (smod == SMod::FULL){
             
-            case SMod::FULL:
-            if (((*itr)->moth->name() == this->moth->name() ) && ((*itr)->fath->name() == this->fath->name())) sibs.insert(*itr);
+            if (((*itr)->moth->name() == this->moth->name()) & ((*itr)->fath->name() == this->fath->name())) sibs.insert(*itr);
                            // ^ checks whether both of our parents have same names
-            break;          
-            
-            case SMod::HALF:
+            }
+            if (smod == SMod::HALF){
             if ((((*itr)->moth->name() == this->moth->name()) && ((*itr)->fath->name() != this->fath->name())) || (((*itr)->fath->name() == this->fath->name()) && ((*itr)->moth->name() != this->moth->name()))) sibs.insert(*itr);
-            break;         // ^ checks if same mom but diff dad, or same dad but diff mom
-            
-            default:
+                   // ^ checks if same mom but diff dad, or same dad but diff mom
+            }
+            if (smod == SMod::ANY){
             sibs.insert(*itr);
-            
+            }
         }
-        }
+        
     }
     return sibs;
   }
@@ -150,5 +150,6 @@ Person::Person(string n, Gender g, Person* m, Person* f){
   }
 
   std::set<Person*> Person::uncles(PMod pmod, SMod smod){
+
     return std::set<Person*>();
   }
