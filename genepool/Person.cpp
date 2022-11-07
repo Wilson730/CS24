@@ -93,7 +93,13 @@ Person::Person(string n, Gender g, Person* m, Person* f){
     return std::set<Person*>();
   }
   std::set<Person*> Person::grandparents(PMod pmod){
-    return std::set<Person*>();
+    std::set<Person*> parnts  = parents(pmod);
+    std::set<Person*> grndparnts;
+    for (auto itr = parnts.begin(); itr != parnts.end(); ++itr){
+        if ((*itr)->moth == nullptr) grndparnts.insert(*itr);
+        if ((*itr)->fath == nullptr) grndparnts.insert(*itr);
+    }
+    return grndparnts;
   }
   std::set<Person*> Person::grandsons(){
     return std::set<Person*>();
@@ -114,14 +120,12 @@ Person::Person(string n, Gender g, Person* m, Person* f){
 
     std::set<Person*> sibs;                // ^ access their children
     for (auto itr = prntchilds.begin(); itr != prntchilds.end(); ++itr){
-        if (((*itr)->name() != this->name())){
+        if (((*itr)->name() != this->name()) && ((*itr)->moth != nullptr && (*itr)->fath != nullptr)){
         switch (smod){
             
             case SMod::FULL:
-            if (((*itr)->moth != nullptr && (*itr)->fath != nullptr)){
             if (((*itr)->moth->name() == this->moth->name()) & ((*itr)->fath->name() == this->fath->name())) sibs.insert(*itr);
                            // ^ checks whether both of our parents have same names
-            }
             break;          
             
             case SMod::HALF:
@@ -136,7 +140,6 @@ Person::Person(string n, Gender g, Person* m, Person* f){
     }
     return sibs;
   }
-
 std::set<Person*> Person::brothers(PMod pmod, SMod smod){
     std::set<Person*> sibs = siblings(pmod, smod);
     std::set<Person*> bros;
@@ -145,7 +148,6 @@ std::set<Person*> Person::brothers(PMod pmod, SMod smod){
     }
     return bros;
   }
-  
   std::set<Person*> Person::sisters(PMod pmod, SMod smod){
     std::set<Person*> sibs = siblings(pmod, smod);
     std::set<Person*> siss;
