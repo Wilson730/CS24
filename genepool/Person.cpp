@@ -71,14 +71,7 @@ Person::Person(string n, Gender g, Person* m, Person* f){
 
     return std::set<Person*>();
   }
-  std::set<Person*> Person::brothers(PMod pmod, SMod smod){
-    std::set<Person*> sibs = siblings(pmod, smod);
-    std::set<Person*> bros;
-    for (auto itr = sibs.begin(); itr != sibs.end(); ++itr){
-        if ((*itr)->gender() == Gender::MALE) bros.insert(*itr);
-    }
-    return bros;
-  }
+  
   
   std::set<Person*> Person::cousins(PMod pmod, SMod smod){
     return std::set<Person*>();
@@ -142,6 +135,15 @@ Person::Person(string n, Gender g, Person* m, Person* f){
     return sibs;
   }
 
+std::set<Person*> Person::brothers(PMod pmod, SMod smod){
+    std::set<Person*> sibs = siblings(pmod, smod);
+    std::set<Person*> bros;
+    for (auto itr = sibs.begin(); itr != sibs.end(); ++itr){
+        if ((*itr)->gender() == Gender::MALE) bros.insert(*itr);
+    }
+    return bros;
+  }
+  
   std::set<Person*> Person::sisters(PMod pmod, SMod smod){
     std::set<Person*> sibs = siblings(pmod, smod);
     std::set<Person*> siss;
