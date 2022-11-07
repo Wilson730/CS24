@@ -120,12 +120,12 @@ Person::Person(string n, Gender g, Person* m, Person* f){
     std::set<Person*> sibs;                // ^ access their children
     for (auto itr = prntchilds.begin(); itr != prntchilds.end(); ++itr){
         switch (smod){
+            /*
             case SMod::FULL:
-            if (((*itr)->moth != nullptr) && ((*itr)->fath != nullptr)){
             if (((*itr)->moth->name() == this->moth->name() ) && ((*itr)->fath->name() == this->fath->name())) sibs.insert(*itr);
-            }
+            
             break;         // ^ if current sibling's mom has same name as my mom and they have hte same father as me. insert this person* into sibs
-
+            */
             case SMod::HALF:
             if (((*itr)->moth->name() == this->moth->name() ) || ((*itr)->fath->name() == this->fath->name())) sibs.insert(*itr);
             break;
