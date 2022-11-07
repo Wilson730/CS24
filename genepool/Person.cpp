@@ -40,6 +40,15 @@ Person::Person(string n, Gender g, Person* m, Person* f){
 
   std::set<Person*> Person::children(){
     return childs;
+  } 
+  
+  std::set<Person*> Person::daughters(){
+    std::set<Person*> childs = children();
+    std::set<Person*> femalechilds;
+    for (auto itr = childs.begin(); itr != childs.end(); ++itr){
+        if ((*itr)->gender() == Gender::FEMALE) femalechilds.insert((*itr));
+    }
+    return femalechilds;
   }
 //-------------------------------------------------------unfinished----------------------------------------------------------------------------------
 
@@ -58,14 +67,7 @@ Person::Person(string n, Gender g, Person* m, Person* f){
   std::set<Person*> Person::cousins(PMod pmod, SMod smod){
     return std::set<Person*>();
   }
-  std::set<Person*> Person::daughters(){
-    std::set<Person*> childs = children();
-    std::set<Person*> femalechilds;
-    for (auto itr = childs.begin(); itr != childs.end(); ++itr){
-        if ((*itr)->gender() == Gender::FEMALE) femalechilds.insert((*itr));
-    }
-    return femalechilds;
-  }
+ 
   std::set<Person*> Person::descendants(){
     return std::set<Person*>();
   }
@@ -101,7 +103,12 @@ Person::Person(string n, Gender g, Person* m, Person* f){
     return std::set<Person*>();
   }
   std::set<Person*> Person::sons(){
-    return std::set<Person*>();
+    std::set<Person*> childs = children();
+    std::set<Person*> malechilds;
+    for (auto itr = childs.begin(); itr != childs.end(); ++itr){
+        if ((*itr)->gender() == Gender::MALE) malechilds.insert((*itr));
+    }
+    return malechilds;
   }
   std::set<Person*> Person::uncles(PMod pmod, SMod smod){
     return std::set<Person*>();
