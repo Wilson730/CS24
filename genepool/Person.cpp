@@ -52,7 +52,7 @@ Person::Person(string n, Gender g, Person* m, Person* f){
     return std::set<Person*>();
   }
   std::set<Person*> Person::children(){
-    return std::set<Person*>();
+    return childs;
   }
   std::set<Person*> Person::cousins(PMod pmod, SMod smod){
     return std::set<Person*>();
