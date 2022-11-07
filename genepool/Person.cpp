@@ -106,8 +106,8 @@ Person::Person(string n, Gender g, Person* m, Person* f){
     auto parnts  = parents(pmod);
     std::set<Person*> grndparnts;
     for (auto itr = parnts.begin(); itr != parnts.end(); ++itr){
-        if ((*itr)->moth != nullptr) grndparnts.insert(*itr);
-        if ((*itr)->fath != nullptr) grndparnts.insert(*itr);
+        if ((*itr)->moth != nullptr) grndparnts.insert((*itr)->moth);
+        if ((*itr)->fath != nullptr) grndparnts.insert((*itr)->fath);
     }
     return grndparnts;
   }
