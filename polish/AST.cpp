@@ -8,7 +8,7 @@ using namespace std;
 
 AST* AST::parse(const std::string& expression) {
    
-    std::stringstream stream(expression);
+    stringstream stream(expression);
     char token;
     std::string number;
     Stack stack;

@@ -2,10 +2,9 @@
 #define PERSON_H
 
 #include "Enums.h"
-
+#include "Genepool.h"
 #include <set>
 #include <string>
-
 // This is the Person class you need to implement.
 // It has many member functions that perform relationship queries.
 // Add any member variables you need to support this.
@@ -13,18 +12,16 @@
 
 class Person {
   // Member Variables
-  std::string name;
-  std::string gender;
-  Person* mother;
-  Person* father;
+  string nam;
+  Gender gend;
+  Person* moth;
+  Person* fath;
   std::set<Person*> children;
-  // Helper Functions
 
 public:
   // Constructor
-  Person(std::string name, std::string gender, Person* mother, Person* father, std::set<Person*> children);
-  // Destructor?
-  ~Person();
+  Person(string n, Gender g, Person* m, Person* f);
+
   // Required Getter Functions
   const std::string& name()   const;
   Gender             gender() const;

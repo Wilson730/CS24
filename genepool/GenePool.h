@@ -4,6 +4,7 @@
 #include "Person.h"
 
 #include <istream>
+#include <sstream>
 #include <string>
 #include <map>
 
@@ -13,7 +14,7 @@
 
 class GenePool {
   // Member Variables
-  std::map<std::string, Person*> pMap;       
+  std::map<std::string, Person*> people;       
   // Helper Functions
 
 public:

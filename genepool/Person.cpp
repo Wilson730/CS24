@@ -1,34 +1,30 @@
 #include "Person.h"
 
+using namespace std;
 // Person Member Functions
-Person::Person(std::string name, std::string gender, Person* mother, Person* father, std::set<Person*> children){
-    name = name;
-    gender = gender;
-    mother = mother;
-    father = father;
-    children = children;
 
+Person::Person(string n, Gender g, Person* m, Person* f){
+    nam = n;
+    gend = g;
+    moth = m;
+    fath = f;
 }
 
-Person::~Person(){
-
-
-}
-
-  const std::string& Person::name()  const {
-    
+  const std::string& Person::name() const {
+    return nam;
   }
   Gender Person::gender() const {
-    Gender temp;
-    return temp;
+    return gend;
   }
-  Person*   Person::mother() {
-    Person* temp;
-    return temp;
+  Person*  Person::mother() {
+    return moth;
   }
-  Person*   Person::father() {
-    return nullptr;
+  Person*  Person::father() {
+    return fath;
   }
+
+
+ 
 
 
   std::set<Person*> Person::ancestors(PMod pmod){                        // mostly copy and paste
