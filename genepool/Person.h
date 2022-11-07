@@ -15,7 +15,7 @@ class Person {
   Gender gend;
   Person* moth;
   Person* fath;
-  std::set<Person*> children;
+  std::set<Person*> childs;
 
 public:
   // Constructor
