@@ -76,8 +76,13 @@ Person::Person(string n, Gender g, Person* m, Person* f){
   }
   std::set<Person*> Person::parents(PMod pmod){
     std::set<Person*> parents;
-    parents.insert({moth});
-    parents.insert({fath});
+    if (pmod == PMod::MATERNAL && moth != nullptr)parents.insert({moth});
+    if (pmod == PMod::PATERNAL && fath != nullptr) parents.insert({fath});
+    if (pmod == PMod::ANY){
+        if (moth!= nullptr) parents.insert({moth});
+        if (fath!= nullptr) parents.insert({fath});
+    }
+    
     return parents;
   }
   std::set<Person*> Person::siblings(PMod pmod, SMod smod){
