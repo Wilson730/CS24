@@ -30,6 +30,7 @@ public:
   // Required Relationship Functions
   std::set<Person*> ancestors(PMod pmod = PMod::ANY);
   std::set<Person*> aunts(PMod pmod = PMod::ANY, SMod smod = SMod::ANY);
+  std::set<Person*> brothers(PMod pmod = PMod::ANY, SMod smod = SMod::ANY);
   std::set<Person*> children();
   std::set<Person*> cousins(PMod pmod = PMod::ANY, SMod smod = SMod::ANY);
   std::set<Person*> daughters();
@@ -44,9 +45,7 @@ public:
   std::set<Person*> nieces(PMod pmod = PMod::ANY, SMod smod = SMod::ANY);
   std::set<Person*> parents(PMod pmod = PMod::ANY);
   std::set<Person*> siblings(PMod pmod = PMod::ANY, SMod smod = SMod::ANY);
-  std::set<Person*> sisters(PMod pmod = PMod::ANY, SMod smod = SMod::ANY); 
-   std::set<Person*> brothers(PMod pmod = PMod::ANY, SMod smod = SMod::ANY);
-
+  std::set<Person*> sisters(PMod pmod = PMod::ANY, SMod smod = SMod::ANY);
   std::set<Person*> sons();
   std::set<Person*> uncles(PMod pmod = PMod::ANY, SMod smod = SMod::ANY);
 
