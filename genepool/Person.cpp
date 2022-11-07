@@ -87,17 +87,27 @@ Person::Person(string n, Gender g, Person* m, Person* f){
     return std::set<Person*>();
   }
   std::set<Person*> Person::grandfathers(PMod pmod){
-    return std::set<Person*>();
+     auto grndfthrs = grandparents(pmod);
+    std::set<Person*> grndfthrs1;
+    for (auto itr = grndfthrs.begin(); itr != grndfthrs.end(); ++itr){
+        if ((*itr)->gender() == Gender::FEMALE) grndfthrs1.insert(*itr);
+    }
+    return grndfthrs1;
   }
   std::set<Person*> Person::grandmothers(PMod pmod){
-    return std::set<Person*>();
+    auto grndmthrs = grandparents(pmod);
+    std::set<Person*> grndmthrs1;
+    for (auto itr = grndmthrs.begin(); itr != grndmthrs.end(); ++itr){
+        if ((*itr)->gender() == Gender::FEMALE) grndmthrs1.insert(*itr);
+    }
+    return grndmthrs1;
   }
   std::set<Person*> Person::grandparents(PMod pmod){
-    std::set<Person*> parnts  = parents(pmod);
+    auto parnts  = parents(pmod);
     std::set<Person*> grndparnts;
     for (auto itr = parnts.begin(); itr != parnts.end(); ++itr){
-        if ((*itr)->moth == nullptr) grndparnts.insert(*itr);
-        if ((*itr)->fath == nullptr) grndparnts.insert(*itr);
+        if ((*itr)->moth != nullptr) grndparnts.insert(*itr);
+        if ((*itr)->fath != nullptr) grndparnts.insert(*itr);
     }
     return grndparnts;
   }
