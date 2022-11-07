@@ -38,6 +38,9 @@ Person::Person(string n, Gender g, Person* m, Person* f){
     return parents;
   }
 
+  std::set<Person*> Person::children(){
+    return childs;
+  }
 //-------------------------------------------------------unfinished----------------------------------------------------------------------------------
 
   std::set<Person*> Person::ancestors(PMod pmod){                        // mostly copy and paste
@@ -51,14 +54,17 @@ Person::Person(string n, Gender g, Person* m, Person* f){
   std::set<Person*> Person::brothers(PMod pmod, SMod smod){
     return std::set<Person*>();
   }
-  std::set<Person*> Person::children(){
-    return childs;
-  }
+  
   std::set<Person*> Person::cousins(PMod pmod, SMod smod){
     return std::set<Person*>();
   }
   std::set<Person*> Person::daughters(){
-    return std::set<Person*>();
+    std::set<Person*> childs = children();
+    std::set<Person*> femalechilds;
+    for (auto itr = childs.begin(); itr != childs.end(); ++itr){
+        if ((*itr)->gender() == Gender::FEMALE) femalechilds.insert((*itr));
+    }
+    return femalechilds;
   }
   std::set<Person*> Person::descendants(){
     return std::set<Person*>();
