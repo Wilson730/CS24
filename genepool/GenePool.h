@@ -7,7 +7,7 @@
 #include <sstream>
 #include <string>
 #include <map>
-
+using namespace std;
 // This is the database class you need to implement.
 // It stores a collection of people and supports lookup by name.
 // It reads people from a TSV-like file in the constructor.
