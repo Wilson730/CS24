@@ -28,6 +28,8 @@ Person::Person(string n, Gender g, Person* m, Person* f){
 
 
   std::set<Person*> Person::ancestors(PMod pmod){                        // mostly copy and paste
+    std::set<Person*> ancestors;
+   
     return std::set<Person*>();
   }
   std::set<Person*> Person::aunts(PMod pmod, SMod smod){
@@ -73,7 +75,10 @@ Person::Person(string n, Gender g, Person* m, Person* f){
     return std::set<Person*>();
   }
   std::set<Person*> Person::parents(PMod pmod){
-    return std::set<Person*>();
+    std::set<Person*> parents;
+    parents.insert({moth});
+    parents.insert({fath});
+    return parents;
   }
   std::set<Person*> Person::siblings(PMod pmod, SMod smod){
     return std::set<Person*>();
