@@ -73,7 +73,7 @@ Person::Person(string n, Gender g, Person* m, Person* f){
     std::set<Person*> sibs = siblings(pmod, smod);
     std::set<Person*> bros;
     for (auto itr = sibs.begin(); itr != sibs.end(); ++itr){
-        if ((*itr)->gender() == Gender::MALE) bros.insert({*itr});
+        if ((*itr)->gender() == Gender::MALE) bros.insert(*itr);
     }
     return bros;
   }
@@ -111,11 +111,11 @@ Person::Person(string n, Gender g, Person* m, Person* f){
   }
  
   std::set<Person*> Person::siblings(PMod pmod, SMod smod){
-    std::set<Person*> parnts = parents(pmod); // mum, pop, or both
+    auto parnts = parents(pmod); // mum, pop, or both
     std::set<Person*> prntchilds;
     for (auto itr1 = parnts.begin(); itr1 != parnts.end(); ++itr1){
         prntchilds.merge((*itr1)->children());   // stores children of parent set
-    } // ummm how about duplicates...
+    } //  how about duplicates...
 
     std::set<Person*> sibs;                // ^ access their children
     for (auto itr = prntchilds.begin(); itr != prntchilds.end(); ++itr){
@@ -139,7 +139,7 @@ Person::Person(string n, Gender g, Person* m, Person* f){
     std::set<Person*> sibs = siblings(pmod, smod);
     std::set<Person*> siss;
     for (auto itr = sibs.begin(); itr != sibs.end(); ++itr){
-        if ((*itr)->gender() == Gender::FEMALE) siss.insert({*itr});
+        if ((*itr)->gender() == Gender::FEMALE) siss.insert(*itr);
     }
     return siss;
   }
