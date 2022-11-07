@@ -149,22 +149,22 @@ Person::Person(string n, Gender g, Person* m, Person* f){
 
     std::set<Person*> sibs;                // ^ access their children
     for (auto itr = prntchilds.begin(); itr != prntchilds.end(); ++itr){
-        if (((*itr)->name() != this->name()) && ((*itr)->moth != nullptr && (*itr)->fath != nullptr)){
+        if (((*itr)->name() != this->name()) && (((*itr)->moth != nullptr) && ((*itr)->fath != nullptr))){
         switch (smod){
-            /*
-            case SMod::FULL:
-            if (((*itr)->moth->name() == this->moth->name()) && ((*itr)->fath->name() == this->fath->name())) sibs.insert(*itr);
-                           // ^ checks whether both of our parents have same names
-            break;          
-            */
-            case SMod::HALF:
-            if ((((*itr)->moth->name() == this->moth->name()) && ((*itr)->fath->name() != this->fath->name())) || (((*itr)->fath->name() == this->fath->name()) && ((*itr)->moth->name() != this->moth->name()))) sibs.insert(*itr);
-            break;         // ^ checks if same mom but diff dad, or same dad but diff mom
             
             case SMod::ANY:
             sibs.insert(*itr);
             break;
 
+            case SMod::HALF:
+            if ((((*itr)->moth->name() == this->moth->name()) && ((*itr)->fath->name() != this->fath->name())) || (((*itr)->fath->name() == this->fath->name()) && ((*itr)->moth->name() != this->moth->name()))) sibs.insert(*itr);
+            break;         // ^ checks if same mom but diff dad, or same dad but diff mom
+            
+            case SMod::FULL:
+            if (((*itr)->moth->name() == this->moth->name()) && ((*itr)->fath->name() == this->fath->name())) sibs.insert(*itr);
+                                 // ^ checks whether both of our parents have same names
+            break;          
+                        
             default:
             break;
         }
