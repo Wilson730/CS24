@@ -90,7 +90,7 @@ Person::Person(string n, Gender g, Person* m, Person* f){
      auto grndfthrs = grandparents(pmod);
     std::set<Person*> grndfthrs1;
     for (auto itr = grndfthrs.begin(); itr != grndfthrs.end(); ++itr){
-        if ((*itr)->gender() == Gender::FEMALE) grndfthrs1.insert(*itr);
+        if ((*itr)->gender() == Gender::MALE) grndfthrs1.insert(*itr);
     }
     return grndfthrs1;
   }
