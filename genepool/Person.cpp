@@ -177,10 +177,16 @@ std::set<Person*> Person::brothers(PMod pmod, SMod smod){
         result.insert(parent);            // insert 
     }
     return result;
-  }
-//-------------------------------------------------------unfinished----------------------------------------------------------------------------------
-
- 
+  }  
+  
+  std::set<Person*> Person::uncles(PMod pmod, SMod smod){
+    std::set<Person*> result;
+    for (Person* parent: parents(pmod)){
+        result.merge(parent->brothers(PMod::ANY, smod));
+    } 
+    return result;
+  } 
+  
   std::set<Person*> Person::aunts(PMod pmod, SMod smod){
     std::set<Person*> result;
     for (Person* parent: parents(pmod)){
@@ -189,28 +195,39 @@ std::set<Person*> Person::brothers(PMod pmod, SMod smod){
     return result;
   }
   
+//-------------------------------------------------------unfinished----------------------------------------------------------------------------------
+
+ 
+ 
   
   std::set<Person*> Person::cousins(PMod pmod, SMod smod){
     return std::set<Person*>();
   }
  
   std::set<Person*> Person::descendants(){
-    return std::set<Person*>();
+    std::set<Person*> result;
+    for (Person* child : children()){
+        result.merge(child->descendants());
+        result.insert(child);
+    }
+    return result;
   }
  
   std::set<Person*> Person::nephews(PMod pmod, SMod smod){
-    return std::set<Person*>();
+    std::set<Person*> result;
+    for (Person* sibling : siblings(pmod, smod)){
+        result.merge(sibling->sons());
+    }
+    return result;
   }
   std::set<Person*> Person::nieces(PMod pmod, SMod smod){
-    return std::set<Person*>();
+     std::set<Person*> result;
+    for (Person* sibling : siblings(pmod, smod)){
+        result.merge(sibling->daughters());
+    }
+    return result;
   }
  
  
 
-  std::set<Person*> Person::uncles(PMod pmod, SMod smod){
-    std::set<Person*> result;
-    for (Person* parent: parents(pmod)){
-        result.merge(parent->brothers(PMod::ANY, smod));
-    } 
-    return result;
-  }
+
