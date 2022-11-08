@@ -127,12 +127,12 @@ Person::Person(string n, Gender g, Person* m, Person* f){
         switch (smod){
 
             case SMod::HALF:   
-            if (child->moth != nullptr){
+            if (child->moth != nullptr && this->moth != nullptr){
             if ((child->moth->name() == this->moth->name()) && (child->fath == nullptr || child->fath->name() != this->fath->name())) result.insert(child);
             // same mother AND father doesnt exist or different father.
             }
 
-            if (child->fath != nullptr){ 
+            if (child->fath != nullptr && this->fath != nullptr){ 
             if ((child->fath->name() == this->fath->name()) && (child->moth == nullptr || child->moth->name() != this->moth->name())) result.insert(child);
             // same father AND mother doesn't exist  but different mother
             }
