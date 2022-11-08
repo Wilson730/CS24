@@ -208,6 +208,9 @@ std::set<Person*> Person::brothers(PMod pmod, SMod smod){
  
 
   std::set<Person*> Person::uncles(PMod pmod, SMod smod){
-
-    return std::set<Person*>();
+    std::set<Person*> result;
+    for (Person* parent: parents(pmod)){
+        result.merge(parent->brothers(PMod::ANY, smod));
+    } 
+    return result;
   }
