@@ -164,8 +164,10 @@ Person::Person(string n, Gender g, Person* m, Person* f){
             break;         // ^ checks if same mom but diff dad, or same dad but diff mom
             
             case SMod::FULL:
+            if(child->moth != nullptr && child->fath != nullptr){
             if (((child)->moth->name() == this->moth->name()) && ((child)->fath->name() == this->fath->name())) sibs.insert(child);
                                  // ^ checks whether both of our parents have same names
+            }
             break;          
                         
             default:
