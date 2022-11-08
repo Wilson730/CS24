@@ -154,10 +154,6 @@ Person::Person(string n, Gender g, Person* m, Person* f){
     for (Person* child : prntchilds){
         if ((child->name() != this->name()) && ((child->moth != nullptr) && (child->fath != nullptr)) && ((this->moth != nullptr) && (this->fath != nullptr))){
         switch (smod){
-            
-            case SMod::ANY:
-            sibs.insert(child);
-            break;
 
             case SMod::HALF:
             if (((child->moth->name() == this->moth->name()) && ((child)->fath->name() != this->fath->name())) || (((child)->fath->name() == this->fath->name()) && ((child)->moth->name() != this->moth->name()))) sibs.insert(child);
@@ -171,6 +167,7 @@ Person::Person(string n, Gender g, Person* m, Person* f){
             break;          
                         // maybe hte problem si that this->moth or this->fath is pointing to a nullptr.
             default:          // ^ ^ ^ ^ ^ ^ ^ ^ ^
+            sibs.insert(child);
             break;
         }
         }
