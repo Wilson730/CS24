@@ -144,13 +144,15 @@ Person::Person(string n, Gender g, Person* m, Person* f){
   }
  
   std::set<Person*> Person::siblings(PMod pmod, SMod smod){
- // mum, pop, or both
+    
+  std::set<Person*> sibs;   
+    if (moth != nullptr && fath != nullptr){
     std::set<Person*> prntchilds;
     for (Person* parent : parents(pmod)){
         prntchilds.merge(parent->children());   // stores children of parent set
     } //  how about duplicates...
 
-    std::set<Person*> sibs;                // ^ access their children
+                 // ^ access their children
     for (Person* child : prntchilds){
         if ((child->name() != this->name()) && ((child->moth != nullptr) && (child->fath != nullptr)) && ((this->moth != nullptr) && (this->fath != nullptr))){
         switch (smod){
@@ -172,7 +174,9 @@ Person::Person(string n, Gender g, Person* m, Person* f){
         }
         }
     }
+    }
     return sibs;
+    
   }
 std::set<Person*> Person::brothers(PMod pmod, SMod smod){
     std::set<Person*> sibs = siblings(pmod, smod);
