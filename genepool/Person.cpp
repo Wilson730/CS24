@@ -123,6 +123,7 @@ Person::Person(string n, Gender g, Person* m, Person* f){
                  // ^ access their children
     for (Person* child : pmodChildren){
         if (child->name() != this->name()){
+
         switch (smod){
 
             case SMod::HALF:   
@@ -130,6 +131,7 @@ Person::Person(string n, Gender g, Person* m, Person* f){
             if ((child->moth->name() == this->moth->name()) && (child->fath == nullptr || child->fath->name() != this->fath->name())) result.insert(child);
             // same mother AND father doesnt exist or different father.
             }
+
             if (child->fath != nullptr){ 
             if ((child->fath->name() == this->fath->name()) && (child->moth == nullptr || child->moth->name() != this->moth->name())) result.insert(child);
             // same father AND mother doesn't exist  but different mother
@@ -143,9 +145,12 @@ Person::Person(string n, Gender g, Person* m, Person* f){
             }
             break;          
                         // maybe hte problem si that this->moth or this->fath is pointing to a nullptr.
-            default:          // ^ ^ ^ ^ ^ ^ ^ ^ ^
+            case SMod::ANY:          // ^ ^ ^ ^ ^ ^ ^ ^ ^
             
             result.insert(child);
+            break;
+
+            default:
             break;
         }
         }
@@ -215,7 +220,7 @@ std::set<Person*> Person::brothers(PMod pmod, SMod smod){
   std::set<Person*> Person::nieces(PMod pmod, SMod smod){
     std::set<Person*> result;
     for (Person* sibling : siblings(pmod, smod)){
-        result.merge(sibling->sons());
+        result.merge(sibling->daughters());
     }
     return result;
   }
