@@ -110,39 +110,8 @@ Person::Person(string n, Gender g, Person* m, Person* f){
         if ((*itr)->gender() == Gender::MALE) male1.insert(*itr);
     }
     return male1;
-  }
-//-------------------------------------------------------unfinished----------------------------------------------------------------------------------
-
-  std::set<Person*> Person::ancestors(PMod pmod){                        // mostly copy and paste
-    std::set<Person*> result; // creates an empty set that stores Person* s
-    for (Person* parent: parents(pmod)){    // for every parent in the parent set created
-        result.merge(parent->ancestors());    // get their parents
-        result.insert(parent);            // insert 
-    }
-    return result;
-  }
-  std::set<Person*> Person::aunts(PMod pmod, SMod smod){
-   // std::set<Person*> auntsisters = this->moth->sisters(pmod, smod);
-
-    return std::set<Person*>();
-  }
+  } 
   
-  
-  std::set<Person*> Person::cousins(PMod pmod, SMod smod){
-    return std::set<Person*>();
-  }
- 
-  std::set<Person*> Person::descendants(){
-    return std::set<Person*>();
-  }
- 
-  std::set<Person*> Person::nephews(PMod pmod, SMod smod){
-    return std::set<Person*>();
-  }
-  std::set<Person*> Person::nieces(PMod pmod, SMod smod){
-    return std::set<Person*>();
-  }
- 
   std::set<Person*> Person::siblings(PMod pmod, SMod smod){
     
     set<Person*> result;   
@@ -181,9 +150,9 @@ Person::Person(string n, Gender g, Person* m, Person* f){
         }
         }
     }
-    
     return result;
   }
+  
 std::set<Person*> Person::brothers(PMod pmod, SMod smod){
     std::set<Person*> result = siblings(pmod, smod);
     std::set<Person*> bros;
@@ -199,7 +168,44 @@ std::set<Person*> Person::brothers(PMod pmod, SMod smod){
         if ((*itr)->gender() == Gender::FEMALE) siss.insert(*itr);
     }
     return siss;
+  } 
+  
+  std::set<Person*> Person::ancestors(PMod pmod){                        // mostly copy and paste
+    std::set<Person*> result; // creates an empty set that stores Person* s
+    for (Person* parent: parents(pmod)){    // for every parent in the parent set created
+        result.merge(parent->ancestors());    // get their parents
+        result.insert(parent);            // insert 
+    }
+    return result;
   }
+//-------------------------------------------------------unfinished----------------------------------------------------------------------------------
+
+ 
+  std::set<Person*> Person::aunts(PMod pmod, SMod smod){
+    std::set<Person*> result;
+    for (Person* parent: parents(pmod)){
+        result.merge(parent->sisters(pmod, smod));
+    } 
+    return result;
+  }
+  
+  
+  std::set<Person*> Person::cousins(PMod pmod, SMod smod){
+    return std::set<Person*>();
+  }
+ 
+  std::set<Person*> Person::descendants(){
+    return std::set<Person*>();
+  }
+ 
+  std::set<Person*> Person::nephews(PMod pmod, SMod smod){
+    return std::set<Person*>();
+  }
+  std::set<Person*> Person::nieces(PMod pmod, SMod smod){
+    return std::set<Person*>();
+  }
+ 
+ 
 
   std::set<Person*> Person::uncles(PMod pmod, SMod smod){
 
