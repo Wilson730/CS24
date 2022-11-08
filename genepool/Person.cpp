@@ -145,51 +145,57 @@ Person::Person(string n, Gender g, Person* m, Person* f){
  
   std::set<Person*> Person::siblings(PMod pmod, SMod smod){
     
-  std::set<Person*> sibs;   
-    if (moth != nullptr && fath != nullptr){
-    std::set<Person*> prntchilds;
+    set<Person*> result;   
+    std::set<Person*> pmodChildren;
     for (Person* parent : parents(pmod)){
-        prntchilds.merge(parent->children());   // stores children of parent set
-    } //  how about duplicates...
+        pmodChildren.merge(parent->children());  
+    } 
 
                  // ^ access their children
-    for (Person* child : prntchilds){
-        if ((child->name() != this->name()) && ((child->moth != nullptr) && (child->fath != nullptr)) && ((this->moth != nullptr) && (this->fath != nullptr))){
+    for (Person* child : pmodChildren){
+        if (child->name() != this->name()){
         switch (smod){
 
-            case SMod::HALF:
-            if (((child->moth->name() == this->moth->name()) && ((child)->fath->name() != this->fath->name())) || (((child)->fath->name() == this->fath->name()) && ((child)->moth->name() != this->moth->name()))) sibs.insert(child);
-            break;         // ^ checks if same mom but diff dad, or same dad but diff mom
+            case SMod::HALF:   
+            if (child->moth != nullptr){
+            if ((child->moth->name() == this->moth->name()) && (child->fath == nullptr || child->fath->name() != this->fath->name())) result.insert(child);
+            // same mother AND father doesnt exist or different father.
+            }
+            if (child->fath != nullptr){ 
+            if ((child->fath->name() == this->fath->name()) && (child->moth == nullptr || child->moth->name() != this->moth->name())) result.insert(child);
+            // same father AND mother doesn't exist  but different mother
+            }
+            break;        
             
-            case SMod::FULL:
-
-            if (((child)->moth->name() == this->moth->name()) && ((child)->fath->name() == this->fath->name())) sibs.insert(child);
-                                 // ^ checks whether both of our parents have same names
-            
+            case SMod::FULL:   // makes sure both child and this have two parents
+            if (((child->moth != nullptr) && (child->fath != nullptr)) && ((this->moth != nullptr) && (this->fath != nullptr))){
+                if (((child)->moth->name() == this->moth->name()) && ((child)->fath->name() == this->fath->name())) result.insert(child);
+                                 
+            }
             break;          
                         // maybe hte problem si that this->moth or this->fath is pointing to a nullptr.
             default:          // ^ ^ ^ ^ ^ ^ ^ ^ ^
-            sibs.insert(child);
+            
+            result.insert(child);
             break;
         }
         }
     }
-    }
-    return sibs;
     
+    return result;
   }
 std::set<Person*> Person::brothers(PMod pmod, SMod smod){
-    std::set<Person*> sibs = siblings(pmod, smod);
+    std::set<Person*> result = siblings(pmod, smod);
     std::set<Person*> bros;
-    for (auto itr = sibs.begin(); itr != sibs.end(); ++itr){
+    for (auto itr = result.begin(); itr != result.end(); ++itr){
         if ((*itr)->gender() == Gender::MALE) bros.insert(*itr);
     }
     return bros;
   }
   std::set<Person*> Person::sisters(PMod pmod, SMod smod){
-    std::set<Person*> sibs = siblings(pmod, smod);
+    std::set<Person*> result = siblings(pmod, smod);
     std::set<Person*> siss;
-    for (auto itr = sibs.begin(); itr != sibs.end(); ++itr){
+    for (auto itr = result.begin(); itr != result.end(); ++itr){
         if ((*itr)->gender() == Gender::FEMALE) siss.insert(*itr);
     }
     return siss;
