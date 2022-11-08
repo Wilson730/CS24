@@ -114,9 +114,12 @@ Person::Person(string n, Gender g, Person* m, Person* f){
 //-------------------------------------------------------unfinished----------------------------------------------------------------------------------
 
   std::set<Person*> Person::ancestors(PMod pmod){                        // mostly copy and paste
-    std::set<Person*> ancestors;
-   
-    return std::set<Person*>();
+    std::set<Person*> result; // creates an empty set that stores Person* s
+    for (Person* parent: parents(pmod)){    // for every parent in the parent set created
+        result.merge(parent->ancestors());    // get their parents
+        result.insert(parent);            // insert 
+    }
+    return result;
   }
   std::set<Person*> Person::aunts(PMod pmod, SMod smod){
    // std::set<Person*> auntsisters = this->moth->sisters(pmod, smod);
