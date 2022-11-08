@@ -184,7 +184,7 @@ std::set<Person*> Person::brothers(PMod pmod, SMod smod){
   std::set<Person*> Person::aunts(PMod pmod, SMod smod){
     std::set<Person*> result;
     for (Person* parent: parents(pmod)){
-        result.merge(parent->sisters(pmod, smod));
+        result.merge(parent->sisters(PMod::ANY, smod));
     } 
     return result;
   }
