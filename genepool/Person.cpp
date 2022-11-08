@@ -152,7 +152,7 @@ Person::Person(string n, Gender g, Person* m, Person* f){
 
     std::set<Person*> sibs;                // ^ access their children
     for (Person* child : prntchilds){
-        if ((child->name() != this->name()) && ((child->moth != nullptr) && (child->fath != nullptr))){
+        if ((child->name() != this->name()) && ((child->moth != nullptr) && (child->fath != nullptr)) && ((this->moth != nullptr) && (this->fath != nullptr))){
         switch (smod){
             
             case SMod::ANY:
@@ -160,17 +160,17 @@ Person::Person(string n, Gender g, Person* m, Person* f){
             break;
 
             case SMod::HALF:
-            if ((((child)->moth->name() == this->moth->name()) && ((child)->fath->name() != this->fath->name())) || (((child)->fath->name() == this->fath->name()) && ((child)->moth->name() != this->moth->name()))) sibs.insert(child);
+            if (((child->moth->name() == this->moth->name()) && ((child)->fath->name() != this->fath->name())) || (((child)->fath->name() == this->fath->name()) && ((child)->moth->name() != this->moth->name()))) sibs.insert(child);
             break;         // ^ checks if same mom but diff dad, or same dad but diff mom
             
             case SMod::FULL:
-            if(child->moth != nullptr && child->fath != nullptr){
+
             if (((child)->moth->name() == this->moth->name()) && ((child)->fath->name() == this->fath->name())) sibs.insert(child);
                                  // ^ checks whether both of our parents have same names
-            }
+            
             break;          
-                        
-            default:
+                        // maybe hte problem si that this->moth or this->fath is pointing to a nullptr.
+            default:          // ^ ^ ^ ^ ^ ^ ^ ^ ^
             break;
         }
         }
