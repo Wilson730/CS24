@@ -194,17 +194,8 @@ std::set<Person*> Person::brothers(PMod pmod, SMod smod){
     } 
     return result;
   }
-  
-//-------------------------------------------------------unfinished----------------------------------------------------------------------------------
 
- 
- 
-  
-  std::set<Person*> Person::cousins(PMod pmod, SMod smod){
-    return std::set<Person*>();
-  }
- 
-  std::set<Person*> Person::descendants(){
+   std::set<Person*> Person::descendants(){
     std::set<Person*> result;
     for (Person* child : children()){
         result.merge(child->descendants());
@@ -225,6 +216,26 @@ std::set<Person*> Person::brothers(PMod pmod, SMod smod){
     for (Person* sibling : siblings(pmod, smod)){
         result.merge(sibling->daughters());
     }
+    return result;
+  }
+ 
+ 
+//-------------------------------------------------------unfinished----------------------------------------------------------------------------------
+
+ 
+ 
+  
+  std::set<Person*> Person::cousins(PMod pmod, SMod smod){
+    std::set<Person*> result;
+    std::set<Person*> parentsibs;
+    for (Person* parent: parents(pmod)){
+        parentsibs.merge(parent->siblings(PMod::ANY, smod));
+    }
+
+    for (auto itr = parentsibs.begin(); itr != parentsibs.end(); ++itr){
+        result.merge((*itr)->children());
+    }
+
     return result;
   }
  
