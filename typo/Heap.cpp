@@ -2,8 +2,9 @@
 
 
 Heap::Heap(size_t capacity){
+
     mCapacity = capacity;
-    mData[mCapacity];
+    *mData = mData[mCapacity];
 };
 Heap::Heap(const Heap& other){
 
@@ -31,7 +32,7 @@ Heap::Entry Heap::pushpop(const std::string& value, float score){
     return mData[0];
 };
 void Heap::push(const std::string& value, float score){
-    
+    mData[0] = {value, score};
 };
 const Heap::Entry& Heap::top() const {
     return mData[0];
