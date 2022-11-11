@@ -4,7 +4,7 @@
 Heap::Heap(size_t capacity){
 
     mCapacity = capacity;
-    *mData = mData[mCapacity];
+    mData[mCapacity];
 };
 Heap::Heap(const Heap& other){
 
