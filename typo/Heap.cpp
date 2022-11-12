@@ -40,7 +40,10 @@ void Heap::push(const std::string& value, float score){
     if (mCount > mCapacity){
         throw std::overflow_error("overflow!");
     } else {
-        mData[mCount - 1] = {value, score};     // insert new entry 
+        Entry newEntry;
+        newEntry.value = value;
+        newEntry.score = score;
+        mData[mCount - 1] = newEntry;    // insert new entry 
         mCount += 1;
     }
 };
