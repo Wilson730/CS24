@@ -7,19 +7,19 @@ Heap::Heap(size_t capacity){
     mData = new Entry[mCapacity];
 };
 Heap::Heap(const Heap& other){
-    // create new array. 
-    // for (other.size()), loop through and copy values into new array. 
-    // delete old array
-    // return new array
+    Entry* newmData[mCapacity];
+    for (int i = 0; i < mCount; i++){
+        newmData[i] = &(other.mData[i]);
+    }
+    delete [] other.mData;
+    mData = *newmData;
 };
 Heap::Heap(Heap&& other){
-    // new memory location = other memory locaiton
-    // delete other memory location
-    // in /polish/settree.cpp
+    this->mData = other.mData;
+    other.mData = nullptr;
 };
 Heap::~Heap(){
     delete [] mData;
-    delete mData;
 };
 
 size_t Heap::capacity() const{
