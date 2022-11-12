@@ -16,8 +16,9 @@ Heap::Heap(const Heap& other){
 };
 Heap::Heap(Heap&& other){
     this->mData = other.mData;
-    other.mData = nullptr;
+    delete [] other.mData;
 };
+
 Heap::~Heap(){
     delete [] mData;
 };
