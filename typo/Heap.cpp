@@ -18,7 +18,7 @@ Heap::Heap(Heap&& other){
     // in /polish/settree.cpp
 };
 Heap::~Heap(){
-    
+    delete [] mData;
 };
 
 size_t Heap::capacity() const{
