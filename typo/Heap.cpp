@@ -60,7 +60,7 @@ Heap::Entry Heap::pushpop(const std::string& value, float score){
     return result;
 };
 void Heap::push(const std::string& value, float score){
-    /*
+    
     if (mCount > mCapacity){
         throw std::overflow_error("overflow!");
     } else {
@@ -71,7 +71,7 @@ void Heap::push(const std::string& value, float score){
         else mData[0] = newEntry;  
         mCount += 1;
     }
-    */
+    
 };
 const Heap::Entry& Heap::top() const {
     if (mCount == 0) throw std::underflow_error("Empty heap");
