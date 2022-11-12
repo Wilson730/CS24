@@ -75,14 +75,14 @@ void Heap::push(const std::string& value, float score){
 };
 const Heap::Entry& Heap::top() const {
     if (mCount == 0) throw std::underflow_error("Empty heap");
-    Entry& result = mData[0];
-    /*
+    Entry& result = mData[mCount-1];
+    
     if (mCount == 0) throw std::underflow_error("Empty");
     for (size_t i = mCount; i > 0; i--){
-        if (mData[i - 1] < mData[i]){
+        if (mData[i - 1].score < mData[i].score){
             result = mData[i-1];
         }
     }
-    */
+    
     return result;
 };
