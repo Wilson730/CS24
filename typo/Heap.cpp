@@ -1,10 +1,10 @@
 #include "Heap.h"
-
+#include <cstddef>
 
 Heap::Heap(size_t capacity){
 
     mCapacity = capacity;
-    mData[mCapacity];
+    mData = new (Entry[mCapacity]);
 };
 Heap::Heap(const Heap& other){
     // create new array. 
