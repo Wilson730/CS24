@@ -45,7 +45,8 @@ void Heap::push(const std::string& value, float score){
         Entry newEntry;
         newEntry.value = value;
         newEntry.score = score;
-        mData[mCount - 1] = newEntry;    // insert new entry 
+        if (mCount > 0)   mData[mCount - 1] = newEntry; 
+        else mData[0] = newEntry;  
         mCount += 1;
     }
 };
