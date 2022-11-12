@@ -25,20 +25,23 @@ Heap::~Heap(){
 size_t Heap::capacity() const{
     return mCapacity;
 };
-size_t Heap::count() const{
+size_t Heap::count() const{ 
     return mCount;
 };
 
-
+const Heap::Entry& Heap::lookup(size_t index) const{
+    Entry result; 
+    if (index >= mCount) throw std::out_of_range("Out of range");
+    for (size_t i = 0; i < mCount; i++){
+        if (i == index){
+            result = mData[index];
+        }
+    }
+    return result;
+};
 //----------------------------------UNFINISHED-----------------------------------------------------
 
 
-
-
-
-const Heap::Entry& Heap::lookup(size_t index) const{
-    return mData[index];
-};
 
 Heap::Entry Heap::pop(){
     Entry result;
