@@ -7,13 +7,18 @@ Heap::Heap(size_t capacity){
     mData[mCapacity];
 };
 Heap::Heap(const Heap& other){
-
+    // create new array. 
+    // for (other.size()), loop through and copy values into new array. 
+    // delete old array
+    // return new array
 };
 Heap::Heap(Heap&& other){
-
+    // new memory location = other memory locaiton
+    // delete other memory location
+    // in /polish/settree.cpp
 };
 Heap::~Heap(){
-
+    
 };
 
 size_t Heap::capacity() const{
@@ -32,7 +37,12 @@ Heap::Entry Heap::pushpop(const std::string& value, float score){
     return mData[0];
 };
 void Heap::push(const std::string& value, float score){
-    mData[0] = {value, score};
+    if (mCount > mCapacity){
+        throw std::overflow_error("overflow!");
+    } else {
+        mData[mCount - 1] = {value, score};     // insert new entry 
+        mCount += 1;
+    }
 };
 const Heap::Entry& Heap::top() const {
     return mData[0];
