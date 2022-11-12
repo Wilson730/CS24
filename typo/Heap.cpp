@@ -4,7 +4,7 @@
 Heap::Heap(size_t capacity){
 
     mCapacity = capacity;
-    mData = new (Entry[mCapacity]);
+    mData = new Entry[mCapacity];
 };
 Heap::Heap(const Heap& other){
     // create new array. 
