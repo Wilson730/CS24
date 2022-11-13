@@ -65,7 +65,7 @@ void Heap::push(const std::string& value, float score){
     Entry newEntry;
     newEntry.value = value;
     newEntry.score = score;
-    size_t index = mCount - 1;
+    size_t index = mCount;
 
     if (mCount > mCapacity){    // Full
         throw std::overflow_error("overflow!"); 
@@ -73,16 +73,16 @@ void Heap::push(const std::string& value, float score){
         mData[0] = newEntry;
     } else {                    // percolate up 
         mData[index] = newEntry;
-        for (size_t i = index; i > 0; i = floor((i-1)/2)){ // need a recursive function to keep looping through parents.
+        size_t i = index;
+        do {
+        i = floor((i-1)/2);
             if (newEntry.score < mData[i].score) {
                 Entry temp = mData[i];
-                mData[i] = mData[index];
+                mData[i] = newEntry;
+                index = i;
                 mData[index] = temp;
             }
-        }
-        if (mCount > 0) mData[mCount + 1] = newEntry; 
-        else mData[0] = newEntry;  
-       
+        } while (i > 0);
     }
     mCount += 1;
 };
