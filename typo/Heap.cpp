@@ -72,7 +72,7 @@ void Heap::push(const std::string& value, float score){
         mData[0] = newEntry;
     } else {                    // percolate up 
         mData[index] = newEntry;
-        unsigned int i = index;
+        size_t i = index;
         do {
         i = floor((i-1)/2);
             if (newEntry.score < mData[i].score) {
