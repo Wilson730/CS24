@@ -42,17 +42,16 @@ const Heap::Entry& Heap::lookup(size_t index) const{
 };
 
 Heap::Entry Heap::pop(){
-    Entry result;
-    if (mCount == 0){
-        throw std::underflow_error("No items");
-    }
-    for (size_t i = 0; i < mCount; i++){
-        if (i + 1 == mCount){
-            result = mData[i];
+    if (mCount == 0) throw std::underflow_error("Empty");
 
-            mCount -= 1;
-        }
-    }
+    Entry result = mData[0];
+    /*
+    size_t i = 0;
+    do{
+    
+
+    } while (i < mCount);
+    */
     return result;
 };
 
@@ -73,7 +72,7 @@ void Heap::push(const std::string& value, float score){
         mData[0] = newEntry;
     } else {                    // percolate up 
         mData[index] = newEntry;
-        size_t i = index;
+        unsigned int i = index;
         do {
         i = floor((i-1)/2);
             if (newEntry.score < mData[i].score) {
