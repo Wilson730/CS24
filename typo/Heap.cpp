@@ -1,6 +1,6 @@
 #include "Heap.h"
 #include <stdexcept>
-
+#include <cmath>
 Heap::Heap(size_t capacity){
 
     mCapacity = capacity;
@@ -60,20 +60,33 @@ Heap::Entry Heap::pushpop(const std::string& value, float score){
     Entry result = {};
     return result;
 };
+
 void Heap::push(const std::string& value, float score){
-    
-    if (mCount > mCapacity){
-        throw std::overflow_error("overflow!");
-    } else {
-        Entry newEntry;
-        newEntry.value = value;
-        newEntry.score = score;
-        if (mCount > 0)   mData[mCount + 1] = newEntry; 
+    Entry newEntry;
+    newEntry.value = value;
+    newEntry.score = score;
+    size_t index = mCount - 1;
+
+    if (mCount > mCapacity){    // Full
+        throw std::overflow_error("overflow!"); 
+    } else if (mCount = 0){     // first available slot
+        mData[0] = newEntry;
+    } else {                    // percolate up 
+        mData[index] = newEntry;
+        for (size_t i = mCount; i > 0; floor((i-1)/2)){ // need a recursive function to keep looping through parents.
+            if (newEntry.score < mData[i].score) {
+                Entry temp = mData[i];
+                mData[i] = newEntry;
+                mData[index] = temp;
+            }
+        }
+        if (mCount > 0) mData[mCount + 1] = newEntry; 
         else mData[0] = newEntry;  
-        mCount += 1;
+       
     }
-    
+    mCount += 1;
 };
+
 const Heap::Entry& Heap::top() const {
     if (mCount == 0) throw std::underflow_error("Empty heap");
     Entry& result = mData[mCount-1];
