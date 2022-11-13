@@ -69,14 +69,14 @@ void Heap::push(const std::string& value, float score){
 
     if (mCount > mCapacity){    // Full
         throw std::overflow_error("overflow!"); 
-    } else if (mCount = 0){     // first available slot
+    } else if (mCount == 0){     // first available slot
         mData[0] = newEntry;
     } else {                    // percolate up 
         mData[index] = newEntry;
-        for (size_t i = mCount; i > 0; floor((i-1)/2)){ // need a recursive function to keep looping through parents.
+        for (size_t i = mCount; i > 0; i = floor((i-1)/2)){ // need a recursive function to keep looping through parents.
             if (newEntry.score < mData[i].score) {
                 Entry temp = mData[i];
-                mData[i] = newEntry;
+                mData[i] = mData[index];
                 mData[index] = temp;
             }
         }
