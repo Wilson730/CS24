@@ -29,6 +29,9 @@ size_t Heap::count() const{
     return mCount;
 };
 
+
+//----------------------------------UNFINISHED-----------------------------------------------------
+
 const Heap::Entry& Heap::lookup(size_t index) const{
    
     if (mCount == 0 || index >= mCount ) {
@@ -37,9 +40,6 @@ const Heap::Entry& Heap::lookup(size_t index) const{
         return mData[index];
     }
 };
-//----------------------------------UNFINISHED-----------------------------------------------------
-
-
 
 Heap::Entry Heap::pop(){
     Entry result;
@@ -73,7 +73,7 @@ void Heap::push(const std::string& value, float score){
         mData[0] = newEntry;
     } else {                    // percolate up 
         mData[index] = newEntry;
-        for (size_t i = mCount; i > 0; i = floor((i-1)/2)){ // need a recursive function to keep looping through parents.
+        for (size_t i = index; i > 0; i = floor((i-1)/2)){ // need a recursive function to keep looping through parents.
             if (newEntry.score < mData[i].score) {
                 Entry temp = mData[i];
                 mData[i] = mData[index];
