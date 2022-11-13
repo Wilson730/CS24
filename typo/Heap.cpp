@@ -66,7 +66,7 @@ void Heap::push(const std::string& value, float score){
     newEntry.score = score;
     size_t index = mCount;
 
-    if (mCount > mCapacity){    // Full
+    if (mCount >= mCapacity){    // Full
         throw std::overflow_error("overflow!"); 
     } else if (mCount == 0){     // first available slot
         mData[0] = newEntry;
@@ -78,8 +78,8 @@ void Heap::push(const std::string& value, float score){
             if (newEntry.score < mData[i].score) {
                 Entry temp = mData[i];
                 mData[i] = newEntry;
+                mData[index] = temp;  // index = 0
                 index = i;
-                mData[index] = temp;
             }
         } while (i > 0);
     }
