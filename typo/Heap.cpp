@@ -35,7 +35,7 @@ const Heap::Entry& Heap::lookup(size_t index) const{
          throw std::out_of_range("Out of range");
     } else {
 
-        for (size_t i = 0; i < mCount; i++){
+        for (size_t i = 0; i <= mCount; i++){
             if (i == index){
             return mData[index];
             }
