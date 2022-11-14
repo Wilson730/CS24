@@ -43,15 +43,23 @@ const Heap::Entry& Heap::lookup(size_t index) const{
 
 Heap::Entry Heap::pop(){
     if (mCount == 0) throw std::underflow_error("Empty");
-
     Entry result = mData[0];
-    /*
-    size_t i = 0;
-    do{
-    
+    size_t i = 0; // index you need to keep track of 
+    mData[0] = mData[mCount - 1]; // set last index value to index 0 
 
-    } while (i < mCount);
-    */
+    while (i < mCount){
+        size_t leftChild = i * 2 + 1;
+        size_t rightChild = i * 2 + 2;
+        if (mData[i].score > mData[leftChild].score){
+            Entry temp = mData[leftChild];
+            mData[leftChild] = mData[i];
+            mData[i] = temp;
+        } else if (mData[i].score < mData[rightChild].score){
+            Entry temp = mData[rightChild];
+            mData[rightChild] = mData[i];
+            mData[i] = temp;
+        }
+    }    
     return result;
 };
 
@@ -79,7 +87,7 @@ void Heap::push(const std::string& value, float score){
                 Entry temp = mData[i];
                 mData[i] = newEntry;
                 mData[index] = temp;  // index = 0
-                index = i;
+                index = i; // switch index to new parent
             }
         } while (i > 0);
     }
@@ -88,14 +96,5 @@ void Heap::push(const std::string& value, float score){
 
 const Heap::Entry& Heap::top() const {
     if (mCount == 0) throw std::underflow_error("Empty heap");
-    Entry& result = mData[mCount-1];
-    
-    if (mCount == 0) throw std::underflow_error("Empty");
-    for (size_t i = mCount; i > 0; i--){
-        if (mData[i - 1].score < mData[i].score){
-            result = mData[i-1];
-        }
-    }
-    
-    return result;
+    return mData[0];
 };
