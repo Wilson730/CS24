@@ -94,9 +94,8 @@ Heap::Entry Heap::pop(){
     if (mCount == 0) throw std::underflow_error("Empty");
     Entry result = mData[0];
     size_t i = 0; 
-    size_t f = 0;
     mData[0] = mData[mCount - 1]; 
-    for(size_t f = f + 1;  f < mCount; ++f){        
+    for(size_t f = 1;  f < mCount; ++f){        
             mData[f - 1] = mData[f];           
     }   
     // after setting last index value to index 0, percolate down. 
