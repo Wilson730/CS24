@@ -95,8 +95,8 @@ Heap::Entry Heap::pop(){
     Entry result = mData[0];
     size_t i = 0; 
     mData[0] = mData[mCount - 1]; 
-     for(size_t i = i + 1;  i < mCount; ++i){        
-            mData[i - 1] = mData[i];           
+    for(size_t f = f + 1;  f < mCount; ++f){        
+            mData[f - 1] = mData[f];           
     }   
     // after setting last index value to index 0, percolate down. 
     percolateDown(mData, i, mCount);
