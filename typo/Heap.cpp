@@ -12,14 +12,14 @@ Heap::Heap(const Heap& other){
     for (size_t i = 0; i < mCount; i++){
         newmData[i] = other.mData[i];
     }
-    delete [] other.mData;
+    delete other.mData;
     mData = newmData;
 };
 Heap::Heap(Heap&& other){
     this->mData = other.mData;
     this->mCount = other.mCount;
     this->mCapacity = other.mCapacity;
-    delete [] other.mData;
+    delete other.mData;
 };
 Heap::~Heap(){
     delete [] mData;
