@@ -79,13 +79,11 @@ void percolateDown(Heap::Entry* mData, size_t i, size_t mCount){
         Heap::Entry temp = mData[leftChild];  
         mData[leftChild] = mData[i]; 
         mData[i] = temp; 
-        i = leftChild;
-        percolateDown(mData, i, mCount);
+        percolateDown(mData, leftChild, mCount);
     } else if (mData[i].score < mData[rightChild].score) {
         Heap::Entry temp = mData[rightChild];
         mData[rightChild] = mData[i];
-        i = rightChild;
-        percolateDown(mData, i, mCount);
+        percolateDown(mData, rightChild, mCount);
     }
     }
 };
@@ -95,9 +93,11 @@ Heap::Entry Heap::pop(){
     Entry result = mData[0];
     size_t i = 0; 
     mData[0] = mData[mCount - 1]; 
+    Entry mDataCopy[] = {};
     for(size_t f = 1;  f < mCount; ++f){        
-            mData[f - 1] = mData[f];           
+            mDataCopy[f - 1] = mData[f];           
     }   
+    mData = mDataCopy;
     // after setting last index value to index 0, percolate down. 
     percolateDown(mData, i, mCount);
     mCount--;
