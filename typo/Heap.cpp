@@ -104,8 +104,11 @@ Heap::Entry Heap::pop(){
 
 Heap::Entry Heap::pushpop(const std::string& value, float score){
     Entry lowestScore = top();
-    push(value, score);
-    percolateDown(mData, 0, mCount);
+    Entry newEntry;
+    newEntry.value = value;
+    newEntry.score = score;
+    mData[0] = newEntry; // replace popped entry with newentry
+    percolateDown(mData, 0, mCount); // then percolates down 
     return lowestScore;
 };
 
