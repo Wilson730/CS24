@@ -29,45 +29,6 @@ size_t Heap::count() const{
     return mCount;
 };
 
-
-//----------------------------------UNFINISHED-----------------------------------------------------
-
-const Heap::Entry& Heap::lookup(size_t index) const{
-   
-    if (mCount == 0 || index >= mCount ) {
-         throw std::out_of_range("Out of range");
-    } else {
-        return mData[index];
-    }
-};
-
-Heap::Entry Heap::pop(){
-    if (mCount == 0) throw std::underflow_error("Empty");
-    Entry result = mData[0];
-    size_t i = 0; // index you need to keep track of 
-    mData[0] = mData[mCount - 1]; // set last index value to index 0 
-
-    while (i < mCount){
-        size_t leftChild = i * 2 + 1;
-        size_t rightChild = i * 2 + 2;
-        if (mData[i].score > mData[leftChild].score){
-            Entry temp = mData[leftChild];
-            mData[leftChild] = mData[i];
-            mData[i] = temp;
-        } else if (mData[i].score < mData[rightChild].score){
-            Entry temp = mData[rightChild];
-            mData[rightChild] = mData[i];
-            mData[i] = temp;
-        }
-    }    
-    return result;
-};
-
-Heap::Entry Heap::pushpop(const std::string& value, float score){
-    Entry result = {};
-    return result;
-};
-
 void Heap::push(const std::string& value, float score){
     Entry newEntry;
     newEntry.value = value;
@@ -98,3 +59,52 @@ const Heap::Entry& Heap::top() const {
     if (mCount == 0) throw std::underflow_error("Empty heap");
     return mData[0];
 };
+//----------------------------------UNFINISHED-----------------------------------------------------
+
+const Heap::Entry& Heap::lookup(size_t index) const{
+   
+    if (mCount == 0 || index >= mCount ) {
+         throw std::out_of_range("Out of range");
+    } else {
+        return mData[index];
+    }
+};
+
+void percolateDown(Heap::Entry* mData, size_t i, size_t mCount){
+    size_t leftChild = i * 2 + 1;
+    size_t rightChild = i * 2 + 1;
+    while (i < mCount){
+    if (mData[i].score > mData[leftChild].score) { 
+        Heap::Entry temp = mData[leftChild];  
+        mData[leftChild] = mData[i]; 
+        mData[i] = temp; 
+        i = leftChild;
+        percolateDown(mData, i, mCount);
+    } else {
+        Heap::Entry temp = mData[rightChild];
+        mData[rightChild] = mData[i];
+        i = rightChild;
+        percolateDown(mData, i, mCount);
+    }
+    }
+};
+
+Heap::Entry Heap::pop(){
+    if (mCount == 0) throw std::underflow_error("Empty");
+    Entry result = mData[0];
+    size_t i = 0; // index you need to pass in 
+    mData[0] = mData[mCount - 1]; // set last index value to index 0 
+
+    // after setting last index value to index 0, time to percolate down. 
+    percolateDown(mData, i, mCount);
+
+    return result;
+};
+
+Heap::Entry Heap::pushpop(const std::string& value, float score){
+    Entry result = {};
+    return result;
+};
+
+
+
