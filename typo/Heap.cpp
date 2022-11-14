@@ -95,11 +95,10 @@ Heap::Entry Heap::pop(){
     if (mCount == 0) throw std::underflow_error("Empty");
     Entry result = mData[0];
     size_t i = 0; 
-    mData[0] = mData[mCount - 1]; 
-    
-    // after setting last index value to index 0, percolate down. 
-    percolateDown(mData, i, mCount);
+    mData[0] = mData[mCount - 1];  
     mCount--;
+    percolateDown(mData, i, mCount);
+  
     return result;
 };
 
