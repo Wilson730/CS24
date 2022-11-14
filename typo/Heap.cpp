@@ -71,9 +71,9 @@ const Heap::Entry& Heap::lookup(size_t index) const{
 };
 
 void percolateDown(Heap::Entry* mData, size_t i, size_t mCount){ 
-    size_t leftChild = i * 2 + 1;
-    size_t rightChild = i * 2 + 2;
-    if (i < mCount ){
+    size_t leftChild = (i * 2) + 1;
+    size_t rightChild = (i * 2) + 2;
+    if (i < mCount && (leftChild < mCount || rightChild < mCount)){
     
     if (mData[i].score > mData[leftChild].score) { 
         Heap::Entry temp = mData[leftChild];  
@@ -96,8 +96,7 @@ Heap::Entry Heap::pop(){
     size_t i = 0; 
     mData[0] = mData[mCount - 1]; 
    
-    
-    // after setting last index value to index 0, time to percolate down. 
+    // after setting last index value to index 0, percolate down. 
     percolateDown(mData, i, mCount);
 
     return result;
