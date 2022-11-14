@@ -74,20 +74,20 @@ void percolateDown(Heap::Entry* mData, size_t i, size_t mCount){
     size_t leftChild = (i * 2) + 1;
     size_t rightChild = (i * 2) + 2;
     if (i < mCount){
-    
-    if (leftChild < mCount && mData[i].score > mData[leftChild].score) { 
-        Heap::Entry temp = mData[leftChild];  
-        mData[leftChild] = mData[i]; 
-        mData[i] = temp; 
-        i = leftChild;
-        percolateDown(mData, leftChild, mCount);
-    } else if (rightChild < mCount && mData[i].score > mData[rightChild].score) {
+        
+    if (rightChild < mCount && mData[i].score > mData[rightChild].score) {
         Heap::Entry temp = mData[rightChild];
         mData[rightChild] = mData[i];
         mData[i] = temp;
         i = rightChild;
         percolateDown(mData, rightChild, mCount);
-    }
+    } else if (leftChild < mCount && mData[i].score > mData[leftChild].score) { 
+        Heap::Entry temp = mData[leftChild];  
+        mData[leftChild] = mData[i]; 
+        mData[i] = temp; 
+        i = leftChild;
+        percolateDown(mData, leftChild, mCount);
+    } 
     }
 };
 
@@ -95,8 +95,9 @@ Heap::Entry Heap::pop(){
     if (mCount == 0) throw std::underflow_error("Empty");
     Entry result = mData[0];
     size_t i = 0; 
-    mData[0] = mData[mCount - 1];  
     mCount--;
+    mData[0] = mData[mCount];  
+    
     percolateDown(mData, i, mCount);
   
     return result;
