@@ -2,9 +2,14 @@
 #define STARMAP_H
 
 #include "Star.h"
-
 #include <istream>
 #include <vector>
+#include <set>
+#include <sstream>
+#include <istream>
+#include <iostream>
+#include <string>
+using namespace std;
 
 class StarMap {
 public:
@@ -13,7 +18,7 @@ public:
 
 private:
     // Member Variables
-
+    set<Star*>stars;
 public:
     // Constructor & Destructor
     StarMap(std::istream& stream);
