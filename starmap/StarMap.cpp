@@ -26,6 +26,6 @@ StarMap::~StarMap(){
 }
 
 std::vector<Star> StarMap::find(size_t n, float x, float y, float z){
-
-
+  vector<Star>stars;
+  return stars;
 }
