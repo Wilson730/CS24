@@ -8,36 +8,12 @@
 // implement heap and kd tree
 #endif
 
-struct Node{
-    Star* data;
-    Node* left;
-    Node* right;
-};
+struct Entry {
+  float score;
+  Star star;
 
-void insert (Node* currNode, Node* newNode, char depth){
-    if (depth == 'x'){
-        depth = 'y';
-        if (newNode->data->x < currNode->data->x)
-        {
-            if (currNode->left == nullptr){currNode->left = newNode;
-            return;
-            }
-            else insert(currNode, newNode, depth);
-        }
-        if (newNode->data->x > currNode->data->x)
-        {   
-            if (currNode->right == nullptr){
-            currNode->right = newNode; 
-            return;
-            }
-            else insert(currNode, newNode, depth);
-        }
-        
-    }
-    if (depth == 'y'){
-        depth = 'z';
-    }
-    if (depth == 'z'){
-        depth = 'x';
-    }
+  bool operator < (const Entry& other) const {
+    return this->score < other.score;
+  }
 };
+   

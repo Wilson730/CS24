@@ -10,8 +10,10 @@
 #include <istream>
 #include <iostream>
 #include <string>
+#include <priority_queue>
+#include <cmath>
 
-using namespace std;
+using namespace std;e
 
 class StarMap {
 public:
@@ -20,7 +22,7 @@ public:
 
 private:
     // Member Variables
-    Node* head;
+    Entry* head;
     string depth;
 public:
     // Constructor & Destructor
