@@ -10,19 +10,28 @@ StarMap* StarMap::create(std::istream& stream) {
 }
 
 StarMap::StarMap(std::istream& stream){
+    head = nullptr;
+    depth = "x";
     int id = 1;
     float x, y, z;
     while(stream){
       stream >> x >> y >> z; 
       Star* newStar = new Star({id, x, y, z});  
-      stars.insert({newStar});
+      // traverse kdtree insert function 
+      Node* newNode = new Node;
+      newNode->data = newStar;
+      newNode->left = nullptr;
+      newNode->right = nullptr;
+      
+      if (head == nullptr) head = newNode;
+      else insert(newNode, depth);
       id++;
     }
 
 }
 
 StarMap::~StarMap(){
-
+ 
 }
 
 std::vector<Star> StarMap::find(size_t n, float x, float y, float z){

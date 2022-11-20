@@ -2,6 +2,7 @@
 #define STARMAP_H
 
 #include "Star.h"
+#include "Helpers.h"
 #include <istream>
 #include <vector>
 #include <set>
@@ -9,6 +10,7 @@
 #include <istream>
 #include <iostream>
 #include <string>
+
 using namespace std;
 
 class StarMap {
@@ -18,7 +20,8 @@ public:
 
 private:
     // Member Variables
-    set<Star*>stars;
+    Node* head;
+    string depth;
 public:
     // Constructor & Destructor
     StarMap(std::istream& stream);
