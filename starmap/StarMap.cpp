@@ -11,7 +11,7 @@ StarMap* StarMap::create(std::istream& stream) {
 
 StarMap::StarMap(std::istream& stream){
     head = nullptr;
-    depth = "x";
+    string depth = "x";
     int id = 1;
     float x, y, z;
     while(stream){
@@ -22,9 +22,9 @@ StarMap::StarMap(std::istream& stream){
       newNode->data = newStar;
       newNode->left = nullptr;
       newNode->right = nullptr;
-      
+      Node* currNode = head;
       if (head == nullptr) head = newNode;
-      else insert(newNode, depth);
+      else insert(currNode, newNode, depth);
       id++;
     }
 
