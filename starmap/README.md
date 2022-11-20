@@ -40,7 +40,7 @@ Implement the required `StarMap` functions in `StarMap.cpp`.
 - `find(n, x, y, z)` returns a vector containing the `n` closest stars to the
   point `(x, y, z)`.  This vector is sorted, with the star at index zero being
   the closest star to the input point.
-
+ **so would you percolate up/down everytime you found a another star?**
 
 ## Challenge Labs
 

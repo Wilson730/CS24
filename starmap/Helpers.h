@@ -14,25 +14,30 @@ struct Node{
     Node* right;
 };
 
-void insert (Node* currNode, Node* newNode, string depth){
-    if (depth == "x"){
-        depth = "y";
+void insert (Node* currNode, Node* newNode, char depth){
+    if (depth == 'x'){
+        depth = 'y';
         if (newNode->data->x < currNode->data->x)
         {
-            if (currNode->left == nullptr) currNode->left = newNode;
+            if (currNode->left == nullptr){currNode->left = newNode;
+            return;
+            }
             else insert(currNode, newNode, depth);
         }
         if (newNode->data->x > currNode->data->x)
         {   
-            if (currNode->right == nullptr) currNode->right = newNode;
+            if (currNode->right == nullptr){
+            currNode->right = newNode; 
+            return;
+            }
             else insert(currNode, newNode, depth);
         }
         
     }
-    if (depth == "y"){
-        depth = "z";
+    if (depth == 'y'){
+        depth = 'z';
     }
-    if (depth == "z"){
-        depth = "x";
+    if (depth == 'z'){
+        depth = 'x';
     }
 };
