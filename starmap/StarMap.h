@@ -10,10 +10,10 @@
 #include <istream>
 #include <iostream>
 #include <string>
-#include <priority_queue>
+#include <queue>
 #include <cmath>
 
-using namespace std;e
+using namespace std;
 
 class StarMap {
 public:
@@ -22,8 +22,7 @@ public:
 
 private:
     // Member Variables
-    Entry* head;
-    string depth;
+    
 public:
     // Constructor & Destructor
     StarMap(std::istream& stream);
@@ -32,6 +31,7 @@ public:
     // Required Member Function
     std::vector<Star> find(size_t n, float x, float y, float z);
 
+    
     // Other Member Functions
 };
 
