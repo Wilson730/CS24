@@ -3,9 +3,25 @@
 
 #include <istream>
 #include <string>
-
+#include <map>
+#include <vector>
 #include "Trip.h"
+#include <sstream>
+using namespace std;
 
+
+struct Neighbor{
+  size_t distance;
+  string line; // (line used to get to *this* neighbor)
+  bool train;
+};
+
+struct Station {
+  string name;
+  Station* prevstation;
+  string prevRoute; // (to get to *this* station)
+  vector<Neighbor> neighbors;
+};
 
 class Atlas {
 public:
@@ -14,7 +30,7 @@ public:
 
 private:
   // Member Variables
-
+  map<string, Station> atlas;
 public:
   // Constructor & Destructor
   Atlas(std::istream& stream);
