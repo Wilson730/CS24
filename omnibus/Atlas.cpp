@@ -6,6 +6,7 @@ Atlas* Atlas::create(std::istream& stream) {
 
 string l, identifier, name, numS; 
 int num;
+Station* s; 
 while(std::getline(stream, l)) {
 	if(l.length() == 0 || l[0] == '#') 
 		continue;
@@ -18,6 +19,7 @@ while(std::getline(stream, l)) {
 		sstream >> std::ws;
 		getline(sstream, name);	
 	}
+
 
 }
 
