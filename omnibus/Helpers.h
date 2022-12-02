@@ -3,6 +3,7 @@
 #include "Atlas.h"
 // If you want to add any helper classes,
 // here's some space to do it in.
+using namespace std;
 
 struct Neighbor{
   size_t distance;
