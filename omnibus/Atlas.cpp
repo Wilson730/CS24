@@ -129,8 +129,6 @@ Trip Atlas::route(const std::string &src, const std::string &dst)
 {
   // min heap and dijstras to find vector of shortest distances.
 
-  if already
-    visited, set distance to 0 while trip is not end, , get me the top thing.
-
+  
   // create heap, map of distances, and a set.
 }
