@@ -7,7 +7,7 @@ Atlas *Atlas::create(std::istream &stream)
   // If you use a different constructor, you'll need to change it.
 
   string tLine, line, identifier, name, numS;
-  int num, prevnum = -1;
+  int num = 0, prevnum = -1;
   Station *prevS = nullptr;
   bool train;
 
@@ -130,8 +130,8 @@ Trip Atlas::route(const std::string &src, const std::string &dst)
 
   unordered_set<Station*> mindst;
   unordered_set<Station*> visited;
-  
-  auto itr = atlas.find(src);
+
+ 
 
   return result;
   // create heap, map of distances, and a set.
