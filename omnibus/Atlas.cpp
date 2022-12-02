@@ -1,8 +1,5 @@
 #include "Atlas.h"
-#include "Helpers.h"
-#include <iostream>
-#include <iomanip>
-#include <stdexcept>
+
 using namespace std;
 Atlas *Atlas::create(std::istream &stream)
 {
@@ -96,7 +93,7 @@ Atlas *Atlas::create(std::istream &stream)
       itr->second->neighbors.push_back(bedge);
       } else {   // pointer to pisces rn. 
 
-        if (prevS = nullptr){
+        if (prevS == nullptr){
           prevS = itr->second; // prevstation is pisces 
           prevnum = num;   // prevnum is 3
         } else {
@@ -122,12 +119,15 @@ Atlas *Atlas::create(std::istream &stream)
 
 Atlas::~Atlas()
 {
+
 }
 
 Trip Atlas::route(const std::string &src, const std::string &dst)
 {
   // min heap and dijstras to find vector of shortest distances.
-
+  unordered_set<Station*> mindst;
+  unordered_set<Station*> visited;
+  
 
   // create heap, map of distances, and a set.
 }

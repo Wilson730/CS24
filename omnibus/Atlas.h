@@ -1,18 +1,21 @@
 #ifndef ATLAS_H
 #define ATLAS_H
 
-#include <istream>
+
 #include <map>
 #include <vector>
+#include <string>
 #include "Trip.h"
+#include "Helpers.h"
 #include <sstream>
 #include <unordered_map>
+#include <unordered_set>
 #include <cstddef>
-#include "Helpers.h"
-#include <string>
 #include <iostream>
+#include <istream>
 #include <iomanip>
 #include <stdexcept>
+
 using namespace std;
 
 
