@@ -13,19 +13,6 @@
 using namespace std;
 
 
-struct Neighbor{
-  size_t distance;
-  string line; // (line used to get to *this* neighbor)
-  Station* nStation;
-  bool train;
-};
-
-struct Station {
-  string name;
-  Station* pStation;
-  string line; // (to get to *this* station)
-  vector<Neighbor> neighbors;
-};
 
 class Atlas {
 public:
@@ -34,7 +21,7 @@ public:
 
 private:
   // Member Variables
-  static unordered_map<string, Station> atlas;
+  static unordered_map<string, Station*> atlas;
 public:
   // Constructor & Destructor
   Atlas(std::istream& stream);
