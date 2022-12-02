@@ -6,12 +6,6 @@
 // here's some space to do it in.
 using namespace std;
 
-struct Neighbor{
-  size_t distance;
-  string line; // (line used to get to *this* neighbor)
-  Station* nStation;
-  bool train;
-};
 
 struct Station {
   string name;
@@ -19,4 +13,10 @@ struct Station {
   vector<Neighbor*> neighbors;
 };
 
+struct Neighbor{
+  size_t distance;
+  string line; // (line used to get to *this* neighbor)
+  Station* nStation;
+  bool train;
+};
 #endif
