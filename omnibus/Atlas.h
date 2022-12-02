@@ -2,7 +2,6 @@
 #define ATLAS_H
 
 #include <istream>
-#include <string>
 #include <map>
 #include <vector>
 #include "Trip.h"
@@ -10,6 +9,10 @@
 #include <unordered_map>
 #include <cstddef>
 #include "Helpers.h"
+#include <string>
+#include <iostream>
+#include <iomanip>
+#include <stdexcept>
 using namespace std;
 
 

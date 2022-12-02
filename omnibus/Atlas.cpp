@@ -117,7 +117,6 @@ Atlas *Atlas::create(std::istream &stream)
       }
     }
   }
-
   return new Atlas(stream);
 }
 
@@ -129,6 +128,6 @@ Trip Atlas::route(const std::string &src, const std::string &dst)
 {
   // min heap and dijstras to find vector of shortest distances.
 
-  
+
   // create heap, map of distances, and a set.
 }
