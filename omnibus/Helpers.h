@@ -9,9 +9,10 @@ using namespace std;
 struct Neighbor{
   size_t distance;
   string line; // (line used to get to *this* neighbor)
-  Station* nStation = nullptr;
+  Station* nStation;
   bool train;
 };
+
 struct Station {
   string name;
   string line; // (to get to *this* station)
