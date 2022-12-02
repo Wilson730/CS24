@@ -6,21 +6,5 @@
 // here's some space to do it in.
 using namespace std;
 
-struct Station;
-
-struct Neighbor{
-  size_t distance;
-  string line; 
-  Station* nStation; // pointer to neighbor in map. 
-  bool train;
-};
-
-struct Station {
-  string name;
-  string line; 
-
-  vector<Neighbor*> neighbors; 
-};
-
 
 #endif

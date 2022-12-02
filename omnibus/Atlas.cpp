@@ -130,6 +130,9 @@ Trip Atlas::route(const std::string &src, const std::string &dst)
 
   unordered_set<Station*> mindst;
   unordered_set<Station*> visited;
+  priority_queue<Station*> heap;
+
+
 
  
 
