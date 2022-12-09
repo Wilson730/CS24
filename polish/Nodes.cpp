@@ -20,11 +20,15 @@ numbers::numbers(double token){
 
 
 std::string numbers::prefix() const {
-    return std::to_string(number);
+     std::ostringstream stream;
+    stream<<this->number;
+    return stream.str();
 }
 
 std::string numbers::postfix() const {
-    return std::to_string(number);
+    std::ostringstream stream;
+    stream<<this->number;
+    return stream.str();
 }
 
 double numbers::value() const {
@@ -129,30 +133,53 @@ double divide::value() const {
     return left->value() / right->value();
 }
 
-// ---------------------------------- Modulus ------------------------------
+// ---------------------------------- modulu ------------------------------
 
-modulus::modulus(AST* token1, AST* token2){
+modulu::modulu(AST* token1, AST* token2){
     left = token1;
     right = token2;
 }
 
-modulus::~modulus(){
+modulu::~modulu(){
     delete left;
     delete right;
 }
 
-std::string modulus::prefix() const {
+std::string modulu::prefix() const {
     return "% " + left->prefix() + " " + right->prefix();
 }
 
-std::string modulus::postfix() const {
+std::string modulu::postfix() const {
     return left->postfix() + " " + right->postfix() + " %";
 }
 
-double modulus::value() const { 
+double modulu::value() const { 
     if (right->value() == 0) throw std::runtime_error("Cannot divide by 0");
     return std::fmod( left->value(), right->value());
 }
 
 //--------------------------------- neg ------------------------------------
+
+neg::neg(AST* token){
+    child = token;
+}
+
+neg::~neg(){
+    delete child;
+}
+
+
+
+
+double neg::value()const{
+    return child->value() * -1;
+}
+
+std::string neg::prefix()const{
+    return "~ " + child->prefix();
+}
+
+std::string neg::postfix() const{
+    return child->postfix() + " ~"; 
+}
 

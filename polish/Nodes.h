@@ -23,10 +23,9 @@ class numbers: public AST{
 };
 
 class add: public AST{
-    
-    public:
     AST* left;
     AST* right;
+    public:
 
     add(AST* token1, AST* token2);
     ~add();
@@ -37,9 +36,11 @@ class add: public AST{
 
 
 ///----------------------------------- Focus on these 2 ^ --------------------------------------------------------------------------------------
-class subtract: public AST{
+class subtract: public AST{ 
     AST* left;
     AST* right;
+    public:
+   
     subtract(AST* token1, AST* token2);
     ~subtract();
     std::string prefix() const;
@@ -47,8 +48,10 @@ class subtract: public AST{
     double value() const;
 };
 class multiply: public AST{
-    AST* left;
+     AST* left;
     AST* right;
+    public:
+   
     multiply(AST* token1, AST* token2);
     ~multiply();
     std::string prefix() const;
@@ -56,9 +59,11 @@ class multiply: public AST{
     double value() const;
 };
 
-class divide: public AST{
+class divide: public AST{ 
     AST* left;
     AST* right;
+    public:
+  
     divide(AST* token1, AST* token2);
     ~divide();
     std::string prefix() const;
@@ -66,18 +71,22 @@ class divide: public AST{
     double value() const;
 };
 
-class modulus: public AST{
+class modulu: public AST{
     AST* left;
     AST* right;
-    modulus(AST* token1, AST* token2);
-    ~modulus();
+    public:
+    
+    modulu(AST* token1, AST* token2);
+    ~modulu();
     std::string prefix() const;
     std::string postfix() const;
     double value() const;
 };
 
 class neg: public AST{
-    
+    AST* child;
+    public:
+    neg(AST* token);
     ~neg();
     std::string prefix() const;
     std::string postfix() const;

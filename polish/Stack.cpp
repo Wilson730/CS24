@@ -50,6 +50,12 @@ AST* Stack::pop(){
     return result;
 }
 
+/* AST* ast = stack.top()->data;
+stack.pop();
+return ast;
+*/
+
+
 void Stack::push(AST* token){
     Node* newNode = new Node;
     newNode->data = token;
