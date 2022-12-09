@@ -21,6 +21,7 @@
 
 Stack::Stack(){
     head = nullptr;
+    siz = 0;
 }
 
 Stack::~Stack(){
