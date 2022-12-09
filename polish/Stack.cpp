@@ -72,3 +72,12 @@ void Stack::push(AST* token){
 size_t Stack::size(){
     return siz;
 }
+
+void Stack::clean(){    // delete head data first. then delete head. 
+    Node* temp = head;
+    while (head != nullptr ){
+    delete head->data;
+    delete head;
+    head = temp->next;
+    }
+}

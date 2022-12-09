@@ -27,7 +27,7 @@ class Stack{
     AST* pop();          // pops the last pointer stored in the linked list on stack and returns it. 
     void push(AST* token);// pushes a pointer argument to the linked list on stack. 
     size_t size();        // returns Stack length
-
+    void clean();     // deletes partial AST as well as head
 };
 
 #endif
