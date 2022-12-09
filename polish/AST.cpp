@@ -94,8 +94,7 @@ AST* AST::parse(const std::string& expression) {
                 stack.clean();
                 throw std::runtime_error("invalid");
             }
-            numbers* newNumber = new numbers(value);
-            stack.push(newNumber);
+            stack.push(new numbers(value));
         }
 
     }
