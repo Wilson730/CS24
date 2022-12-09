@@ -13,13 +13,20 @@ AST* AST::parse(const std::string& expression) {
     Stack stack;
     
     while (stream >> token){
-        if (stack.size() < 2) throw std::runtime_error("2 operands needed");
+        
         if (token == "+"){
-         add* newNode = new add;
-         newNode->left = stack.pop(); 
-         newNode->right = stack.pop();
-        stack.push(newNode);
+            if (stack.size() < 2) throw std::runtime_error("2 operands needed");
+            add* newNode = new add;
+            newNode->left = stack.pop(); 
+            newNode->right = stack.pop();
+            stack.push(newNode);
+        } else {
+            size_t reference;
+            double numConvertor = stod(token, &reference);
+            numbers* newNumber = new numbers(numConvertor);
+            stack.push(newNumber);
         }
+
     }
     
     return nullptr;

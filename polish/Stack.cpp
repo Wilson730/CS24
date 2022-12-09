@@ -42,6 +42,7 @@ AST* Stack::pop(){
     if (head == nullptr){                  // empty stack?
         throw std::out_of_range("empty");
     }
+    delete head->data;
     delete head;
     head = temphead;
     siz--;
