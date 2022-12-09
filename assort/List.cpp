@@ -14,10 +14,10 @@ List::List(const List& other){
     
     Node* tempHead = new Node;
     Node* tempOther = other.head;
-    for (size_t i = 0; i < count(); i++){
+    for (size_t i = 0; i < count() - 1; i++){
         tempHead->data = tempOther->data;
         tempHead->next = tempOther->next;
-        tempOther = other.head->next;
+        tempOther = tempOther->next;
     }
     this->head = tempHead;
 }
