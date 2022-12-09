@@ -20,7 +20,7 @@ struct Node{
 
 class Stack{
     Node* head;           // creates a linked list. ok so form what im understanding node is not the individual leafs/nonleafs ina tree, but the actual nodes on linked list. 
-                          // and each node on linked list stores a pointer to a subtree, operator, etc. 
+    size_t siz;                     // and each node on linked list stores a pointer to a subtree, operator, etc. 
 
     public:
     Stack();              // initializes linked list.        

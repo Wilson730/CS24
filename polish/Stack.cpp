@@ -20,13 +20,13 @@
 // And you can choose if you want to use a vector stack or a linked list stack (I used a linked list so I wouldn’t have
 
 Stack::Stack(){
-    head = NULL;
+    head = nullptr;
 }
 
 Stack::~Stack(){
     Node* currNode = head;
-    Node* prevNode = NULL;
-    while (currNode != NULL){
+    Node* prevNode = nullptr;
+    while (currNode != nullptr){
         prevNode = currNode;
         currNode = currNode->next;
         delete prevNode->data;
@@ -34,17 +34,18 @@ Stack::~Stack(){
     }
     delete currNode->data;
     delete currNode;
+    siz = 0;
 }
 
 
 AST* Stack::pop(){
-    AST* temp = NULL;
+    AST* temp = nullptr;
     Node* currNode = head;
-    Node* prevNode = NULL;
-    if (currNode == NULL){                  // empty stack?
+    Node* prevNode = nullptr;
+    if (currNode == nullptr){                  // empty stack?
         throw std::out_of_range("empty");
     } else {
-    while (currNode != NULL){
+    while (currNode != nullptr){
         prevNode = currNode;
         currNode = currNode->next;
     }
@@ -53,6 +54,7 @@ AST* Stack::pop(){
     delete prevNode;
     delete currNode;
     }
+    siz--;
     return temp;
 }
 
@@ -60,28 +62,23 @@ void Stack::push(AST* token){
     Node* newNode = new Node;
     newNode->data = token;
     Node* currNode = head;
-    Node* prevNode = NULL;
+    Node* prevNode = nullptr;
     newNode->data = token;
-    newNode->next = NULL;
+    newNode->next = nullptr;
 
-    if (head == NULL){
+    if (head == nullptr){
         head = newNode;
     } else {
-        while (currNode != NULL){
+        while (currNode != nullptr){
             prevNode = currNode;
             currNode = currNode->next;
         }
         currNode = newNode;
         prevNode->next = currNode;
     }
+    siz++;
 }
 
 size_t Stack::size(){
-    size_t count = 0;
-    Node* currNode = head;
-    while (currNode != NULL){
-        currNode = currNode->next;
-        count++;
-    }
-    return count;
+    return siz;
 }

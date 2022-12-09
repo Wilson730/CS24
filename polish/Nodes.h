@@ -12,55 +12,74 @@
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------
-class Numbers: public AST{
+class numbers: public AST{
     double number;
 
     public:
-    Numbers(char token);
+    numbers(double token);
     std::string prefix() const;
     std::string postfix() const;
     double value() const;
 };
 
 class add: public AST{
+    private:
     AST* left;
     AST* right;
     public:
-    add(AST* token1, AST* token2);
+  
+
+    add();
     ~add();
     std::string prefix() const;
     std::string postfix() const;
     double value() const;
 };
 
+
 ///----------------------------------- Focus on these 2 ^ --------------------------------------------------------------------------------------
-class multiNode: public AST{
-    multiNode();
-    ~multiNode();
+class subtract: public AST{
+    AST* left;
+    AST* right;
+    subtract(AST* token1, AST* token2);
+    ~subtract();
+    std::string prefix() const;
+    std::string postfix() const;
+    double value() const;
+};
+class multiply: public AST{
+    AST* left;
+    AST* right;
+    multiply(AST* token1, AST* token2);
+    ~multiply();
     std::string prefix() const;
     std::string postfix() const;
     double value() const;
 };
 
-class diviNode: public AST{
-    diviNode();
-    ~diviNode();
+class divide: public AST{
+    AST* left;
+    AST* right;
+    divide(AST* token1, AST* token2);
+    ~divide();
     std::string prefix() const;
     std::string postfix() const;
     double value() const;
 };
 
-class moduNode: public AST{
-    moduNode();
-    ~moduNode();
+class modulus: public AST{
+    AST* left;
+    AST* right;
+    modulus(AST* token1, AST* token2);
+    ~modulus();
     std::string prefix() const;
     std::string postfix() const;
     double value() const;
 };
 
-class negNode: public AST{
-    negNode();
-    ~negNode();
+class neg: public AST{
+    
+    ~neg();
     std::string prefix() const;
     std::string postfix() const;
     double value() const;

@@ -79,12 +79,12 @@ if(head == NULL){
 } else {
     Node* currNode = head;
     Node* prevNode;
-    while (currNode != nullptr && currNode->data <= value){
+    while (currNode != NULL && currNode->data <= value){
         prevNode = currNode;
         currNode = currNode->next;
     }
     prevNode->next = newNode;
-    newNode->next = nullptr;      // problem is not properly setting last node->next to NULL? and it instead points to garbage value, which is why otherNode != NULL is not working. 
+    newNode->next = currNode;      // problem is not properly setting last node->next to NULL? and it instead points to garbage value, which is why otherNode != NULL is not working. 
                                        // otherNode = garbage value instead of NULL here. 
 } 
 
