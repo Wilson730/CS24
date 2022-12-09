@@ -17,6 +17,7 @@ List::List(const List& other){
     for (size_t i = 0; i < count() - 1; i++){
         tempHead->data = tempOther->data;
         tempHead->next = tempOther->next;
+        tempOther->next = other.head->next;
         tempOther = tempOther->next;
     }
     this->head = tempHead;
