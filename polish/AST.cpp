@@ -4,6 +4,7 @@
 #include <cmath>
 #include <cstddef>
 #include <stdexcept>
+#include <string>
 using namespace std;
 
 AST* AST::parse(const std::string& expression) {

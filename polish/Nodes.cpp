@@ -43,8 +43,8 @@ add::add(AST* token1, AST* token2) {
 }
 
 add::~add()  {
-    delete this->left;
-    delete this->right;
+    delete left;
+    delete right;
 }
 
 std::string add::prefix() const {
@@ -56,7 +56,7 @@ std::string add::postfix() const {
 }
 
 double add::value() const{
-    return this->left->value() + this->right->value();
+    return left->value() + right->value();
 };
 
 //-------------------------------------- Subtract -----------------------------
