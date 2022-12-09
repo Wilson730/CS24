@@ -9,21 +9,18 @@ List::List(){
 }
 
 List::List(const List& other){
-    this->head =  other.head;
-    
-}
+    this->head = other.head;
 
-/*Heap::Heap(const Heap& other){
     
-    this->mData = other.mData;
-    this->mCount = other.mCount;
-    this->mCapacity = other.mCapacity;
-    Entry* newmData = new Entry[mCapacity];
-    for (size_t i = 0; i < mCount; i++){
-        newmData[i] = other.mData[i];
+    Node* tempHead = new Node;
+    Node* tempOther = other.head;
+    for (int i = 0; i < count(); i++){
+        tempHead->data = tempOther->data;
+        tempHead->next = tempOther->next;
+        tempOther = other.head->next;
     }
-    mData = newmData;
-};    */
+    this->head = tempHead;
+}
 
 List::List(List&& other){
     this->head = other.head;
