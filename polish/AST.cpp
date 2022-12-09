@@ -88,15 +88,16 @@ AST* AST::parse(const std::string& expression) {
            }
            stack.push(new neg(child));
         } else {
-            try{
             size_t index = 0;
             double value = stod(token, &index);
-            if(index != token.length()){
-                stack.clean();
-                throw std::runtime_error("invalid");
+            try{
+                if(index != token.length()){
+                    stack.clean();
+                    throw std::runtime_error("invalid");
+                }
+                stack.push(new numbers(value));
             }
-            stack.push(new numbers(value));
-            }
+            
             catch(...){
                 stack.clean();
                 throw std::runtime_error("invalid");
@@ -104,8 +105,12 @@ AST* AST::parse(const std::string& expression) {
         }
 
     }
-    
-    return nullptr;
+    AST* root = stack.pop();
+    if (root != nullptr){
+        return root;
+    } else {
+        throw std::out_of_range("Stack is empty!");
+    }
 }
 
 
