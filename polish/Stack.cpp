@@ -32,14 +32,12 @@ Stack::~Stack(){
         delete prevNode->data;
         delete prevNode;
     }
-    delete currNode->data;
-    delete currNode;
     siz = 0;
 }
 
 
 AST* Stack::pop(){
-    
+    AST* result = head->data;
     Node* temphead = head->next;
     if (head == nullptr){                  // empty stack?
         throw std::out_of_range("empty");
@@ -47,7 +45,7 @@ AST* Stack::pop(){
     delete head;
     head = temphead;
     siz--;
-    return head->data;
+    return result;
 }
 
 void Stack::push(AST* token){
