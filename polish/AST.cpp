@@ -32,7 +32,7 @@ AST* AST::parse(const std::string& expression) {
            
         } else {
             size_t reference;
-             if(reference != token.length()) throw std::runtime_error("invalid");
+            // if(reference != token.length()) throw std::runtime_error("invalid");
                 
             double numConvertor = stod(token, &reference);
             numbers* newNumber = new numbers(numConvertor);
