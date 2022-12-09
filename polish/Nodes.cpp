@@ -140,15 +140,15 @@ modulus::~modulus(){
     delete right;
 }
 
-std::string divide::prefix() const {
+std::string modulus::prefix() const {
     return "% " + left->prefix() + " " + right->prefix();
 }
 
-std::string divide::postfix() const {
+std::string modulus::postfix() const {
     return left->postfix() + " " + right->postfix() + " %";
 }
 
-double divide::value() const { 
+double modulus::value() const { 
     if (right->value() == 0) throw std::runtime_error("Cannot divide by 0");
     return std::fmod( left->value(), right->value());
 }
