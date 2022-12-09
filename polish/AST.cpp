@@ -18,7 +18,7 @@ AST* AST::parse(const std::string& expression) {
          add* newNode = new add;
          newNode->left = stack.pop(); 
          newNode->right = stack.pop();
-         stack.push(newNode);
+        stack.push(newNode);
         }
     }
     

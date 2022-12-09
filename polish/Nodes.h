@@ -23,11 +23,10 @@ class numbers: public AST{
 };
 
 class add: public AST{
-    private:
+    
+    public:
     AST* left;
     AST* right;
-    public:
-  
 
     add();
     ~add();
