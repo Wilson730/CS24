@@ -21,15 +21,15 @@ AST* AST::parse(const std::string& expression) {
             newNode->right = stack.pop();
             stack.push(newNode);
         } else if (token == "-"){
-            return;
+          
         } else if (token == "*"){
-            return;
+           
         } else if (token == "/"){
-            return;
+            
         } else if (token == "%"){
-            return;
+          
         } else if (token == "-"){
-            return;
+           
         } else {
             size_t reference;
              if(reference != token.length()) throw std::runtime_error("invalid");
