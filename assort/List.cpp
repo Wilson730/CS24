@@ -30,13 +30,7 @@ List::List(const List& other){
         otherNode = otherNode->next;             // iterate old node
         currNode = currNode->next;               // iterate new node
     }
-    Node* newNode = new Node();              // create new node
-        newNode->data = otherNode->data;   // new node copies current old node's data (starting from head)
-        newNode->next = NULL;                    // set next to NULL
-        currNode->next = newNode;                // current node next points to newnode
-
-        otherNode = otherNode->next;             // iterate old node
-        currNode = currNode->next;    
+   
  }
     delete(other.head);                          // delete old list
 }
@@ -85,12 +79,12 @@ if(head == NULL){
 } else {
     Node* currNode = head;
     Node* prevNode;
-    while (currNode != NULL && currNode->data <= value){
+    while (currNode != nullptr && currNode->data <= value){
         prevNode = currNode;
         currNode = currNode->next;
     }
     prevNode->next = newNode;
-    newNode->next = currNode;      // problem is not properly setting last node->next to NULL? and it instead points to garbage value, which is why otherNode != NULL is not working. 
+    newNode->next = nullptr;      // problem is not properly setting last node->next to NULL? and it instead points to garbage value, which is why otherNode != NULL is not working. 
                                        // otherNode = garbage value instead of NULL here. 
 } 
 
