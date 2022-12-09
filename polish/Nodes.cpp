@@ -38,8 +38,8 @@ add::add() {
 }
 
 add::~add()  {
-    delete left;
-    delete right;
+    delete this->left;
+    delete this->right;
 }
 
 std::string add::prefix() const {
@@ -51,7 +51,7 @@ std::string add::postfix() const {
 }
 
 double add::value() const{
-    return left->value() + right->value();
+    return this->left->value() + this->right->value();
 };
 
 //-------------------------------------- Subtract -----------------------------

@@ -24,13 +24,12 @@ Stack::Stack(){
 }
 
 Stack::~Stack(){
-    Node* currNode = head;
-    Node* prevNode = nullptr;
-    while (currNode != nullptr){
-        prevNode = currNode;
-        currNode = currNode->next;
-        delete prevNode->data;
-        delete prevNode;
+    Node* currNode = nullptr;
+    while (head != nullptr){
+        currNode = head->next;
+        delete head->data;
+        delete head;
+        head = currNode;
     }
     siz = 0;
 }
