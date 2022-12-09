@@ -9,34 +9,21 @@ List::List(){
 }
 
 List::List(const List& other){
-     if (other.head == NULL){
-        this->head = NULL;
-    } else {
-
-    this->head = new Node();
-    head = this->head;
-    head->data = other.head->data;   // new head's data copies old head's data
-    Node* currNode = this->head;           // set dummy node on new head
-    Node* otherNode = other.head;          // set dummy node on old head
-    otherNode = otherNode->next;
-
-    while (otherNode != NULL){             // while old list nodes don't reach the end
-        Node* newNode = new Node();              // create new node
-        newNode->data = otherNode->data;   // new node copies current old node's data (starting from head)
-        newNode->next = NULL;                    // set next to NULL
-        currNode->next = newNode;                // current node next points to newnode
-
-        otherNode = otherNode->next;             // iterate old node
-        currNode = currNode->next;               // iterate new node
-    }
-  
-
-
- }
-    delete(other.head);                          // delete old list
+    this->head =  other.head;
+    
 }
 
-
+/*Heap::Heap(const Heap& other){
+    
+    this->mData = other.mData;
+    this->mCount = other.mCount;
+    this->mCapacity = other.mCapacity;
+    Entry* newmData = new Entry[mCapacity];
+    for (size_t i = 0; i < mCount; i++){
+        newmData[i] = other.mData[i];
+    }
+    mData = newmData;
+};    */
 
 List::List(List&& other){
     this->head = other.head;

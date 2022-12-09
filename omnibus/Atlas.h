@@ -35,7 +35,7 @@ struct Station {
   vector<Neighbor*> neighbors; 
 };
 
-
+//---------------------------------------------------------------------
 
 class Atlas {
 public:

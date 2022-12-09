@@ -131,11 +131,23 @@ Trip Atlas::route(const std::string &src, const std::string &dst)
   unordered_set<Station*> mindst;
   unordered_set<Station*> visited;
   priority_queue<Station*> heap;
+  unordered_map<Station*, int> table;
 
+  for (auto node: atlas){
+    if (node.first == src){  
+      table[node.second] = 0;    // find neighbors. calculate neighbors distances from a. if
+    }
+    table[node.second] = INT_MAX;
+  }
 
-
+  auto srcneighbors = atlas[src]->neighbors;
+  for (auto n : srcneighbors){
+    visited.insert(n->nStation);
+    n->distance;
+  }
  
 
   return result;
   // create heap, map of distances, and a set.
 }
+
