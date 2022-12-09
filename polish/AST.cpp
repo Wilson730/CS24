@@ -88,6 +88,7 @@ AST* AST::parse(const std::string& expression) {
            }
            stack.push(new neg(child));
         } else {
+            try{
             size_t index = 0;
             double value = stod(token, &index);
             if(index != token.length()){
@@ -95,6 +96,11 @@ AST* AST::parse(const std::string& expression) {
                 throw std::runtime_error("invalid");
             }
             stack.push(new numbers(value));
+            }
+            catch(...){
+                stack.clean();
+                throw std::runtime_error("invalid");
+            }
         }
 
     }
