@@ -33,8 +33,9 @@ double numbers::value() const {
 
 //--------------------------------------- Add -----------------------------------
 
-add::add() {
-    
+add::add(AST* token1, AST* token2) {
+    left = token1;
+    right = token2;
 }
 
 add::~add()  {

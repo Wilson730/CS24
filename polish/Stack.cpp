@@ -36,6 +36,8 @@ Stack::~Stack(){
 
 
 AST* Stack::pop(){
+    if (size() == 0) return nullptr;
+    
     AST* result = head->data;
     Node* temphead = head->next;
     if (head == nullptr){                  // empty stack?

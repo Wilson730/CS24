@@ -15,11 +15,14 @@ AST* AST::parse(const std::string& expression) {
     while (stream >> token){
         
         if (token == "+"){
-            if (stack.size() < 2) throw std::runtime_error("2 operands needed");
-            add* newNode = new add;
-            newNode->left = stack.pop(); 
-            newNode->right = stack.pop();
-            stack.push(newNode);
+            AST* rhs = stack.pop();
+            AST* lhs = stack.pop();
+            if(lhs == nullptr || rhs == nullptr) {
+             delete lhs;
+             delete rhs;
+            throw std::runtime_error("Invalid.");
+            } 
+            stack.push(new add(lhs, rhs));
         } else if (token == "-"){
           
         } else if (token == "*"){
@@ -31,11 +34,11 @@ AST* AST::parse(const std::string& expression) {
         } else if (token == "-"){
            
         } else {
-            size_t reference;
-            // if(reference != token.length()) throw std::runtime_error("invalid");
+            size_t index = 0;
+            double value = stod(token, &index);
+            if(index != token.length()) throw std::runtime_error("invalid");
                 
-            double numConvertor = stod(token, &reference);
-            numbers* newNumber = new numbers(numConvertor);
+            numbers* newNumber = new numbers(value);
             stack.push(newNumber);
         }
 

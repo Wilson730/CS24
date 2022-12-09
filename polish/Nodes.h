@@ -28,7 +28,7 @@ class add: public AST{
     AST* left;
     AST* right;
 
-    add();
+    add(AST* token1, AST* token2);
     ~add();
     std::string prefix() const;
     std::string postfix() const;
