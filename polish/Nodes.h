@@ -14,7 +14,6 @@
 //----------------------------------------------------------------------------------------------------------------------------------------------
 class numbers: public AST{
     double number;
-
     public:
     numbers(double token);
     std::string prefix() const;

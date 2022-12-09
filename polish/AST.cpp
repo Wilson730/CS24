@@ -20,6 +20,16 @@ AST* AST::parse(const std::string& expression) {
             newNode->left = stack.pop(); 
             newNode->right = stack.pop();
             stack.push(newNode);
+        } else if (token == "-"){
+
+        } else if (token == "*"){
+
+        } else if (token == "/"){
+
+        } else if (token == "%"){
+
+        } else if (token == "-"){
+
         } else {
             size_t reference;
             double numConvertor = stod(token, &reference);
