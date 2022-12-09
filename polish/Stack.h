@@ -13,8 +13,7 @@
 
 struct Node{
     AST* data;
-    Node* next;   
-     
+    Node* next;    
 };
 
 

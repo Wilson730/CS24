@@ -39,42 +39,26 @@ Stack::~Stack(){
 
 
 AST* Stack::pop(){
-    AST* temp = nullptr;
-    Node* currNode = head;
-    Node* prevNode = nullptr;
-    if (currNode == nullptr){                  // empty stack?
+    
+    Node* temphead = head->next;
+    if (head == nullptr){                  // empty stack?
         throw std::out_of_range("empty");
-    } else {
-    while (currNode != nullptr){
-        prevNode = currNode;
-        currNode = currNode->next;
     }
-    temp = prevNode->data;
-    delete prevNode->data;
-    delete prevNode;
-    delete currNode;
-    }
+    delete head;
+    head = temphead;
     siz--;
-    return temp;
+    return head->data;
 }
 
 void Stack::push(AST* token){
     Node* newNode = new Node;
     newNode->data = token;
-    Node* currNode = head;
-    Node* prevNode = nullptr;
-    newNode->data = token;
-    newNode->next = nullptr;
-
-    if (head == nullptr){
+    if (head == nullptr) {
         head = newNode;
+        newNode->next = nullptr;
     } else {
-        while (currNode != nullptr){
-            prevNode = currNode;
-            currNode = currNode->next;
-        }
-        currNode = newNode;
-        prevNode->next = currNode;
+        newNode->next = head;
+        head = newNode;
     }
     siz++;
 }
