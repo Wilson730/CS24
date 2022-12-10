@@ -65,7 +65,7 @@ while (currNode != NULL){
 
 void List::insert(const std::string& value){
 Node* newNode = new Node;
-newNode->next = NULL; 
+newNode->next = nullptr; 
 newNode->data = value;
 
 if(head == NULL){
