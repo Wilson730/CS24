@@ -25,6 +25,7 @@ AST* AST::parse(const std::string& expression) {
             if(lhs == nullptr || rhs == nullptr) {
              delete lhs;
              delete rhs;
+             stack.clean();
             throw std::runtime_error("Invalid.");
             } 
             stack.push(new add(lhs, rhs));
@@ -38,6 +39,7 @@ AST* AST::parse(const std::string& expression) {
             if(lhs == nullptr || rhs == nullptr) {
              delete lhs;
              delete rhs;
+             stack.clean();
             throw std::runtime_error("Invalid.");
             } 
             stack.push(new subtract(lhs, rhs));
@@ -51,6 +53,7 @@ AST* AST::parse(const std::string& expression) {
             if(lhs == nullptr || rhs == nullptr) {
              delete lhs;
              delete rhs;
+             stack.clean();
             throw std::runtime_error("Invalid.");
             } 
             stack.push(new multiply(lhs, rhs));
@@ -64,6 +67,7 @@ AST* AST::parse(const std::string& expression) {
             if(lhs == nullptr || rhs == nullptr) {
              delete lhs;
              delete rhs;
+             stack.clean();
             throw std::runtime_error("Invalid.");
             } 
             stack.push(new divide(lhs, rhs));
@@ -77,6 +81,7 @@ AST* AST::parse(const std::string& expression) {
             if(lhs == nullptr || rhs == nullptr) {
              delete lhs;
              delete rhs;
+             stack.clean();
             throw std::runtime_error("Invalid.");
             } 
             stack.push(new modulu(lhs, rhs));
@@ -114,3 +119,18 @@ AST* AST::parse(const std::string& expression) {
 }
 
 
+// if seg fault continues. create new node step by step inside
+// so add* nwenode = new add; instead of new add(token1, token2);
+
+// check if the newly impelemented return root works. if not, 
+// go to default. just return root. 
+
+
+// stack size cases: 0, more than 2. and what exactly does it mean 
+// to push a subclass ast onto the stack? like add for ex. 
+// what happens when there's an add ast and two numbers are pushed? 
+// 
+
+// also check delete head->data. that could be a problem 
+// since it appeared in seg fault before. 
+// if ti appears again, make a temp AST* temp and set it to head->data & delete it

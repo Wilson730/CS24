@@ -1,4 +1,4 @@
-# Polish
+;;''''# Polish
 
 In this lab, you'll implement a simple calculator and equation converter.  It'll
 parse expressions written in [reverse Polish notation][rpn].  Then, depending on

@@ -28,7 +28,7 @@ Stack::~Stack(){
     Node* currNode = nullptr;
     while (head != nullptr){
         currNode = head->next;
-        delete head->data;
+        delete head->data; //potential problem here. set to temp variable instead
         delete head;
         head = currNode;
     }
@@ -43,11 +43,11 @@ AST* Stack::pop(){
     Node* temphead = head->next;
     if (head == nullptr){                  // empty stack?
         throw std::out_of_range("empty");
-    }
-    AST* headata = head->data;
+    } 
     delete head;
     head = temphead;
     siz--;
+
     return result;
 }
 
@@ -62,7 +62,7 @@ void Stack::push(AST* token){
     newNode->data = token;
     if (head == nullptr) {
         head = newNode;
-        newNode->next = nullptr;
+        head->next = nullptr;
     } else {
         newNode->next = head;
         head = newNode;
@@ -75,10 +75,11 @@ size_t Stack::size(){
 }
 
 void Stack::clean(){    // delete head data first. then delete head. 
-    Node* temp = head;
+    Node* temp;
     while (head != nullptr ){
-    delete head->data;
-    delete head;
-    head = temp->next;
+    temp = head->next;
+    delete head->data; // potential problem. seg fault. 
+    delete head; // ^ maybe use recursion to loop down every node* ? 
+    head = temp;    // ^ see print recursion function from one of the other labs 
     }
 }
