@@ -217,6 +217,6 @@ size_t Set::remove (const std::string& value){
         }
     }
     
-   
+    delete mRoot;
     return amountRemoved;
 }
