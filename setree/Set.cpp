@@ -133,8 +133,7 @@ size_t Set::insert(const std::string&value){
 
 //-------------------------------------------------------------------------------
 const std::string& Set::lookup(size_t n) const {
-  return NULL;
-    
+    throw std::out_of_range("out of range");
 }
 
 void printre(const Node* currNode){ // starts from the root. 
