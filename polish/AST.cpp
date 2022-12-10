@@ -110,6 +110,7 @@ AST* AST::parse(const std::string& expression) {
         }
 
     }
+    if (stack.size() == 0) throw std::runtime_error("Parsing: no input");
     AST* root = stack.pop();
     if (root != nullptr){
         return root;
