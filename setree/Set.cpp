@@ -206,12 +206,12 @@ size_t Set::remove (const std::string& value){
         while (currNode!= NULL){
             if (value < currNode->data)
             {
-                
                 currNode = currNode->left;                  // so I need a prev node. 
             } else if (value > currNode->data){
                 
                 currNode = currNode->right;
             } else if (value == currNode->data){
+                delete currNode;
                 return 1;
             }
         }
