@@ -131,8 +131,9 @@ void List::print(bool reverse) const{
                 tempStr = ", " + tempStr;
             } 
            prevNode = currNode;
-           currNode = currNode->next;
            prevNode->data = currNode->data;
+           currNode = currNode->next;
+           
         }
         tempStr = "[" + tempStr;
         cout << tempStr << "\n";
