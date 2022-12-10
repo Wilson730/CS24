@@ -111,7 +111,7 @@ AST* AST::parse(const std::string& expression) {
             
             catch(...){
                 stack.clean();
-                throw std::runtime_error("Invalid token:" + token);
+                throw std::runtime_error("Invalid token: " + token);
             }
         }
 
