@@ -26,7 +26,7 @@ AST* AST::parse(const std::string& expression) {
              delete lhs;
              delete rhs;
              stack.clean();
-            throw std::runtime_error("Invalid.");
+            throw std::runtime_error("Not enough operands.");
             } 
             stack.push(new add(lhs, rhs));
         } else if (token == "-"){
@@ -40,7 +40,7 @@ AST* AST::parse(const std::string& expression) {
              delete lhs;
              delete rhs;
              stack.clean();
-            throw std::runtime_error("Invalid.");
+            throw std::runtime_error("Not enough operands.");
             } 
             stack.push(new subtract(lhs, rhs));
         } else if (token == "*"){
@@ -54,7 +54,7 @@ AST* AST::parse(const std::string& expression) {
              delete lhs;
              delete rhs;
              stack.clean();
-            throw std::runtime_error("Invalid.");
+            throw std::runtime_error("Not enough operands.");
             } 
             stack.push(new multiply(lhs, rhs));
         } else if (token == "/"){
@@ -68,8 +68,11 @@ AST* AST::parse(const std::string& expression) {
              delete lhs;
              delete rhs;
              stack.clean();
-            throw std::runtime_error("Invalid.");
+            throw std::runtime_error("Not enough operands.");
             } 
+            if (lhs->value() == 0 || rhs->value() == 0){
+                throw std::runtime_error("Division by zero.");
+            }
             stack.push(new divide(lhs, rhs));
         } else if (token == "%"){
             if (stack.size() < 2) {
@@ -82,14 +85,17 @@ AST* AST::parse(const std::string& expression) {
              delete lhs;
              delete rhs;
              stack.clean();
-            throw std::runtime_error("Invalid.");
+            throw std::runtime_error("Not enough operands.");
             } 
+            if (lhs->value() == 0 || rhs->value() == 0){
+                throw std::runtime_error("Division by zero.");
+            }
             stack.push(new modulu(lhs, rhs));
         } else if (token == "~"){
            AST* child = stack.pop();
            if (child == nullptr) {
            stack.clean();
-           throw std::runtime_error("Need 1 operand");
+           throw std::runtime_error("Not enough operands.");
            }
            stack.push(new neg(child));
         } else {
@@ -111,6 +117,7 @@ AST* AST::parse(const std::string& expression) {
 
     }
     if (stack.size() == 0) throw std::runtime_error("No input.");
+    if (stack.size() > 1) throw std::runtime_error("Too many operands."); // result should only be one AST node. 
     AST* root = stack.pop();
     if (root != nullptr){
         return root;
