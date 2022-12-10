@@ -96,9 +96,10 @@ AST* AST::parse(const std::string& expression) {
            stack.push(new neg(child));
         } else {
 
-            size_t index = 0;
-            double value = stod(token, &index);
-            try{
+           
+            try{ 
+                size_t index;
+                double value = stod(token, &index);
                 if(index != token.length()){
                     stack.clean();
                     throw std::runtime_error("Invalid token: " + token);
