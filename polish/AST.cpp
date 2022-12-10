@@ -70,7 +70,7 @@ AST* AST::parse(const std::string& expression) {
              stack.clean();
             throw std::runtime_error("Not enough operands.");
             } 
-            if (lhs->value() == 0 || rhs->value() == 0){
+            if (rhs->value() == 0){
                 throw std::runtime_error("Division by zero.");
             }
             stack.push(new divide(lhs, rhs));
@@ -87,7 +87,7 @@ AST* AST::parse(const std::string& expression) {
              stack.clean();
             throw std::runtime_error("Not enough operands.");
             } 
-            if (lhs->value() == 0 || rhs->value() == 0){
+            if (rhs->value() == 0){
                 throw std::runtime_error("Division by zero.");
             }
             stack.push(new modulu(lhs, rhs));
@@ -111,7 +111,7 @@ AST* AST::parse(const std::string& expression) {
             
             catch(...){
                 stack.clean();
-                throw std::runtime_error("invalid");
+                throw std::runtime_error("Invalid" + token);
             }
         }
 
