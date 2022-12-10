@@ -70,9 +70,7 @@ AST* AST::parse(const std::string& expression) {
              stack.clean();
             throw std::runtime_error("Not enough operands.");
             } 
-            if (rhs->value() == 0){
-                throw std::runtime_error("Division by zero.");
-            }
+            
             stack.push(new divide(lhs, rhs));
         } else if (token == "%"){
             if (stack.size() < 2) {
@@ -87,9 +85,7 @@ AST* AST::parse(const std::string& expression) {
              stack.clean();
             throw std::runtime_error("Not enough operands.");
             } 
-            if (rhs->value() == 0){
-                throw std::runtime_error("Division by zero.");
-            }
+            
             stack.push(new modulu(lhs, rhs));
         } else if (token == "~"){
            AST* child = stack.pop();
@@ -116,8 +112,14 @@ AST* AST::parse(const std::string& expression) {
         }
 
     }
-    if (stack.size() == 0) throw std::runtime_error("No input.");
-    if (stack.size() > 1) throw std::runtime_error("Too many operands."); // result should only be one AST node. 
+    if (stack.size() == 0){
+        stack.clean();
+     throw std::runtime_error("No input.");
+    }
+    if (stack.size() > 1) {
+    stack.clean();
+    throw std::runtime_error("Too many operands."); // result should only be one AST node. 
+    }
     AST* root = stack.pop();
     if (root != nullptr){
         return root;

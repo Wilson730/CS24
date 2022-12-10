@@ -129,7 +129,7 @@ std::string divide::postfix() const {
 }
 
 double divide::value() const { 
-    if (right->value() == 0) throw std::runtime_error("Cannot divide by 0.");
+    if (right->value() == 0) throw std::runtime_error("Division by zero.");
     return left->value() / right->value();
 }
 
@@ -154,7 +154,7 @@ std::string modulu::postfix() const {
 }
 
 double modulu::value() const { 
-    if (right->value() == 0) throw std::runtime_error("Cannot divide by 0");
+    if (right->value() == 0) throw std::runtime_error("Division by zero.");
     return std::fmod( left->value(), right->value());
 }
 
