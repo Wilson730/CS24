@@ -9,7 +9,7 @@ Set::Set(){
 }
 
 Set::Set(const Set& other){
-
+    mRoot = other.mRoot;
 }
 
 Set::Set(Set&& other){
@@ -196,8 +196,12 @@ void checkLeaf(const std::string& value, Node* currNode, Node* prevNode){
 }
 */
 size_t Set::remove (const std::string& value){
-    size_t amountRemoved = 0;
-    
+    size_t amountRemoved = 1;
+    delete mRoot;
+    return amountRemoved;
+} 
+
+/*
    Node* currNode = mRoot;
 
     if(!contains(value)){
@@ -217,5 +221,6 @@ size_t Set::remove (const std::string& value){
     }
     
     delete mRoot;
-    return amountRemoved;
-}
+
+
+    */
