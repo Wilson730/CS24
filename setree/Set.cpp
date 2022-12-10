@@ -195,8 +195,9 @@ void checkLeaf(const std::string& value, Node* currNode, Node* prevNode){
 }
 */
 size_t Set::remove (const std::string& value){
-    size_t amountRemoved = 1;
-   
+    size_t amountRemoved = 0;
+    delete mRoot;
+    mRoot = nullptr;
     return amountRemoved;
 } 
 
