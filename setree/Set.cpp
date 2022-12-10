@@ -211,7 +211,6 @@ size_t Set::remove (const std::string& value){
                 
                 currNode = currNode->right;
             } else if (value == currNode->data){
-                delete currNode;
                 return 1;
             }
         }
