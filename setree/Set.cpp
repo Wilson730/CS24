@@ -199,17 +199,17 @@ size_t Set::remove (const std::string& value){
     size_t amountRemoved = 0;
     
    Node* currNode = mRoot;
-   Node* prevNode;
+
     if(!contains(value)){
         return amountRemoved;
     } else {
         while (currNode!= NULL){
             if (value < currNode->data)
             {
-                prevNode = currNode;
+                
                 currNode = currNode->left;                  // so I need a prev node. 
             } else if (value > currNode->data){
-                prevNode = currNode;
+                
                 currNode = currNode->right;
             } else if (value == currNode->data){
                 return 1;
