@@ -9,7 +9,6 @@ Set::Set(){
 }
 
 Set::Set(const Set& other){
-    mRoot = other.mRoot;
 }
 
 Set::Set(Set&& other){
