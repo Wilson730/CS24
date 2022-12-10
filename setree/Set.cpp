@@ -199,7 +199,7 @@ size_t Set::remove (const std::string& value){
     size_t amountRemoved = 0;
     
    Node* currNode = mRoot;
-Node* prevNode = NULL;
+   Node* prevNode;
     if(!contains(value)){
         return amountRemoved;
     } else {
