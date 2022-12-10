@@ -132,7 +132,7 @@ void List::print(bool reverse) const{
             } 
            prevNode = currNode;
            currNode = currNode->next;
-           prevNode->data = "why is it saying set but not used";
+           prevNode->data = currNode->data;
         }
         tempStr = "[" + tempStr;
         cout << tempStr << "\n";
