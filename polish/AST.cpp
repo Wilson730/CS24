@@ -18,7 +18,7 @@ AST* AST::parse(const std::string& expression) {
         if (token == "+"){
             if (stack.size() < 2) {
                 stack.clean();
-                throw runtime_error("Need 1 or 2 operands");
+                throw runtime_error("Not enough operands.");
             }
             AST* rhs = stack.pop();
             AST* lhs = stack.pop();
@@ -32,7 +32,7 @@ AST* AST::parse(const std::string& expression) {
         } else if (token == "-"){
             if (stack.size() < 2) {
                 stack.clean();
-                throw runtime_error("Need 1 or 2 operands");
+                throw runtime_error("Not enough operands.");
             }
             AST* rhs = stack.pop();
             AST* lhs = stack.pop();
@@ -46,7 +46,7 @@ AST* AST::parse(const std::string& expression) {
         } else if (token == "*"){
             if (stack.size() < 2) {
             stack.clean();
-            throw runtime_error("Need 1 or 2 operands");
+            throw runtime_error("Not enough operands.");
             }
             AST* rhs = stack.pop();
             AST* lhs = stack.pop();
@@ -60,7 +60,7 @@ AST* AST::parse(const std::string& expression) {
         } else if (token == "/"){
             if (stack.size() < 2) {
                 stack.clean();
-                throw runtime_error("Need 1 or 2 operands");
+                throw runtime_error("Not enough operands.");
             }
             AST* rhs = stack.pop();
             AST* lhs = stack.pop();
@@ -74,7 +74,7 @@ AST* AST::parse(const std::string& expression) {
         } else if (token == "%"){
             if (stack.size() < 2) {
                 stack.clean();
-                throw runtime_error("Need 1 or 2 operands");
+                throw runtime_error("Not enough operands.");
             }
             AST* rhs = stack.pop();
             AST* lhs = stack.pop();
@@ -110,7 +110,7 @@ AST* AST::parse(const std::string& expression) {
         }
 
     }
-    if (stack.size() == 0) throw std::runtime_error("Parsing: no input");
+    if (stack.size() == 0) throw std::runtime_error("No input.");
     AST* root = stack.pop();
     if (root != nullptr){
         return root;
