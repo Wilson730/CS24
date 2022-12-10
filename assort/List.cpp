@@ -32,7 +32,7 @@ List::List(const List& other){
     }
    
  }
-    delete(other.head);                          // delete old list
+                          // delete old list
 }
 
 
